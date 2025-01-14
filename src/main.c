@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:24 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/14 21:54:36 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/14 21:58:41 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int get_element(char **v_map)
 	while (v_map[++i])
 	{
 		element = ft_split(v_map[i],' ');
+		if (!ft_strcmp(element[0],"A"))
 	}
 	
 }
