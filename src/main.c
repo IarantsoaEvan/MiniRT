@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:24 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/14 19:56:02 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/14 21:54:36 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,63 @@ int	check_map_name(char **argv,int argc)
 	return (0);
 }
 
+char	*get_map(int fd)
+{
+	char	*map;
+	char	*buf;
+
+	map = ft_strdup("");
+	while (1)
+	{
+		buf = get_next_line(fd);
+		if (buf == NULL)
+			break ;
+		map = ft_strjoin(map, buf);
+		free(buf);
+	}
+	return (map);
+}
+
+int get_element(char **v_map)
+{
+	char **element;
+	int i;
+
+	i = -1;
+	while (v_map[++i])
+	{
+		element = ft_split(v_map[i],' ');
+	}
+	
+}
+
 int	check_map_valid(char *map)
 {
 	int fd;
+	char *g_map;
+	char **v_map;
+	int i;
 
+	i = -1;
 	fd = open(map,O_RDONLY);
 	if (fd >= 3)
 	{
-		
+		g_map = get_map(fd);
+		v_map = ft_split(g_map,'\n');
+		if (g_map)
+			free(g_map);
+		if (!get_element(v_map))
+			return (0);
+		return (1);
 	}
 	return (0);
 }
 
 int	main(int argc ,char **argv)
 {
+	t_data *data;
+	
+	data = NULL;
 	if (!check_map_name(argv,argc))
 		return (1);
 	check_map_valid(argv[1]);
