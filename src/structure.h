@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:59 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/14 21:37:13 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/15 13:51:57 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,65 +21,59 @@ typedef struct s_coord
 
 typedef struct s_color
 {
-	float r;
-	float g;
-	float b;
+	int r;
+	int g;
+	int b;
 } t_color;
 
 
 typedef struct s_ambiante
 {
-	char id[2];
-	char *content;
-	t_coord *ratio;
-	t_color * color;
+	float ratio;
+	t_color	* color;
 } t_ambiante;
 
 typedef struct s_camera
 {
-	char id[2];
-	char *content;
-	t_coord *coord;
-	t_coord *vector;
-	float fov;
+	t_coord	*coord;
+	t_coord	*vector;
+	float	fov;
 } t_camera;
 
 typedef struct s_light
 {
-	char id[2];
-	char *content;
-	t_coord *coord;
-	t_coord *ratio;
-	t_color *color;
+	t_coord	*coord;
+	t_coord	*ratio;
+	t_color	*color;
 } t_light;
 
 typedef struct s_sphere
 {
-	char id[3];
-	char *content;
+	int id;
 	t_coord	*coord;
 	float	diam;
 	t_color	*color;
+	struct s_sphere *next;
 } t_sphere;
 
 typedef struct s_plane
 {
-	char id[3];
-	char *content;
+	int id;
 	t_coord	*coord;
 	t_coord	*vector;
 	t_color	*color;
+	struct s_plane *next;
 } t_plane;
 
 typedef struct s_cyl
 {
-	char id[3];
-	char *content;
+	int id;
 	t_coord	*coord;
 	t_coord	*vector;
-	float diam;
-	float height;
+	float	diam;
+	float	height;
 	t_color	*color;
+	struct s_cyl *next;
 } t_cyl;
 
 typedef struct s_data

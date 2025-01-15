@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:24 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/14 21:58:41 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/15 14:27:37 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,24 @@ char	*get_map(int fd)
 	}
 	return (map);
 }
+int fill_data(t_data *data,char **element)
+{
+	if (!ft_strcmp(element[0],"A"))	
+		return (fill_amb(&data->ambiante,element));
+	else if (!ft_strcmp(element[0],"C"))
+		return (fill_cam(data->cam,element));
+	// else if (!ft_strcmp(element[0],"L"))
+	// 	return (fill_light(data->light,element));
+	// else if (!ft_strcmp(element[0],"pl"))
+	// 	return (fill_plane(data->plane,element));
+	// else if (!ft_strcmp(element[0],"sp"))
+	// 	return (fill_sphere(data->sphere,element));
+	// else if (!ft_strcmp(element[0],"cy"))
+	// 	return (fill_cyl(data->cyl,element));
+	return (0);
+}
 
-int get_element(char **v_map)
+int get_element(char **v_map,t_data *data)
 {
 	char **element;
 	int i;
@@ -56,12 +72,16 @@ int get_element(char **v_map)
 	while (v_map[++i])
 	{
 		element = ft_split(v_map[i],' ');
-		if (!ft_strcmp(element[0],"A"))
+
+		if (!fill_data(data,element))
+			return (0);
 	}
+	ft_free_str(v_map);
+	return (1);
 	
 }
 
-int	check_map_valid(char *map)
+int	fill_and_check_map_valid(char *map,t_data *data)
 {
 	int fd;
 	char *g_map;
@@ -76,7 +96,7 @@ int	check_map_valid(char *map)
 		v_map = ft_split(g_map,'\n');
 		if (g_map)
 			free(g_map);
-		if (!get_element(v_map))
+		if (!get_element(v_map,data))
 			return (0);
 		return (1);
 	}
@@ -87,9 +107,9 @@ int	main(int argc ,char **argv)
 {
 	t_data *data;
 	
-	data = NULL;
+	data = init_data();
 	if (!check_map_name(argv,argc))
 		return (1);
-	check_map_valid(argv[1]);
-	
+	if (!fill_and_check_map_valid(argv[1],data))
+		return (1);
 }

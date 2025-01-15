@@ -1,10 +1,12 @@
 CC = cc
-FLAGS = -Wall -Wextra -Werror 
+FLAGS = -g -Wall -Wextra -Werror 
 LIBFT_N = libft.a
 LIBFT_D = ./libft
 MLX_D = minilibx-linux
 NAME = miniRT
-SRC = 	src/main.c
+SRC = 	src/init_data.c\
+		src/fill_data.c\
+		src/main.c
 %.o: %.c
 	$(CC) $(FLAGS) -I/usr/include -I$(MLX_D) -O3 -c $< -o $@
 
