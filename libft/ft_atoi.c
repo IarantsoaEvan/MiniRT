@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mariosteven <mariosteven@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 13:12:45 by mrambelo          #+#    #+#             */
-/*   Updated: 2024/05/15 19:05:05 by mariosteven      ###   ########.fr       */
+/*   Updated: 2025/01/15 20:46:26 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ long	ft_atoi(const char *str)
 	i = 0;
 	result = 0;
 	sign = 1;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+	while (str[i] && (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)))
 		i++;
-	while (str[i] == '-' || str[i] == '+')
+	while (str[i] && (str[i] == '-' || str[i] == '+'))
 	{
 		if (str[i + 1] == '-' || str[i + 1] == '+')
 			return (0);
@@ -31,7 +31,7 @@ long	ft_atoi(const char *str)
 			sign *= -1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
 	{
 		result = result * 10 + (str[i] - '0');
 		i++;

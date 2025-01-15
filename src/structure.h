@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:59 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/15 13:51:57 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/15 22:13:44 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_camera
 typedef struct s_light
 {
 	t_coord	*coord;
-	t_coord	*ratio;
+	float	ratio;
 	t_color	*color;
 } t_light;
 

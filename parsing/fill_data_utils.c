@@ -1,24 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_data.c                                        :+:      :+:    :+:   */
+/*   fill_data_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 08:56:30 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/15 14:31:38 by mrambelo         ###   ########.fr       */
+/*   Created: 2025/01/15 14:28:07 by mrambelo          #+#    #+#             */
+/*   Updated: 2025/01/15 22:03:22 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
-
-void print_ambiante(t_ambiante *ambiante)
-{
-	printf("ratio = %f\n",ambiante->ratio);
-	printf("red = %d\n",ambiante->color->r);
-	printf("green = %d\n",ambiante->color->r);
-	printf("blue = %d\n",ambiante->color->r);
-}
+#include "parsing.h"
 
 int check_color(int color)
 {
@@ -27,7 +19,7 @@ int check_color(int color)
 	return (0);
 }
 
-int check_vector_or_ratio(float vector,int type)
+int check_vec_or_rat(float vector,int type)
 {
 	if (type == RATIO)
 	{
@@ -37,7 +29,7 @@ int check_vector_or_ratio(float vector,int type)
 	}
 	else
 	{
-		if (vector >= -1 && vector <= 1)
+		if (vector >= -1.0 && vector <= 1.0)
 			return (1);
 		printf("Vector must be between -1 - 1\n");
 	}	
@@ -61,42 +53,20 @@ int check_and_fill_color(char **elem,t_color *color)
 	return (1);
 }
 
-int fill_amb(t_ambiante **ambiante,char **element)
+void fill_coord(char **elem,t_coord *coord)
 {
-	int i;
-	char **get_value;
-
-	i = 0;
-	get_value = NULL;
-	(*ambiante) = init_amb();
-	while (element[++i])
+	if (elem)
 	{
-		if (ft_count_char_in_str(element[i],','))
-		{
-			get_value = ft_split(element[i],',');
-			if (!check_and_fill_color(get_value,(*ambiante)->color))
-				return (0);
-		}
-		else
-		{
-			(*ambiante)->ratio = ft_atflo(element[i]);
-			if (!check_vector_or_ratio((*ambiante)->ratio ,RATIO))
-				return (0);
-		}	
+		coord->x = ft_atflo(elem[0]);
+		coord->y = ft_atflo(elem[1]);
+		coord->z = ft_atflo(elem[2]);
 	}
-	return (1);
 }
 
-
-int fill_cam(t_camera **cam,char **element)
+int check_angle(float angle)
 {
-	int i;
-	char **get_val;
-	
-	i = 0;
-	(*cam) = init_cam();
-	while (element[i])
-	{
-		
-	}
+	if (angle >= 0 && angle <= 180)
+		return (1);
+	printf("Angle of the camera must be between 0 - 180\n");
+	return (0);
 }
