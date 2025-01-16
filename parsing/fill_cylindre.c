@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 12:06:43 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/16 12:45:57 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/16 13:25:19 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,15 @@ int fill_diam_and_height(int *flag,t_cyl **cyl,char *element)
 	else if (*flag == 2)
 	{
 		(*cyl)->diam = ft_atflo(element);
+		if (!check_positive((*cyl)->diam))
+			return (0);
 		*flag = 3;
 	}
 	else if (*flag == 3)
 	{
 		(*cyl)->height = ft_atflo(element);
+		if (!check_positive((*cyl)->height))
+			return (0);
 		*flag = 4;
 	}
 	return (1);
@@ -61,21 +65,9 @@ int fill_elem_cyl(t_cyl **cyl,char *element,int *flag)
 	}
 	else if (*flag == 1 || *flag == 2 || *flag == 3)
 	{
-		fill_diam_and_height(flag,cyl,element);
-		// if (!fill_cyl_vector(element,cyl))
-		// 	return (0);
-		// *flag = 2;
+		if (!fill_diam_and_height(flag,cyl,element))
+			return (0);
 	}	
-	// else if (*flag == 2)
-	// {
-	// 	(*cyl)->diam = ft_atflo(element);
-	// 	*flag = 3;
-	// }
-	// else if (*flag == 3)
-	// {
-	// 	(*cyl)->height = ft_atflo(element);
-	// 	*flag = 4;
-	// }
 	else
 	{
 		get_val = ft_split(element,',');

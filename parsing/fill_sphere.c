@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:20:19 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/16 12:43:17 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/16 13:23:47 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int fill_elem_sphere(t_sphere **sphere,char *element,int *flag)
 	else if (*flag == 1)
 	{
 		(*sphere)->diam = ft_atflo(element);
+		if (!check_positive((*sphere)->diam))
+			return (0);
 		*flag = 2;
 	}	
 	else

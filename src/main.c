@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:24 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/16 13:09:52 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/16 14:53:38 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ int fill_data(t_data *data,char **element)
 {
 	if (element)
 	{
+		if (!check_valid_element(element))
+			return (0);
 		if (!ft_strcmp(element[0],"A"))	
 			return (fill_amb(&data->ambiante,element));
 		else if (!ft_strcmp(element[0],"C"))
@@ -69,12 +71,23 @@ int fill_data(t_data *data,char **element)
 	return (0);
 }
 
+int check_valid_map(char  **elem)
+{
+	int i;
+
+	i  = -1;
+	while (elem[++i])
+		printf("elem  =%s\n",elem[i]);
+	return(1);
+}
+
 int get_element(char **v_map,t_data *data)
 {
 	char **element;
 	int i;
 
 	i = -1;
+	check_valid_map(v_map);
 	while (v_map[++i])
 	{
 		element = NULL;
