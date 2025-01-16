@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:24 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/16 14:53:38 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/16 21:06:07 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,15 +71,7 @@ int fill_data(t_data *data,char **element)
 	return (0);
 }
 
-int check_valid_map(char  **elem)
-{
-	int i;
 
-	i  = -1;
-	while (elem[++i])
-		printf("elem  =%s\n",elem[i]);
-	return(1);
-}
 
 int get_element(char **v_map,t_data *data)
 {
@@ -87,7 +79,9 @@ int get_element(char **v_map,t_data *data)
 	int i;
 
 	i = -1;
-	check_valid_map(v_map);
+	if (!check_valid_object(v_map) 
+		||!check_valid_a_c_l(v_map))
+		return (0);
 	while (v_map[++i])
 	{
 		element = NULL;

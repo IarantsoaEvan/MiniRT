@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:20:19 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/16 13:23:47 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/16 22:06:46 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,11 @@
 
 int fill_elem_sphere(t_sphere **sphere,char *element,int *flag)
 {
-	char **get_val;
 
-	get_val = NULL;
 	if (*flag == 0)
 	{
-		get_val = ft_split(element,',');
-		fill_coord(get_val,(*sphere)->coord);
-		ft_free_str(get_val);
+		if (!fill_coord(element,(*sphere)->coord))
+			return (0);
 		*flag = 1;
 	}
 	else if (*flag == 1)
@@ -33,10 +30,8 @@ int fill_elem_sphere(t_sphere **sphere,char *element,int *flag)
 	}	
 	else
 	{
-		get_val = ft_split(element,',');
-		if (!check_and_fill_color(get_val,(*sphere)->color))
-			return (ft_free_str(get_val),0);
-		ft_free_str(get_val);
+		if (!check_and_fill_color(element,(*sphere)->color))
+			return (0);
 	}
 	return (1);
 }

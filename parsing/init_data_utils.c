@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 22:40:29 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/16 14:49:11 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/16 21:20:02 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,19 +70,3 @@ int check_valid_element(char **element)
 	}
 	return (1);
 }
-// int check_valid_objet(char **element)
-// {
-// 	int i;
-// 	static int object;
-
-// 	i = -1;
-// 	while (element[++i])
-// 	{
-// 		if (!ft_strcmp(element[i],"cy") || !ft_strcmp(element[i],"pl")
-// 			|| !ft_strcmp(element[i],"sp"))
-// 			object++;
-// 	}
-// 	if (object == 0)
-// 		return (printf("No objet deteced!\n"),0);
-// 	return (1);
-// }

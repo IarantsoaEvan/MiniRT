@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 12:06:43 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/16 13:25:19 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/16 22:05:39 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 int fill_cyl_vector(char *element,t_cyl **cyl)
 {
-	char **get_val;
-	
-	get_val = ft_split(element,',');
-	fill_coord(get_val,(*cyl)->vector);
+	if (!check_comma(element))
+		return (0);
+	fill_coord(element,(*cyl)->vector);
 	if (!check_vec_or_rat((*cyl)->vector->x ,VECTOR)
 		|| !check_vec_or_rat((*cyl)->vector->y ,VECTOR)
 		|| !check_vec_or_rat((*cyl)->vector->z ,VECTOR))
-		return (ft_free_str(get_val),0);
-	
-	return (ft_free_str(get_val),1);
+		return (0);
+	return (1);
 }
 
 int fill_diam_and_height(int *flag,t_cyl **cyl,char *element)
@@ -53,14 +51,10 @@ int fill_diam_and_height(int *flag,t_cyl **cyl,char *element)
 
 int fill_elem_cyl(t_cyl **cyl,char *element,int *flag)
 {
-	char **get_val;
-
-	get_val = NULL;
 	if (*flag == 0)
 	{
-		get_val = ft_split(element,',');
-		fill_coord(get_val,(*cyl)->coord);
-		ft_free_str(get_val);
+		if (!fill_coord(element,(*cyl)->coord))
+			return (0);
 		*flag = 1;
 	}
 	else if (*flag == 1 || *flag == 2 || *flag == 3)
@@ -70,10 +64,8 @@ int fill_elem_cyl(t_cyl **cyl,char *element,int *flag)
 	}	
 	else
 	{
-		get_val = ft_split(element,',');
-		if (!check_and_fill_color(get_val,(*cyl)->color))
-			return (ft_free_str(get_val),0);
-		ft_free_str(get_val);
+		if (!check_and_fill_color(element,(*cyl)->color))
+			return (0);
 	}
 	return (1);
 }

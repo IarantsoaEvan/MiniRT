@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 10:20:29 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/16 11:52:10 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/16 22:06:26 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,42 +14,35 @@
 
 int fill_pl_vector(char *element,t_plane **pl)
 {
-	char **get_val;
-	
-	get_val = ft_split(element,',');
-	fill_coord(get_val,(*pl)->vector);
+	if (!check_comma(element))
+		return (0);
+	fill_coord(element,(*pl)->vector);
 	if (!check_vec_or_rat((*pl)->vector->x ,VECTOR)
 		|| !check_vec_or_rat((*pl)->vector->y ,VECTOR)
 		|| !check_vec_or_rat((*pl)->vector->z ,VECTOR))
-		return (ft_free_str(get_val),0);
+		return (0);
 	
-	return (ft_free_str(get_val),1);
+	return (1);
 }
 
 int fill_elem_pl(t_plane **pl,char *element,int *flag)
 {
-	char **get_val;
-
-	get_val = NULL;
 	if (*flag == 0)
 	{
-			get_val = ft_split(element,',');
-			fill_coord(get_val,(*pl)->coord);
-			ft_free_str(get_val);
-			*flag = 1;
+		if (!fill_coord(element,(*pl)->coord))
+			return (0);
+		*flag = 1;
 	}
 	else if (*flag == 1)
 	{
-			if (!fill_pl_vector(element,pl))
-				return (0);
-			*flag = 2;
+		if (!fill_pl_vector(element,pl))
+			return (0);
+		*flag = 2;
 	}
 	else
 	{
-			get_val = ft_split(element,',');
-			if (!check_and_fill_color(get_val,(*pl)->color))
-				return (ft_free_str(get_val),0);
-			ft_free_str(get_val);
+		if (!check_and_fill_color(element,(*pl)->color))
+			return (0);
 	}
 	return (1);
 }

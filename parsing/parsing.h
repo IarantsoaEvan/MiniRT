@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 21:34:36 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/16 14:47:16 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/16 21:45:10 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,15 @@
 int     	fill_amb(t_ambiante **ambiante,char **element);
 t_data  	*init_data(void);
 int     	check_color(int color);
-int check_valid_objet(char **element);
 int check_positive(float nb);
 int check_valid_element(char **element);
 int     	check_vec_or_rat(float vector,int type);
-int     	check_and_fill_color(char **elem,t_color *color);
+int     	check_and_fill_color(char *val,t_color *color);
 int     	fill_cam(t_camera **cam,char **element);
 void	ft_add_back_plane(t_plane **plane, t_plane *new);
 int fill_elem_cyl(t_cyl **cyl,char *element,int *flag);
 void	ft_add_back_sphere(t_sphere **sphere, t_sphere *new);
-void        fill_coord(char **elem,t_coord *coord);
+int fill_coord(char *val,t_coord *coord);
 int fill_sphere(t_sphere **sphere,char **elem);
 int fill_plane(t_plane **pl,char **elem);
 t_ambiante  *init_amb(void);

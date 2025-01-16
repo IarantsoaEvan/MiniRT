@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:28:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/15 22:03:22 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/16 22:00:17 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,14 @@ int check_vec_or_rat(float vector,int type)
 	return (0);
 }
 
-int check_and_fill_color(char **elem,t_color *color)
+int check_and_fill_color(char *val,t_color *color)
 {
+	char **elem;
+
+	elem = NULL;
+	if (!check_comma(val))
+			return(0);
+	elem  = ft_split(val,',');
 	if (elem)
 	{
 		color->r = ft_atoi(elem[0]);
@@ -47,20 +53,31 @@ int check_and_fill_color(char **elem,t_color *color)
 			|| !check_color(color->b))
 		{
 			printf("Color must be between 0 - 255\n");
-			return (0);
+			return (ft_free_str(elem),0);
 		}	
 	}
+	if (elem)
+		ft_free_str(elem);
 	return (1);
 }
 
-void fill_coord(char **elem,t_coord *coord)
+int fill_coord(char *val,t_coord *coord)
 {
+	char **elem;
+
+	elem = NULL;
+	if (!check_comma(val))
+			return(0);
+	elem  = ft_split(val,',');
 	if (elem)
 	{
 		coord->x = ft_atflo(elem[0]);
 		coord->y = ft_atflo(elem[1]);
 		coord->z = ft_atflo(elem[2]);
 	}
+	if (elem)
+		ft_free_str(elem);
+	return (1);
 }
 
 int check_angle(float angle)
