@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 09:36:21 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/15 22:42:00 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/16 12:10:52 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,45 @@ t_light *init_light(void)
 	light->ratio = 0;
 	return (light);
 }
+t_plane *init_plane(void)
+{
+	t_plane *plane;
+
+	plane = malloc(sizeof(t_plane));
+	plane->coord = init_coord();
+	plane->color = init_color();
+	plane->vector = init_coord();
+	plane->id = 0;
+	plane->next = NULL;
+	return (plane);
+}
+t_sphere *init_sphere(void)
+{
+	t_sphere *sphere;
+
+	sphere = malloc(sizeof(t_sphere));
+	sphere->coord = init_coord();
+	sphere->color = init_color();
+	sphere->diam = 0;
+	sphere->id = 0;
+	sphere->next = NULL;
+	return (sphere);
+}
+
+t_cyl *init_cyl(void)
+{
+	t_cyl *cyl;
+
+	cyl = malloc(sizeof(t_cyl));
+	cyl->color = init_color();
+	cyl->coord = init_coord();
+	cyl->vector = init_coord();
+	cyl->diam = 0;
+	cyl->height = 0;
+	cyl->id = 0;
+	cyl->next = NULL;
+	return (cyl);
+}
 
 t_data *init_data(void)
 {
@@ -42,8 +81,8 @@ t_data *init_data(void)
 	data->ambiante = NULL;
 	data->cam = NULL;
 	data->light =  NULL;
-	// data->plane = init_plane();
-	// data->sphere = init_sphere();
-	// data->cyl = init_cyl();
+	data->plane = NULL;
+	data->sphere = NULL;
+	data->cyl = NULL;
 	return (data);
 }

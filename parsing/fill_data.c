@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 08:56:30 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/15 22:39:55 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/16 11:18:29 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int fill_elem_light(char *elem,t_light **light,int *flag)
 		get_val = ft_split(elem,',');
 		if (!check_and_fill_color(get_val,(*light)->color))
 			return (ft_free_str(get_val),0);
+		ft_free_str(get_val);
 	}
 	return (1);
 }

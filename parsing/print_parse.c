@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 22:07:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/15 22:24:49 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/16 12:43:06 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,81 @@ void print_light(t_light *light)
 	printf("----------COLOR----------\n");
 	printf("color r = %d\n",light->color->r);
 	printf("color g = %d\n",light->color->g);
-	printf("color zb= %d\n",light->color->g);
+	printf("color zb= %d\n",light->color->b);
 	printf("----------RATIO----------\n");
 	printf("RATIO = %f\n",light->ratio);
 	printf("-------------------------\n");
+}
+
+
+void print_pl(t_plane *pl)
+{
+	while (pl)
+	{
+		printf("----------PLANE----------\n");
+		printf("ID = %d\n",pl->id);
+		printf("----------coord----------\n");
+		printf("coord x = %f\n",pl->coord->x);
+		printf("coord y = %f\n",pl->coord->y);
+		printf("coord z = %f\n",pl->coord->z);
+		printf("----------vector----------\n");
+		printf("vector x = %f\n",pl->vector->x);
+		printf("vector y = %f\n",pl->vector->y);
+		printf("vector z = %f\n",pl->vector->z);
+		printf("----------COLOR----------\n");
+		printf("color r = %d\n",pl->color->r);
+		printf("color g = %d\n",pl->color->g);
+		printf("color b= %d\n",pl->color->b);
+		printf("\n\n");
+		pl = pl->next;
+	}
+
+}
+
+void print_sp(t_sphere *sphere)
+{
+	while (sphere)
+	{
+		printf("----------SPHERE----------\n");
+		printf("ID = %d\n",sphere->id);
+		printf("----------COORD----------\n");
+		printf("coord x = %f\n",sphere->coord->x);
+		printf("coord y = %f\n",sphere->coord->y);
+		printf("coord z = %f\n",sphere->coord->z);
+		printf("----------DIAM----------\n");
+		printf("diametre  = %f\n",sphere->diam);
+		printf("----------COLOR----------\n");
+		printf("color r = %d\n",sphere->color->r);
+		printf("color g = %d\n",sphere->color->g);
+		printf("color b= %d\n",sphere->color->b);
+		printf("\n\n");
+		sphere = sphere->next;
+	}
+}
+
+void print_cyl(t_cyl *cyl)
+{
+	while (cyl)
+	{
+		printf("----------CYLINDRE----------\n");
+		printf("ID = %d\n",cyl->id);
+		printf("----------COORD----------\n");
+		printf("coord x = %f\n",cyl->coord->x);
+		printf("coord y = %f\n",cyl->coord->y);
+		printf("coord z = %f\n",cyl->coord->z);
+		printf("----------VECTOR----------\n");
+		printf("vector x = %f\n",cyl->vector->x);
+		printf("vector y = %f\n",cyl->vector->y);
+		printf("vector z = %f\n",cyl->vector->z);
+		printf("----------DIAM----------\n");
+		printf("diametre  = %f\n",cyl->diam);
+		printf("----------HEIGHT----------\n");
+		printf("heigth  = %f\n",cyl->height);
+		printf("----------COLOR----------\n");
+		printf("color r = %d\n",cyl->color->r);
+		printf("color g = %d\n",cyl->color->g);
+		printf("color b= %d\n",cyl->color->b);
+		printf("\n\n");
+		cyl = cyl->next;
+	}
 }

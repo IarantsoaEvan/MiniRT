@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:24 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/15 22:26:01 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/16 12:55:02 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,24 @@ char	*get_map(int fd)
 }
 int fill_data(t_data *data,char **element)
 {
-	if (!ft_strcmp(element[0],"A"))	
-		return (fill_amb(&data->ambiante,element));
-	else if (!ft_strcmp(element[0],"C"))
-		return (fill_cam(&data->cam,element));
-	else if (!ft_strcmp(element[0],"L"))
-		return (fill_light(&data->light,element));
-	// else if (!ft_strcmp(element[0],"pl"))
-	// 	return (fill_plane(data->plane,element));
-	// else if (!ft_strcmp(element[0],"sp"))
-	// 	return (fill_sphere(data->sphere,element));
-	// else if (!ft_strcmp(element[0],"cy"))
-	// 	return (fill_cyl(data->cyl,element));
+	if (element)
+	{
+		if (!ft_strcmp(element[0],"A"))	
+			return (fill_amb(&data->ambiante,element));
+		else if (!ft_strcmp(element[0],"C"))
+			return (fill_cam(&data->cam,element));
+		else if (!ft_strcmp(element[0],"L"))
+			return (fill_light(&data->light,element));
+		else if (!ft_strcmp(element[0],"pl"))
+			return (fill_plane(&data->plane,element));
+		else if (!ft_strcmp(element[0],"sp"))
+			return (fill_sphere(&data->sphere,element));
+		else if (!ft_strcmp(element[0],"cy"))
+			return (fill_cyl(&data->cyl,element));
+		else
+			return (printf("'%s' : invalid id\n",element[0]),0);
+		return (1);
+	}
 	return (0);
 }
 
@@ -121,8 +127,12 @@ int	main(int argc ,char **argv)
 	data = init_data();
 	if (!check_map_name(argv,argc))
 		return (1);
-	fill_and_check_map_valid(argv[1],data);
+	if (!fill_and_check_map_valid(argv[1],data))
+		return(1);
 	print_ambiante(data->ambiante);
 	print_cam(data->cam);
 	print_light(data->light);
+	print_pl(data->plane);
+	print_sp(data->sphere);
+	print_cyl(data->cyl);
 }
