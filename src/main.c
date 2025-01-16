@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:24 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/16 12:55:02 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/16 13:09:52 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ int	fill_and_check_map_valid(char *map,t_data *data)
 	if (fd >= 3)
 	{
 		g_map = get_map(fd);
+		close(fd);
 		v_map = ft_split(g_map,'\n');
 		if (g_map)
 			free(g_map);

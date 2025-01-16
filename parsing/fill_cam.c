@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 22:04:37 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/15 22:05:09 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/16 13:10:21 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,18 @@ int fill_cam(t_camera **cam,char **element)
 {
 	int i;
 	int flag;
+	static int nb_cam;
 	
 	i = 0;
 	flag = 0;
+	if (nb_cam != 0)
+		return (printf("Please enter only one cam!\n"),0);
 	(*cam) = init_cam();
 	while (element[++i])
 	{
 		if (!fill_cam_elem(cam,element[i],&flag))
 			return (0);
 	}
+	nb_cam++;
 	return (1);
 }
