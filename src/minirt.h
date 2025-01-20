@@ -6,7 +6,7 @@
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:24:02 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/20 09:22:09 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/01/20 15:53:10 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@
 # define VECTOR 2
 # define WIDTH 700
 # define HEIGHT 540
+# define AS_RATIO WIDTH / HEIGHT
 # include <stdio.h> 
 # include "structure.h"
 # include "../minilibx-linux/mlx.h"
 # include "../libft/libft.h"
 # include "../parsing/parsing.h"
+# include <math.h>
 
 int check_valid_object(char  **elem);
 int check_valid_a_c_l(char  **elem);
