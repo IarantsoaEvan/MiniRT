@@ -10,6 +10,7 @@ SRC = 	parsing/init_data_utils.c\
 		parsing/print_parse.c\
 		parsing/add_back_lst.c\
 		src/utils.c\
+		src/graph_rt.c\
 		parsing/fill_plane.c\
 		parsing/fill_sphere.c\
 		parsing/fill_cylindre.c\
