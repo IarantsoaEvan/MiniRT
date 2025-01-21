@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:41:17 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/21 15:00:07 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/21 20:58:12 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,14 @@ float ft_scal(t_coord *vect1,t_coord *vect2)
 	return (res);
 }
 
-t_coord *ft_soustraction(t_data *rt)
+t_coord *ft_soustraction(t_coord *coord1,t_coord *coord2)
 {
 	t_coord *oc;
 
 	oc = init_coord();
-	oc->x = rt->cam->coord->x - rt->sphere->coord->x;
-	oc->y = rt->cam->coord->y - rt->sphere->coord->y;
-	oc->z = rt->cam->coord->z - rt->sphere->coord->z;
+	oc->x = coord1->x - coord2->x;
+	oc->y = coord1->y - coord2->y;
+	oc->z = coord1->z - coord2->z;
 	return(oc);
 }
 
