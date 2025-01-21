@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:20:33 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/15 13:38:43 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/21 10:59:48 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ float	ft_atflo(char *str)
 	div = 1.0;
 	sign = 1.0;
 	if (str && str[0] == '-')
-		sign *= -1.0;
+		sign = sign * -1.0;
 	sum = (float)ft_atoi(str);
 	while (*str && *str != '.')
 		str++;

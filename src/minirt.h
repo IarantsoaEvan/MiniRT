@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:24:02 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/21 09:01:22 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/01/21 14:51:38 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include "../minilibx-linux/mlx.h"
 # include "../libft/libft.h"
 # include "../parsing/parsing.h"
+# include "../intersection/intersection.h"
 # include <math.h>
 
 int check_valid_object(char  **elem);
