@@ -6,7 +6,7 @@
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:24 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/20 09:21:52 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/01/21 14:33:51 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,13 +137,8 @@ int	main(int argc ,char **argv)
 		return (1);
 	if (!fill_and_check_map_valid(argv[1],data))
 		return(1);
-	// print_ambiante(data->ambiante);
-	// print_cam(data->cam);
-	// print_light(data->light);
-	// print_pl(data->plane);
-	// print_sp(data->sphere);
-	// print_cyl(data->cyl);
 	init_graph(data);
+	ray_tracing(data);
 	mlx_hook(data->win_ptr, 17, 0L, close_win, data);
 	mlx_loop(data->mlx_ptr);
 }

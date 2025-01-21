@@ -6,7 +6,7 @@
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:59 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/20 15:06:00 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/01/21 14:08:41 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,26 @@ typedef struct s_cyl
 	struct s_cyl *next;
 } t_cyl;
 
-typedef struct s_fict
+typedef struct s_pol
+{
+	float a;
+	float b;
+	float c;
+
+} t_pol;
+
+typedef struct s_fct
 {
 	float	x_ndc;
 	float	y_ndc;
 	float	x_screen;
 	float	y_screen;
-}	t_fict;
+	float	as_x;
+	float	as_y;
+	float	as_z;
+	t_coord *dir;
+	t_pol *pol;
+}	t_fct;
 
 typedef struct s_data
 {

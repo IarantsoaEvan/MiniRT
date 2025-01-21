@@ -11,6 +11,7 @@ SRC = 	parsing/init_data_utils.c\
 		parsing/add_back_lst.c\
 		src/utils.c\
 		src/graph_rt.c\
+		src/ray_tracing.c\
 		parsing/fill_plane.c\
 		parsing/fill_sphere.c\
 		parsing/fill_cylindre.c\
@@ -41,7 +42,7 @@ re: fclean all
 
 run: re
 	clear
-	./$(NAME) map.rt
+	./$(NAME) sphere.rt
 
 gdb: re
 	clear
