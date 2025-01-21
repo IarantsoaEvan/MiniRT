@@ -20,6 +20,7 @@ SRC = 	parsing/init_data_utils.c\
 		intersection/intersection.c\
 		intersection/intersection_utils.c\
 		intersection/sphere.c\
+		intersection/plane.c\
 		src/main.c
 %.o: %.c
 	@$(CC) $(FLAGS) -I/usr/include -I$(MLX_D) -O3 -c $< -o $@
