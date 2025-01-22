@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:41:17 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/22 08:52:21 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/22 11:13:46 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,18 +58,18 @@ void normalize_vector(t_coord *coord)
 	coord->z /= magn;
 }
 
-void set_direction(t_fct *fct, t_coord	*dir,t_camera *cam)
-{
-	// float	magn;
-	
+void set_ray_direction(t_fct *fct, t_coord	*dir, t_camera *cam)
+{	
+	t_coord	*ort_y;
+
+	ort_y = init_coord();
+	ort_y->y = 1;
 	dir->x = fct->as_x - cam->coord->x;
 	dir->y = fct->as_y - cam->coord->y;
 	dir->z = fct->as_z - cam->coord->z;
 	normalize_vector(dir);
-	// magn = sqrt((dir->x * dir->x) + (dir->y *dir->y) + (dir->z * dir->z));
-	// dir->x /= magn;
-	// dir->y /= magn;
-	// dir->z /= magn;
+	cam->cam_right = normalize_vector(ft_cross_product(dir, ort_y));
+	cam->cam_up = normalize_vector(ft_cross_product(dir, cam->cam_right));
 }
 float ft_scal(t_coord *vect1,t_coord *vect2)
 {
@@ -90,3 +90,61 @@ t_coord *ft_soustraction(t_coord *coord1,t_coord *coord2)
 	return(oc);
 }
 
+t_coord *ft_cross_product(t_coord *v1, t_coord *v2)
+{
+	t_coord	*v3;
+
+	v3 = init_coord();
+	v3->x = (v1->y * v2->z) - (v1->z * v2->y);
+	v3->y = (v1->z * v2->x) - (v1->x * v2->z);
+	v3->z = (v1->x * v2->y) - (v1->y * v2->x);
+	return (v3);
+}
+
+t_coord	*ft_scal_one(t_coord *v1, float one)
+{
+	t_coord	*prod;
+
+	prod = init_coord();
+	prod->x = one * v1->x;
+	prod->y = one * v1->y;
+	prod->z = one * v1->z;
+	return (prod);
+}
+
+t_coord	*vect_add(t_coord	*v1, t_coord *v2)
+{
+	t_coord	*v3;
+
+	v3 = init_coord();
+	v3->x = v1->x + v2->x;
+	v3->y = v1->y + v2->y;
+	v3->z = v1->z + v2->z;
+	return (v3);
+}
+t_coord	*real_ray_dir(t_fct *fct, t_camera *cam)
+{
+	t_coord	*ray;
+	t_coord	*cam_ort;
+	t_coord	*ort_y;
+	t_coord	*add;
+
+	ray = init_coord();
+	ort_y = init_coord(); 
+	cam_ort = init_coord();
+	ort_y->y = 1;
+	cam_ort = normalize_vector(cam->vector);
+	cam->cam_right = normalize_vector(ft_cross_product(cam_ort, ort_y));
+	cam->cam_up = normalize_vector(ft_cross_product(cam_ort, cam->cam_right));
+	cam->cam_right = ft_scal_one(cam->cam_right, ((-1) * (fct->as_x)));
+	cam->cam_up = ft_scal_one(cam->cam_up, ((-1) * (fct->as_y)));
+	add = vect_add(cam->cam_right, cam->cam_up);
+	add = vect_add()
+
+
+	
+
+
+
+
+}

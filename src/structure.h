@@ -6,7 +6,7 @@
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:59 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/21 14:08:41 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/01/22 09:53:06 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ typedef struct s_camera
 {
 	t_coord	*coord;
 	t_coord	*vector;
+	t_coord	*cam_right;
+	t_coord	*cam_up;
 	float	fov;
 } t_camera;
 
