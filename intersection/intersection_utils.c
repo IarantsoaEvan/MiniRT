@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:41:17 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/22 12:59:14 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/22 13:27:45 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,8 @@ t_coord	*vect_add(t_coord	*v1, t_coord *v2)
 	v3->z = v1->z + v2->z;
 	return (v3);
 }
-t_coord	*real_ray_dir(t_fct *fct, t_camera *cam)
+
+void	real_ray_dir(t_fct *fct, t_camera *cam)
 {
 	t_coord	*tmp;
 
@@ -139,7 +140,7 @@ t_coord	*real_ray_dir(t_fct *fct, t_camera *cam)
 	cam->cam_right = ft_scal_one(cam->cam_right, ((-1) * (fct->as_x)));
 	cam->cam_up = ft_scal_one(cam->cam_up, ((-1) * (fct->as_y)));
 	tmp = vect_add(cam->cam_right, cam->cam_up);
-	fct->add = vect_add(tmp, fct->cam_ort);
+	fct->dir = normalize_vector(vect_add(tmp, fct->cam_ort));
+	printf("x=%f || y=%f || z=%f\n", fct->dir->x,fct->dir->y, fct->dir->z);
 	free(tmp);
-	return (fct->add);
 }

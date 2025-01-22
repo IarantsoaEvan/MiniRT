@@ -6,7 +6,7 @@
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:27:27 by irabesan          #+#    #+#             */
-/*   Updated: 2025/01/22 09:29:29 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/01/22 13:09:00 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void intersec(t_fct *fct,t_data *rt)
 	ft_ndc(&fct->x_ndc, &fct->y_ndc);
 	ft_screen(&fct->x_ndc, &fct->y_ndc, &fct->x_screen, &fct->y_screen);
 	ft_as_ratio(fct, rt->cam);
-	set_ray_direction(fct, fct->dir,rt->cam);
+	// set_ray_direction(fct, fct->dir,rt->cam);
+	real_ray_dir(fct, rt->cam);
 }
 
 void	ray_tracing(t_data *rt)
