@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 19:04:58 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/22 12:45:25 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/22 12:57:44 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ float get_t_plane(t_fct *fct,t_data *rt)
     float t;
 
     xc = ft_soustraction(rt->cam->coord,rt->plane->coord);
-    nrom = normalize_vector(rt->plane->vector);
-    t = ((-1) * (ft_scal(xc,nrom))) / ft_scal(fct->dir,nrom);
+    norm = normalize_vector(rt->plane->vector);
+    t = ((-1) * (ft_scal(xc,norm))) / ft_scal(fct->dir,norm);
     return (t);
 }

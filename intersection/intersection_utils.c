@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:41:17 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/22 12:54:37 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/22 12:59:14 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,20 +64,15 @@ t_coord *normalize_vector(t_coord *coord)
 	return (norm_vec);
 }
 
-void set_ray_direction(t_fct *fct, t_coord	*dir, t_camera *cam)
-{	
-	t_coord	*ort_y;
-	t_coord *dir_norm;
+// void set_ray_direction(t_fct *fct, t_coord	*dir, t_camera *cam)
+// {	
+// 	t_coord *dir_norm;
 
-	ort_y = init_coord();
-	ort_y->y = 1;
-	dir->x = fct->as_x - cam->coord->x;
-	dir->y = fct->as_y - cam->coord->y;
-	dir->z = fct->as_z - cam->coord->z;
-	dir_norm = normalize_vector(dir);
-	cam->cam_right = normalize_vector(ft_cross_product(dir_norm, ort_y));
-	cam->cam_up = normalize_vector(ft_cross_product(dir_norm, cam->cam_right));
-}
+// 	dir->x = fct->as_x - cam->coord->x;
+// 	dir->y = fct->as_y - cam->coord->y;
+// 	dir->z = fct->as_z - cam->coord->z;
+// 	dir_norm = normalize_vector(dir);
+// }
 float ft_scal(t_coord *vect1,t_coord *vect2)
 {
 	float res;
@@ -137,9 +132,9 @@ t_coord	*real_ray_dir(t_fct *fct, t_camera *cam)
 
 	fct->ort_y->y = 1;
 	fct->cam_ort = normalize_vector(cam->vector);
-	cam->cam_right = normalize_vector(ft_cross_product(cam_ort, ort_y));
+	cam->cam_right = normalize_vector(ft_cross_product(fct->cam_ort, fct->ort_y));
 
-	cam->cam_up = normalize_vector(ft_cross_product(cam_ort, cam->cam_right));
+	cam->cam_up = normalize_vector(ft_cross_product(fct->cam_ort, cam->cam_right));
 
 	cam->cam_right = ft_scal_one(cam->cam_right, ((-1) * (fct->as_x)));
 	cam->cam_up = ft_scal_one(cam->cam_up, ((-1) * (fct->as_y)));
