@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:41:38 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/21 21:26:13 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/22 08:54:46 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,5 @@ void	ft_as_ratio(t_fct *fct, t_camera *cam);
 t_pol *init_pol();
 t_fct *init_fct(void);
 void intersec_sphere(t_fct *fct,t_data *rt);
+void normalize_vector(t_coord *coord);
 #endif

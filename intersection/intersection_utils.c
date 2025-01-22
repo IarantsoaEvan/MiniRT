@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:41:17 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/21 20:58:12 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/22 08:52:21 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,28 @@ float get_t_sphere(t_pol *pol, float delta)
 
 }
 
-void set_direction(t_fct *fct, t_coord	*dir,t_camera *cam)
+void normalize_vector(t_coord *coord)
 {
 	float	magn;
+	
+	magn = sqrt((coord->x * coord->x) + (coord->y *coord->y) + (coord->z * coord->z));
+	coord->x /= magn;
+	coord->y /= magn;
+	coord->z /= magn;
+}
+
+void set_direction(t_fct *fct, t_coord	*dir,t_camera *cam)
+{
+	// float	magn;
 	
 	dir->x = fct->as_x - cam->coord->x;
 	dir->y = fct->as_y - cam->coord->y;
 	dir->z = fct->as_z - cam->coord->z;
-	magn = sqrt((dir->x * dir->x) + (dir->y *dir->y) + (dir->z * dir->z));
-	dir->x /= magn;
-	dir->y /= magn;
-	dir->z /= magn;
+	normalize_vector(dir);
+	// magn = sqrt((dir->x * dir->x) + (dir->y *dir->y) + (dir->z * dir->z));
+	// dir->x /= magn;
+	// dir->y /= magn;
+	// dir->z /= magn;
 }
 float ft_scal(t_coord *vect1,t_coord *vect2)
 {
