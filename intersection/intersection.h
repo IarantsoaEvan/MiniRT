@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:41:38 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/22 13:34:47 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/22 15:02:28 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,6 @@ t_coord *ft_cross_product(t_coord *v1, t_coord *v2);
 t_coord *normalize_vector(t_coord *coord);
 t_coord	*ft_scal_one(t_coord *v1, float one);
 t_coord	*vect_add(t_coord	*v1, t_coord *v2);
+void get_abc_cyl(t_data *rt,t_fct *fct);
+float get_t_cyl(t_fct *fct, float delta, t_data *rt);
 #endif

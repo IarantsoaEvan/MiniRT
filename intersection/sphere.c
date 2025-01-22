@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:40:48 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/22 13:32:37 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/22 14:20:19 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void ft_set_abc_sphere(t_fct *fct,t_data *rt)
 	fct->pol->a = 1;
 	fct->pol->b = 2 * ft_scal(oc,fct->dir);
 	fct->pol->c = ft_scal(oc,oc) - (r * r);
+	printf("a = %f  | b = %f | c = %f\n",fct->pol->a,fct->pol->b,fct->pol->c);
 }
 void intersec_sphere(t_fct *fct,t_data *rt)
 {
