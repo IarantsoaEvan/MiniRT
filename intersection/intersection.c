@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:46:34 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/21 14:48:34 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/22 11:17:16 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,8 @@ t_fct *init_fct(void)
 	fct->as_z = 1;
 	fct->dir = init_coord();
 	fct->pol = init_pol();
+	fct->ray = init_coord();
+	fct->ort_y = init_coord(); 
+	fct->cam_ort = init_coord();
 	return (fct);
 }
