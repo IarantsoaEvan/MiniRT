@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:46:34 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/22 13:14:03 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/01/23 11:06:05 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 void	ft_ndc(float *x, float *y)
 {
-	*x = (*x + 0.5) / (WIDTH / 2);
-	*y = (*y + 0.5) / (HEIGHT / 2);
+	*x = (*x + 0.5) / (WIDTH);
+	*y = (*y + 0.5) / (HEIGHT);
 }
 
 void	ft_screen(float *x_ndc, float *y_ndc, float *x_screen, float *y_screen)
 {
-	*x_screen = 2 * (*x_ndc) - 1;
-	*y_screen = 2 * (*y_ndc) - 1;
+	*x_screen = (2 * (*x_ndc)) - 1;
+	// *y_screen = (2 * (*y_ndc)) - 1;
+	*y_screen = 1  + (-(2 * (*y_ndc)));
 }
 
 void	ft_as_ratio(t_fct *fct, t_camera *cam)
@@ -30,7 +31,7 @@ void	ft_as_ratio(t_fct *fct, t_camera *cam)
 
 	rad_alpha = cam->fov * (M_PI / 180);
 	fct->as_x = (2 * fct->x_screen - 1) * AS_RATIO * tan(rad_alpha / 2);
-	fct->as_y = (1 - (2 * fct->y_screen)) * tan(rad_alpha / 2);
+	fct->as_y = (1 + (-2 * fct->y_screen)) * tan(rad_alpha / 2);
 }
 
 
@@ -56,7 +57,7 @@ t_fct *init_fct(void)
 	fct->y_ndc = 0;
 	fct->x_screen = 0;
 	fct->y_screen = 0;
-	fct->as_z = 1;
+	fct->as_z = -1;
 	fct->dir = init_coord();
 	fct->pol = init_pol();
 	fct->ray = init_coord();

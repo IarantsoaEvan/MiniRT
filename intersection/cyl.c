@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:01:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/22 15:02:45 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/23 08:56:38 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ void get_abc_cyl(t_data *rt,t_fct *fct)
 	fct->pol->a = (scal_dir - powf(ft_scal(fct->dir,norm_vec),2));
 	fct->pol->b = (ft_scal(fct->dir,x) - (ft_scal(fct->dir,norm_vec) * ft_scal(x,norm_vec))) * 2;
 	fct->pol->c = ft_scal(x,x) - powf(ft_scal(x,norm_vec),2) - powf((float)(rt->cyl->diam / 2),2);
-	// printf("a = %f  | b = %f | c = %f\n",fct->pol->a,fct->pol->b,fct->pol->c);
-	// return ()
 }
 
 float	get_m_scal(t_fct *fct, t_data *rt, float t)
@@ -67,4 +65,20 @@ float get_t_cyl(t_fct *fct, float delta, t_data *rt)
 			distance = t2;
 	}
 	return (distance);
+}
+
+void intersec_cyl(t_fct *fct,t_data *rt,float x,float y)
+{
+	t_cyl *tmp;
+	float t;
+
+	tmp = rt->cyl;
+	while (tmp)
+	{
+		get_abc_cyl(rt,fct);
+		t = get_t_cyl(fct, get_delta(fct->pol), rt);
+		if (t > 0)
+				mlx_pixel_put(rt->mlx_ptr, rt->win_ptr, (int)x, (int)y, 0xFF0000);
+		tmp = tmp->next;
+	}
 }

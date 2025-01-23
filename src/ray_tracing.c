@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:27:27 by irabesan          #+#    #+#             */
-/*   Updated: 2025/01/22 15:02:13 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/23 11:43:40 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	ray_tracing(t_data *rt)
 {
 	float x;
 	float	y;
-	float	t;
 	t_fct *fct;
 
 	y = 0;
@@ -38,16 +37,14 @@ void	ray_tracing(t_data *rt)
 			fct->x_ndc = x;
 			fct->y_ndc = y;
 			intersec(fct,rt);
-			get_abc_cyl(rt,fct);
-			t = get_t_cyl(fct, get_delta(fct->pol), rt);
-			// t = get_t_plane(fct,rt);
-			// if (rt->sphere)
-			// {
-			// 	intersec_sphere(fct,rt);
-				// t = get_t_sphere(fct->pol, get_delta(fct->pol));
-			// }
-			if (t > 0)
-				mlx_pixel_put(rt->mlx_ptr, rt->win_ptr, (int)x, (int)y, 0xFF0000);
+			if (rt->cyl)
+				intersec_cyl(fct,rt,x,y);
+			if (rt->plane)
+				intersec_plane(fct,rt,x,y);
+			if (rt->sphere)
+				intersec_sphere(fct,rt,x,y);
+			// if (t > 0)
+			// 	mlx_pixel_put(rt->mlx_ptr, rt->win_ptr, (int)x, (int)y, 0xFF0000);
 			x++;
 		}
 		y++;

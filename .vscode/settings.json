@@ -66,7 +66,8 @@
     "minirt.h": "c",
     "parsing.h": "c",
     "structure.h": "c",
-    "intersection.h": "c"
+    "intersection.h": "c",
+    "stdio.h": "c"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }
