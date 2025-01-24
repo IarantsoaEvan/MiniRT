@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_cam.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 22:04:37 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/16 22:04:16 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/24 11:17:56 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int fill_cam_elem(t_camera **cam,char *element,int *flag)
 	else
 	{
 		(*cam)->fov = ft_atflo(element);
+		(*cam)->rad_fov = (*cam)->fov * (M_PI / 180);
 		return (check_angle((*cam)->fov));
 	}
 	return (1);

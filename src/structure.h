@@ -6,7 +6,7 @@
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:59 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/22 13:13:40 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/01/24 13:09:06 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_camera
 	t_coord	*cam_right;
 	t_coord	*cam_up;
 	float	fov;
+	float	rad_fov;
 } t_camera;
 
 typedef struct s_light
@@ -86,20 +87,24 @@ typedef struct s_pol
 
 } t_pol;
 
+typedef struct s_lbrt
+{
+	float	left;
+	float	right;
+	float	top;
+	float	bottom;
+}	t_lbrt;
+
 typedef struct s_fct
 {
-	float	x_ndc;
-	float	y_ndc;
-	float	x_screen;
-	float	y_screen;
 	float	as_x;
 	float	as_y;
 	float	as_z;
+	float	as_wi;
+	float	as_he;
+	float	as_ratio;
+	t_pol	*pol;
 	t_coord *dir;
-	t_pol *pol;
-	t_coord	*ray;
-	t_coord	*cam_ort;
-	t_coord	*ort_y;
 }	t_fct;
 
 typedef struct s_data
@@ -113,5 +118,7 @@ typedef struct s_data
 	t_sphere	*sphere;
 	t_plane		*plane;
 	t_cyl		*cyl;
+	float	width;
+	float	height;
 } t_data;
 

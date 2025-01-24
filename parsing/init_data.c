@@ -6,7 +6,7 @@
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 09:36:21 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/21 09:07:06 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/01/24 10:57:20 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_camera *init_cam(void)
 	cam->coord = init_coord();
 	cam->vector = init_coord();
 	cam->fov = 0;
+	cam->rad_fov = 0;
 	return (cam);
 }
 
@@ -84,5 +85,7 @@ t_data *init_data(void)
 	data->plane = NULL;
 	data->sphere = NULL;
 	data->cyl = NULL;
+	data->width = 700;
+	data->height = 540;
 	return (data);
 }

@@ -6,7 +6,7 @@
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 08:18:22 by irabesan          #+#    #+#             */
-/*   Updated: 2025/01/20 08:31:01 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/01/24 09:30:42 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	init_graph(t_data *rt)
 {
 	rt->mlx_ptr = mlx_init();
-	rt->win_ptr = mlx_new_window(rt->mlx_ptr, WIDTH, HEIGHT, "miniRT");
-	rt->img_ptr = mlx_new_image(rt->mlx_ptr, WIDTH, HEIGHT);
+	rt->win_ptr = mlx_new_window(rt->mlx_ptr, rt->width, rt->height, "miniRT");
+	rt->img_ptr = mlx_new_image(rt->mlx_ptr, rt->width, rt->height);
 }
 
 int	close_win(t_data *data)

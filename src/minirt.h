@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:24:02 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/23 11:44:02 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/24 10:40:25 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 # define MINIRT_H
 # define RATIO 1
 # define VECTOR 2
-# define WIDTH 700
-# define HEIGHT 540
-# define AS_RATIO WIDTH / HEIGHT
 # include <stdio.h> 
 # include "structure.h"
 # include "../minilibx-linux/mlx.h"

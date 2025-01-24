@@ -3,48 +3,65 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:27:27 by irabesan          #+#    #+#             */
-/*   Updated: 2025/01/23 11:43:40 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/24 13:32:37 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void intersec(t_fct *fct,t_data *rt)
+t_lbrt init_lbrt(void)
 {
-	ft_ndc(&fct->x_ndc, &fct->y_ndc);
-	ft_screen(&fct->x_ndc, &fct->y_ndc, &fct->x_screen, &fct->y_screen);
-	ft_as_ratio(fct, rt->cam);
-	// set_ray_direction(fct, fct->dir,rt->cam);
-	real_ray_dir(fct, rt->cam);
+	t_lbrt	coo;
+	
+	coo.bottom = 0;
+	coo.left = 0;
+	coo.right = 0;
+	coo.top = 0;
+	return (coo);
+}
+
+void ft_set_cfct(t_fct *fct, float x, float y, t_data *rt)
+{
+	t_lbrt	coo;
+
+	coo = init_lbrt();
+	coo.left = rt->cam->coord->x - (fct->as_he/ 2);
+	coo.top = rt->cam->coord->y - (fct->as_wi / 2);
+	coo.right = -(coo.left);
+	coo.bottom = -(coo.top);
+	fct->as_x = coo.left + (x + 0.5) * ((coo.right - coo.left) / rt->width);
+	fct->as_y = coo.bottom + (y + 0.5)* ((coo.top - coo.bottom) / rt->height);
+	real_ray_dir(fct,rt->cam);
 }
 
 void	ray_tracing(t_data *rt)
 {
 	float x;
 	float	y;
+	float t;
 	t_fct *fct;
 
 	y = 0;
-	fct = init_fct();
-	while (y < HEIGHT)
+	t = 0;
+	fct = init_fct(rt);
+	while (y < rt->height)
 	{
 		x = 0;
-		while (x < WIDTH)
+		while (x < rt->width)
 		{
-			fct->x_ndc = x;
-			fct->y_ndc = y;
-			intersec(fct,rt);
-			if (rt->cyl)
+			ft_set_cfct(fct, x, y, rt);
+				// intersec(fct,rt);
+			// if (rt->cyl)
 				intersec_cyl(fct,rt,x,y);
-			if (rt->plane)
-				intersec_plane(fct,rt,x,y);
-			if (rt->sphere)
-				intersec_sphere(fct,rt,x,y);
-			// if (t > 0)
-			// 	mlx_pixel_put(rt->mlx_ptr, rt->win_ptr, (int)x, (int)y, 0xFF0000);
+			// if (rt->plane)
+			// 	intersec_plane(fct,rt,x,y);
+			// if (rt->sphere)
+				// intersec_sphere(fct,rt,x,y);
+			if (t > 0)
+				mlx_pixel_put(rt->mlx_ptr, rt->win_ptr, (int)x, (int)y, 0xFF0000);
 			x++;
 		}
 		y++;

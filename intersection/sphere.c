@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:40:48 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/23 09:18:19 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/24 13:23:13 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,12 @@ float get_t_sphere(t_pol *pol, float delta)
 	{
 		t1 = (((-1) * pol->b) - (sqrt(delta))) / (2 * pol->a);
 		t2 = (((-1) * pol->b) + (sqrt(delta))) / (2 * pol->a);
-		distance = fminf(t1, t2);
-		if (distance < 0)
-			distance = -1;
+		if (t1 > 0 && t2 > 0)
+			distance = fminf(t1, t2);
+		else if (t1 > 0 && t2 < 0)
+			distance = t1;
+		else if (t1 < 0 && t2 > 0)
+			distance = t2;		
 	}
 	return (distance);
 
