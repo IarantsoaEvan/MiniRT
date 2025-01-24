@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cyl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:01:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/24 13:58:34 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/01/24 14:35:14 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ float get_t_cyl(t_fct *fct, float delta, t_data *rt)
 	{
 		t1 = (((-1) * fct->pol->b) - (sqrt(delta))) / (2 * fct->pol->a);
 		t2 = (((-1) * fct->pol->b) + (sqrt(delta))) / (2 * fct->pol->a);
-		if (t1 > 0 && get_m_scal(fct, rt, t1) >= 0
-			&& get_m_scal(fct, rt, 1) <= rt->cyl->height)
+		if (t1 > 0 && get_m_scal(fct, rt, t1) >= -rt->cyl->height/2
+			&& get_m_scal(fct, rt, 1) <= rt->cyl->height/2)
 			distance = t1;
-		if (t2 > 0 && t2 < t1 && get_m_scal(fct, rt, t2) >= 0 && get_m_scal(fct, rt, t2) <= rt->cyl->height)
+		if (t2 > 0 && t2 < t1 && get_m_scal(fct, rt, t2) >= 0 && get_m_scal(fct, rt, t2) <= rt->cyl->height /2)
 			distance = t2;
-		if (t2 > 0 && t1 < 0  && get_m_scal(fct, rt, t2) >= 0 && get_m_scal(fct, rt, t2) <= rt->cyl->height)
+		if (t2 > 0 && t1 < 0  && get_m_scal(fct, rt, t2) >= 0 && get_m_scal(fct, rt, t2) <= rt->cyl->height/2)
 			distance = t2;
 	}
 	return (distance);

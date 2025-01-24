@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:27:27 by irabesan          #+#    #+#             */
-/*   Updated: 2025/01/24 13:32:37 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/01/24 14:26:38 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ray_tracing(t_data *rt)
 			// if (rt->cyl)
 				intersec_cyl(fct,rt,x,y);
 			// if (rt->plane)
-			// 	intersec_plane(fct,rt,x,y);
+				// intersec_plane(fct,rt,x,y);
 			// if (rt->sphere)
 				// intersec_sphere(fct,rt,x,y);
 			if (t > 0)
