@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:27:27 by irabesan          #+#    #+#             */
-/*   Updated: 2025/01/24 14:26:38 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:46:06 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,14 @@ void	ray_tracing(t_data *rt)
 	float	y;
 	float t;
 	t_fct *fct;
+	t_color *color;
+	int	rgb;
 
 	y = 0;
 	t = 0;
+	rgb = 0;
 	fct = init_fct(rt);
+	color = init_color();
 	while (y < rt->height)
 	{
 		x = 0;
@@ -60,8 +64,10 @@ void	ray_tracing(t_data *rt)
 				// intersec_plane(fct,rt,x,y);
 			// if (rt->sphere)
 				// intersec_sphere(fct,rt,x,y);
-			if (t > 0)
-				mlx_pixel_put(rt->mlx_ptr, rt->win_ptr, (int)x, (int)y, 0xFF0000);
+			// if (t > 0)
+			// {
+				// mlx_pixel_put(rt->mlx_ptr, rt->win_ptr, (int)x, (int)y, rgb);
+			// }	
 			x++;
 		}
 		y++;

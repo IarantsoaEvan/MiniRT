@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cyl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:01:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/27 09:55:13 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:46:11 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,22 @@ void intersec_cyl(t_fct *fct,t_data *rt,float x,float y)
 {
 	t_cyl *tmp;
 	float t;
+	int rgb;
+	t_color *color;
 
+	color = init_color();
+	rgb = 0;
 	tmp = rt->cyl;
 	while (tmp)
 	{
 		get_abc_cyl(rt,fct);
 		t = get_t_cyl(fct, get_delta(fct->pol), rt);
 		if (t > 0)
-				mlx_pixel_put(rt->mlx_ptr, rt->win_ptr, (int)x, (int)y, 0xFF0000);
+		{
+			color = apply_amb(rt->cyl->color, rt->ambiante->ratio);
+			rgb = create_trgb(color->r, color->g, color->b);
+			mlx_pixel_put(rt->mlx_ptr, rt->win_ptr, (int)x, (int)y, rgb);
+		}
 		tmp = tmp->next;
 	}
 }

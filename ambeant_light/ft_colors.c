@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ambient.c                                          :+:      :+:    :+:   */
+/*   ft_colors.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/27 10:08:35 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/27 10:32:51 by irabesan         ###   ########.fr       */
+/*   Created: 2025/01/27 10:21:13 by irabesan          #+#    #+#             */
+/*   Updated: 2025/01/27 10:26:52 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ambiente.h"
 
-t_color	*apply_amb(t_color *col_obj, float ratio_amb)
+int	create_trgb(int r, int g, int b)
 {
-	t_color *color;
+		return (r << 16 | g << 8 | b);
+}
 
-	color = init_color();
-	color->r = col_obj->r * ratio_amb;
-	color->g = col_obj->g * ratio_amb;
-	color->b = col_obj->b * ratio_amb;
-	return (color);
+int	get_r(int trgb)
+{
+	return ((trgb >> 16) & 0xFF);
+}
+
+int get_g(int trgb)
+{
+	return ((trgb >> 8) & 0xFF);
+}
+
+int get_b(int	trgb)
+{
+	return (trgb & 0xFF);
 }
