@@ -26,6 +26,7 @@ SRC = 	parsing/init_data_utils.c\
 		ambent_light/ambient.c\
 		ambent_light/ft_colors.c\
 		diffuse_light/diffuse_light.c\
+		diffuse_light/diffuse_object.c\
 		src/main.c
 %.o: %.c
 	@$(CC) $(FLAGS) -I/usr/include -I$(MLX_D) -O3 -c $< -o $@

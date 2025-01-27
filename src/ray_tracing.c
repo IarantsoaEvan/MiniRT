@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:27:27 by irabesan          #+#    #+#             */
-/*   Updated: 2025/01/27 11:13:16 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/27 14:34:15 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,12 @@ void	ray_tracing(t_data *rt)
 		while (x < rt->width)
 		{
 			ft_set_cfct(fct, x, y, rt);
-				// intersec(fct,rt);
 			if (rt->cyl)
 				intersec_cyl(fct,rt,x,y);
 			if (rt->plane)
 				intersec_plane(fct,rt,x,y);
 			if (rt->sphere)
 				intersec_sphere(fct,rt,x,y);
-			// if (t > 0)
-			// {
-				// mlx_pixel_put(rt->mlx_ptr, rt->win_ptr, (int)x, (int)y, rgb);
-			// }	
 			x++;
 		}
 		y++;

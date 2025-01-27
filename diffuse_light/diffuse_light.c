@@ -6,25 +6,17 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 11:26:39 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/27 14:19:23 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/27 14:38:37 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "diffuse_light.h"
 
-t_coord *get_normal_sphere(t_data *rt,t_coord *point)
-{
-	t_coord *norm;
 
-
-	norm = normalize_vector(ft_soustraction(point,rt->sphere->coord));
-	return (norm);
-}
 t_coord *get_normal_light(t_data *rt,t_coord *point)
 {
 	t_coord *norm;
 
-	
 	norm = normalize_vector(ft_soustraction(rt->light->coord, point));
 	return (norm);
 }
@@ -38,16 +30,16 @@ float check_plage_color(float color)
 	return (color);
 }
 
-t_color *get_rgb_diff(t_coord *norm_obj,t_coord *norm_light,t_data *rt)
+t_color *get_rgb_diff(t_coord *norm_obj,t_coord *norm_light,float ratio,t_color *color)
 {
 	t_color *rgb_diff;
 	float scal_nl;
 
 	rgb_diff = init_color();
-	scal_nl = rt->light->ratio * ft_scal(norm_obj, norm_light);
-	rgb_diff->r = scal_nl * (rt->sphere->color->r / 255);
-	rgb_diff->g = scal_nl * (rt->sphere->color->g / 255); 
-	rgb_diff->b = scal_nl * (rt->sphere->color->b / 255);
+	scal_nl = ratio * ft_scal(norm_obj, norm_light);
+	rgb_diff->r = scal_nl * (color->r / 255);
+	rgb_diff->g = scal_nl * (color->g / 255); 
+	rgb_diff->b = scal_nl * (color->b / 255);
 	return (rgb_diff);
 }
 

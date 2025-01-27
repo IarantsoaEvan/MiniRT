@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:40:48 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/27 14:23:35 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/27 14:48:05 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int create_rgb_finale(float t,t_fct *fct,t_data *rt)
 {
 	t_coord *point;
 	t_color *color;
+	t_color *rgb_diff;
 	t_color *rgb_finale;
 	int rgb;
 	
@@ -35,7 +36,9 @@ int create_rgb_finale(float t,t_fct *fct,t_data *rt)
 	color = apply_amb(rt->sphere->color, rt->ambiante->ratio);
 	rt->light->normal = get_normal_light(rt,point);
 	rt->sphere->normal = get_normal_sphere(rt,point);
-	rgb_finale = add_amb_and_diff(color,get_rgb_diff(rt->sphere->normal,rt->light->normal,rt));
+	rgb_diff = get_rgb_diff(rt->sphere->normal
+		,rt->light->normal,rt->light->ratio,rt->sphere->color);
+	rgb_finale = add_amb_and_diff(color,rgb_diff);
 	rgb = create_trgb(rgb_finale->r, rgb_finale->g, rgb_finale->b);
 	return (rgb);
 }
