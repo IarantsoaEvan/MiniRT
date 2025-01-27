@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cyl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:01:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/27 19:06:08 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/01/27 19:13:41 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

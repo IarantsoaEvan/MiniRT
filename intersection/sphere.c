@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:40:48 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/27 15:22:58 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/01/27 19:36:18 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ int create_sphere_rgb_finale(float t,t_fct *fct,t_data *rt)
 void intersec_sphere(t_fct *fct,t_data *rt,float x,float y)
 {
     t_sphere *tmp;
-	// t_color *color;
-	// t_color *rgb_finale;
 	int rgb;
 	float t;
 
@@ -59,13 +57,6 @@ void intersec_sphere(t_fct *fct,t_data *rt,float x,float y)
 		t = get_t_sphere(fct->pol, get_delta(fct->pol));
 		if (t > 0)
 		{
-			// t_coord *point = ft_addition(rt->cam->coord,ft_scal_one(fct->dir, t));
-			// color = apply_amb(rt->sphere->color, rt->ambiante->ratio);
-			// rt->light->normal = get_normal_light(rt,point);
-			// rt->sphere->normal = get_normal_sphere(rt,point);
-			// rgb_finale = add_amb_and_diff(color,get_rgb_diff(rt->sphere->normal,rt->light->normal,rt));
-			// // printf("Rgb: [%f,%f,%f]\n", rgb_finale->r, rgb_finale->g, rgb_finale->b);
-			// rgb = create_trgb(rgb_finale->r, rgb_finale->g, rgb_finale->b);
 			rgb = create_sphere_rgb_finale(t,fct,rt);
 			mlx_pixel_put(rt->mlx_ptr, rt->win_ptr, (int)x, (int)y, rgb);
 		}

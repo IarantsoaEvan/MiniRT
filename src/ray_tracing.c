@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:27:27 by irabesan          #+#    #+#             */
-/*   Updated: 2025/01/27 19:05:23 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/01/27 19:13:17 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,10 @@ void	ray_tracing(t_data *rt)
 {
 	float x;
 	float	y;
-	// float t;
-	t_fct *fct;
-	// t_color *color;
-	// int	rgb;
+	t_fct	*fct;
 
 	y = 0;
-	// t = 0;
-	// rgb = 0;
 	fct = init_fct(rt);
-	// color = init_color();
 	while (y < rt->height)
 	{
 		x = 0;
