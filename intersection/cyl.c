@@ -6,7 +6,7 @@
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:01:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/27 10:46:11 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/01/27 15:30:04 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,24 @@ void get_abc_cyl(t_data *rt,t_fct *fct)
 	fct->pol->c = ft_scal(x,x) - powf(ft_scal(x,norm_vec),2) - powf((float)(rt->cyl->diam / 2),2);
 }
 
+int	create_cyl_rgb_finale(float t,t_fct *fct,t_data *rt, float m)
+{
+	t_coord *point;
+	t_color *color;
+	t_color *rgb_diff;
+	t_color *rgb_finale;
+	int rgb;
+	
+	point = ft_addition(rt->cam->coord,ft_scal_one(fct->dir, t));
+	color = apply_amb(rt->cyl->color, rt->ambiante->ratio);
+	rt->light->normal = get_normal_light(rt,point);
+	rt->cyl->normal = get_normal_cyl(rt, point, m);
+	rgb_diff = get_rgb_diff(rt->cyl->normal
+		,rt->light->normal,rt->light->ratio,rt->cyl->color);
+	rgb_finale = add_amb_and_diff(color,rgb_diff);
+	rgb = create_trgb(rgb_finale->r, rgb_finale->g, rgb_finale->b);
+	return (rgb);
+}
 float	get_m_scal(t_fct *fct, t_data *rt, float t)
 {
 	t_coord *norm_vec;
@@ -87,8 +105,9 @@ void intersec_cyl(t_fct *fct,t_data *rt,float x,float y)
 		t = get_t_cyl(fct, get_delta(fct->pol), rt);
 		if (t > 0)
 		{
-			color = apply_amb(rt->cyl->color, rt->ambiante->ratio);
-			rgb = create_trgb(color->r, color->g, color->b);
+			rgb = create_cyl_rgb_finale(t, fct, rt, get_m_scal(fct, rt, t));
+			// color = apply_amb(rt->cyl->color, rt->ambiante->ratio);
+			// rgb = create_trgb(color->r, color->g, color->b);
 			mlx_pixel_put(rt->mlx_ptr, rt->win_ptr, (int)x, (int)y, rgb);
 		}
 		tmp = tmp->next;

@@ -57,7 +57,9 @@
   "C_Cpp_Runner.useLinkTimeOptimization": false,
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "files.associations": {
-    "ambiente.h": "c"
+    "ambiente.h": "c",
+    "intersection.h": "c",
+    "diffuse_light.h": "c"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }
