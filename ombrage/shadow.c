@@ -6,8 +6,13 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 08:00:09 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/27 08:04:36 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/27 08:48:29 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shadow.h"
+
+void shadow(t_data *rt)
+{
+    
+}

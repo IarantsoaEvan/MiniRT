@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:01:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/24 14:35:14 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/27 09:55:13 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,33 +40,37 @@ float	get_m_scal(t_fct *fct, t_data *rt, float t)
 
 float get_t_cyl(t_fct *fct, float delta, t_data *rt)
 {
-	
-	float	t1;
-	float	t2;
-	float	distance;
-
-	distance = -1;
-
-	if (delta == 0)
-	{
-		t1 = (fct->pol->b * (-1)) / (2 * fct->pol->a);
-		return (t1);
-	}
-	else if (delta > 0)
-	{
-		t1 = (((-1) * fct->pol->b) - (sqrt(delta))) / (2 * fct->pol->a);
-		t2 = (((-1) * fct->pol->b) + (sqrt(delta))) / (2 * fct->pol->a);
-		if (t1 > 0 && get_m_scal(fct, rt, t1) >= -rt->cyl->height/2
-			&& get_m_scal(fct, rt, 1) <= rt->cyl->height/2)
-			distance = t1;
-		if (t2 > 0 && t2 < t1 && get_m_scal(fct, rt, t2) >= 0 && get_m_scal(fct, rt, t2) <= rt->cyl->height /2)
-			distance = t2;
-		if (t2 > 0 && t1 < 0  && get_m_scal(fct, rt, t2) >= 0 && get_m_scal(fct, rt, t2) <= rt->cyl->height/2)
-			distance = t2;
-	}
-	return (distance);
+    float   t1;
+    float   t2;
+    float   distance;
+    float   m;
+    distance = -1;
+    if (delta == 0)
+    {
+        t1 = (fct->pol->b * (-1)) / (2 * fct->pol->a);
+		m = get_m_scal(fct, rt, t1);
+		if (m >= -rt->cyl->height / 2 && m >= rt->cyl->height / 2)
+            distance = t1;
+    }
+    else if (delta > 0)
+    {
+        t1 = (((-1) * fct->pol->b) - (sqrt(delta))) / (2 * fct->pol->a);
+        t2 = (((-1) * fct->pol->b) + (sqrt(delta))) / (2 * fct->pol->a);
+        if (t1 > 0)
+        {
+            m = get_m_scal(fct, rt, t1);
+            if (m >= -rt->cyl->height / 2 && m <= rt->cyl->height / 2)
+                distance = t1;
+        }
+        if (t2 > 0)
+        {
+            m = get_m_scal(fct, rt, t2);
+            if (m >= -rt->cyl->height / 2 && m <= rt->cyl->height / 2 && (distance < 0 || t2 < t1))
+                distance = t2;
+        }
+    }
+    return (distance);
 }
-
 void intersec_cyl(t_fct *fct,t_data *rt,float x,float y)
 {
 	t_cyl *tmp;
