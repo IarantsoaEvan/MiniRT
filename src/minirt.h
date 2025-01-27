@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:24:02 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/27 10:10:23 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/27 11:28:58 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 # include "../libft/libft.h"
 # include "../parsing/parsing.h"
 # include "../intersection/intersection.h"
-# include "../ambeant_light/ambiente.h"
+# include "../ambent_light/ambiente.h"
+# include "../diffuse_light/diffuse_light.h"
 # include <math.h>
 
 int check_valid_object(char  **elem);

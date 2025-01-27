@@ -23,8 +23,9 @@ SRC = 	parsing/init_data_utils.c\
 		intersection/sphere.c\
 		intersection/plane.c\
 		intersection/cyl.c\
-		ambeant_light/ambient.c\
-		ambeant_light/ft_colors.c\
+		ambent_light/ambient.c\
+		ambent_light/ft_colors.c\
+		diffuse_light/diffuse_light.c\
 		src/main.c
 %.o: %.c
 	@$(CC) $(FLAGS) -I/usr/include -I$(MLX_D) -O3 -c $< -o $@

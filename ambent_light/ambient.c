@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ambient.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:08:35 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/27 10:32:51 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/01/27 12:54:23 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ t_color	*apply_amb(t_color *col_obj, float ratio_amb)
 	t_color *color;
 
 	color = init_color();
-	color->r = col_obj->r * ratio_amb;
-	color->g = col_obj->g * ratio_amb;
-	color->b = col_obj->b * ratio_amb;
+	color->r = (col_obj->r / 255) * ratio_amb;
+	color->g = (col_obj->g / 255) * ratio_amb;
+	color->b = (col_obj->b / 255) * ratio_amb;
 	return (color);
 }

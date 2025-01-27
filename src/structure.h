@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structure.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:59 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/27 10:28:54 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/01/27 13:06:59 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ typedef struct s_coord
 
 typedef struct s_color
 {
-	int r;
-	int g;
-	int b;
+	float r;
+	float g;
+	float b;
 } t_color;
 
 
@@ -48,6 +48,7 @@ typedef struct s_light
 	t_coord	*coord;
 	float	ratio;
 	t_color	*color;
+	t_coord *normal;
 } t_light;
 
 typedef struct s_sphere
@@ -55,6 +56,7 @@ typedef struct s_sphere
 	int id;
 	t_coord	*coord;
 	float	diam;
+	t_coord *normal;
 	t_color	*color;
 	struct s_sphere *next;
 } t_sphere;

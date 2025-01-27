@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 19:04:58 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/23 08:58:25 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/27 11:10:54 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,20 @@ void intersec_plane(t_fct *fct,t_data *rt,float x,float y)
 {
 	t_plane *tmp;
 	float t;
+	t_color *color;
+	int rgb;
 	
+	rgb = 0;
 	tmp = rt->plane;
 	while (tmp)
 	{
 		t = get_t_plane(fct,rt);
 		if (t > 0)
-				mlx_pixel_put(rt->mlx_ptr, rt->win_ptr, (int)x, (int)y, 0xFF0000);
+		{
+			color = apply_amb(rt->plane->color, rt->ambiante->ratio);
+			rgb = create_trgb(color->r, color->g, color->b);
+			mlx_pixel_put(rt->mlx_ptr, rt->win_ptr, (int)x, (int)y, rgb);
+		}
 		tmp = tmp->next;
 	}
 }
