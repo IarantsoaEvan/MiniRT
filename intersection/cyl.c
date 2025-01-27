@@ -6,7 +6,7 @@
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:01:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/27 15:30:04 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/01/27 19:06:08 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,9 @@ void intersec_cyl(t_fct *fct,t_data *rt,float x,float y)
 	t_cyl *tmp;
 	float t;
 	int rgb;
-	t_color *color;
+	// t_color *color;
 
-	color = init_color();
+	// color = init_color();
 	rgb = 0;
 	tmp = rt->cyl;
 	while (tmp)
