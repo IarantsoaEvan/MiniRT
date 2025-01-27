@@ -6,34 +6,26 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 11:26:39 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/27 13:03:17 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/27 14:19:23 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "diffuse_light.h"
 
-t_coord *get_normal_sphere(t_data *rt,float x,float y)
+t_coord *get_normal_sphere(t_data *rt,t_coord *point)
 {
-	t_coord *point;
 	t_coord *norm;
 
-	point = init_coord();
-	point->x = x;
-	point->y = y;
-	point->z = 1;
+
 	norm = normalize_vector(ft_soustraction(point,rt->sphere->coord));
 	return (norm);
 }
-t_coord *get_normal_light(t_data *rt,float x,float y)
+t_coord *get_normal_light(t_data *rt,t_coord *point)
 {
-	t_coord *point;
 	t_coord *norm;
 
-	point = init_coord();
-	point->x = x;
-	point->y = y;
-	point->z = 1;
-	norm = normalize_vector(ft_soustraction(rt->light->coord,point));
+	
+	norm = normalize_vector(ft_soustraction(rt->light->coord, point));
 	return (norm);
 }
 
@@ -41,6 +33,8 @@ float check_plage_color(float color)
 {
 	if (color > 255)
 		return (255);
+	if (color < 0)
+		return (0);
 	return (color);
 }
 
@@ -50,7 +44,7 @@ t_color *get_rgb_diff(t_coord *norm_obj,t_coord *norm_light,t_data *rt)
 	float scal_nl;
 
 	rgb_diff = init_color();
-	scal_nl = rt->light->ratio * ft_scal(norm_obj,norm_light);
+	scal_nl = rt->light->ratio * ft_scal(norm_obj, norm_light);
 	rgb_diff->r = scal_nl * (rt->sphere->color->r / 255);
 	rgb_diff->g = scal_nl * (rt->sphere->color->g / 255); 
 	rgb_diff->b = scal_nl * (rt->sphere->color->b / 255);
@@ -65,7 +59,7 @@ t_color *add_amb_and_diff(t_color *amb,t_color *diff)
 	res->r = amb->r + diff->r;
 	res->g = amb->g + diff->g;
 	res->b = amb->b + diff->b;
-
+	
 	res->r = res->r * 255;
 	res->g = res->g * 255;
 	res->b = res->b * 255;

@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:28:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/16 22:00:17 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/27 13:56:02 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ int check_and_fill_color(char *val,t_color *color)
 	elem  = ft_split(val,',');
 	if (elem)
 	{
-		color->r = ft_atoi(elem[0]);
-		color->g = ft_atoi(elem[1]);
-		color->b = ft_atoi(elem[2]);
+		color->r = ft_atflo(elem[0]);
+		color->g = ft_atflo(elem[1]);
+		color->b = ft_atflo(elem[2]);
 		if (!check_color(color->r) || !check_color(color->g)
 			|| !check_color(color->b))
 		{

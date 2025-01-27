@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:41:38 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/24 11:19:11 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/01/27 14:12:36 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ float ft_scal(t_coord *vect1,t_coord *vect2);
 void	real_ray_dir(t_fct *fct, t_camera *cam);
 float get_t_sphere(t_pol *pol, float delta);
 float	get_delta(t_pol *pol);
+t_coord *ft_addition(t_coord *coord1,t_coord *coord2);
 // void	ft_screen(float *x_ndc, float *y_ndc, float *x_screen, float *y_screen);
 // t_pol *init_pol();
 t_fct *init_fct(t_data *rt);

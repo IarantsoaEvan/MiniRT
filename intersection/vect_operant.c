@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:31:27 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/22 13:32:26 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/27 14:12:17 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,17 @@ t_coord *ft_soustraction(t_coord *coord1,t_coord *coord2)
 	oc->x = coord1->x - coord2->x;
 	oc->y = coord1->y - coord2->y;
 	oc->z = coord1->z - coord2->z;
+	return(oc);
+}
+
+t_coord *ft_addition(t_coord *coord1,t_coord *coord2)
+{
+	t_coord *oc;
+
+	oc = init_coord();
+	oc->x = coord1->x + coord2->x;
+	oc->y = coord1->y + coord2->y;
+	oc->z = coord1->z + coord2->z;
 	return(oc);
 }
 

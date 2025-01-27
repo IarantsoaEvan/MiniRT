@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:40:48 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/27 13:09:17 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/27 14:23:35 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,27 @@ void ft_set_abc_sphere(t_fct *fct,t_data *rt)
 	fct->pol->c = ft_scal(oc,oc) - (r * r);
 }
 
+int create_rgb_finale(float t,t_fct *fct,t_data *rt)
+{
+	t_coord *point;
+	t_color *color;
+	t_color *rgb_finale;
+	int rgb;
+	
+	point = ft_addition(rt->cam->coord,ft_scal_one(fct->dir, t));
+	color = apply_amb(rt->sphere->color, rt->ambiante->ratio);
+	rt->light->normal = get_normal_light(rt,point);
+	rt->sphere->normal = get_normal_sphere(rt,point);
+	rgb_finale = add_amb_and_diff(color,get_rgb_diff(rt->sphere->normal,rt->light->normal,rt));
+	rgb = create_trgb(rgb_finale->r, rgb_finale->g, rgb_finale->b);
+	return (rgb);
+}
+
 void intersec_sphere(t_fct *fct,t_data *rt,float x,float y)
 {
     t_sphere *tmp;
-	t_color *color;
-	t_color *rgb_finale;
+	// t_color *color;
+	// t_color *rgb_finale;
 	int rgb;
 	float t;
 
@@ -40,12 +56,14 @@ void intersec_sphere(t_fct *fct,t_data *rt,float x,float y)
 		t = get_t_sphere(fct->pol, get_delta(fct->pol));
 		if (t > 0)
 		{
-			color = apply_amb(rt->sphere->color, rt->ambiante->ratio);
-			rt->light->normal = get_normal_light(rt,x,y);
-			rt->sphere->normal = get_normal_sphere(rt,x,y);
-			rgb_finale = add_amb_and_diff(color,get_rgb_diff(rt->sphere->normal,rt->light->normal,rt));
-			printf("Rgb: [%f,%f,%f]\n", rgb_finale->r, rgb_finale->g, rgb_finale->b);
-			rgb = create_trgb(rgb_finale->r, rgb_finale->g, rgb_finale->b);
+			// t_coord *point = ft_addition(rt->cam->coord,ft_scal_one(fct->dir, t));
+			// color = apply_amb(rt->sphere->color, rt->ambiante->ratio);
+			// rt->light->normal = get_normal_light(rt,point);
+			// rt->sphere->normal = get_normal_sphere(rt,point);
+			// rgb_finale = add_amb_and_diff(color,get_rgb_diff(rt->sphere->normal,rt->light->normal,rt));
+			// // printf("Rgb: [%f,%f,%f]\n", rgb_finale->r, rgb_finale->g, rgb_finale->b);
+			// rgb = create_trgb(rgb_finale->r, rgb_finale->g, rgb_finale->b);
+			rgb = create_rgb_finale(t,fct,rt);
 			mlx_pixel_put(rt->mlx_ptr, rt->win_ptr, (int)x, (int)y, rgb);
 		}
 		tmp = tmp->next;
