@@ -67,7 +67,8 @@
     "parsing.h": "c",
     "structure.h": "c",
     "intersection.h": "c",
-    "stdio.h": "c"
+    "stdio.h": "c",
+    "shadow.h": "c"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }
