@@ -59,7 +59,8 @@
   "files.associations": {
     "ambiente.h": "c",
     "intersection.h": "c",
-    "diffuse_light.h": "c"
+    "diffuse_light.h": "c",
+    "minirt.h": "c"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }
