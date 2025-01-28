@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:40:48 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/28 12:10:38 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/28 12:27:54 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,14 @@ void ft_set_abc_sphere(t_fct *fct,t_data *rt,t_sphere *sphere)
 	fct->pol->c = ft_scal(oc,oc) - (r * r);
 }
 
-int create_sphere_rgb_finale(float t,t_fct *fct,t_data *rt,void *tmp)
+int create_sphere_rgb_finale(float t,t_fct *fct,t_data *rt,t_sphere *sphere)
 {
 	t_coord *point;
 	t_color *color;
 	t_color *rgb_diff;
 	t_color *rgb_finale;
-	t_sphere *sphere;
 	int rgb;
 	
-	sphere = (t_sphere *)tmp;
 	point = ft_addition(rt->cam->coord,ft_scal_one(fct->dir, t));
 	color = apply_amb(sphere->color, rt->ambiante->ratio);
 	rt->light->normal = get_normal_light(rt,point);
@@ -48,26 +46,28 @@ int create_sphere_rgb_finale(float t,t_fct *fct,t_data *rt,void *tmp)
 void intersec_sphere(t_fct *fct,t_data *rt,float x,float y)
 {
     t_sphere *tmp;
+	float t_nearest;
+	t_sphere *nearest_sp;
 	int rgb;
 	float t;
 
 	rgb = 0;
 	tmp = rt->sphere;
+	t_nearest = INFINITY;
 	while (tmp)
 	{
 		ft_set_abc_sphere(fct, rt,tmp);
 		t = get_t_sphere(fct->pol, get_delta(fct->pol));
-		if (t > 0 )
+		if (t > 0 && t < t_nearest)
 		{
-			// printf("t  = %f\n",rt->obj_nearest->t);
-			rt->obj_nearest->t = t;
-			rt->obj_nearest->obj = tmp;
-			rt->obj_nearest->type = SHPERE;
-			// rgb = create_sphere_rgb_finale(t,fct,rt);
-			mlx_pixel_put(rt->mlx_ptr, rt->win_ptr, (int)x, (int)y, rgb);
+			t_nearest = t;
+			nearest_sp = tmp;
+			rgb = create_sphere_rgb_finale(t,fct,rt,tmp);
 		}
 		tmp = tmp->next;
 	}
+	if (t_nearest > 0)
+		mlx_pixel_put(rt->mlx_ptr, rt->win_ptr, (int)x, (int)y, rgb);
 }
 float get_t_sphere(t_pol *pol, float delta)
 {

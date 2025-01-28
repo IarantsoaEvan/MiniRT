@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:24:02 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/28 09:19:33 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/27 11:28:58 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 # define MINIRT_H
 # define RATIO 1
 # define VECTOR 2
-# define SHPERE 3
-# define PLANE 4
-# define CYL 5
 # include <stdio.h> 
 # include "structure.h"
 # include "../minilibx-linux/mlx.h"

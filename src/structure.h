@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   structure.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:59 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/28 10:50:40 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/27 15:06:18 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-#ifndef STRUCTURE_H
-# define STRUCTURE_H
 
 typedef struct s_coord
 {
@@ -29,12 +26,6 @@ typedef struct s_color
 	float b;
 } t_color;
 
-typedef struct s_nearest
-{
-	float	t;
-	void	*obj;
-	int		type;
-} t_nearest;
 
 typedef struct s_ambiante
 {
@@ -124,20 +115,13 @@ typedef struct s_data
 	void	*mlx_ptr;
 	void	*win_ptr;
 	void	*img_ptr;
-	char	*img_data;
-	int	size_line;
-	int	bpp;
-	int	endian;
 	t_ambiante	*ambiante;
 	t_camera	*cam;
 	t_light		*light;
 	t_sphere	*sphere;
 	t_plane		*plane;
 	t_cyl		*cyl;
-	t_nearest	*obj_nearest;
 	float	width;
 	float	height;
 } t_data;
-
-# endif
 
