@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   diffuse_object.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 14:34:55 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/27 15:21:55 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:20:12 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "diffuse_light.h"
 
-t_coord *get_normal_sphere(t_data *rt,t_coord *point)
+t_coord *get_normal_sphere(t_coord *point,t_sphere *sphere)
 {
 	t_coord *norm;
 
-	norm = normalize_vector(ft_soustraction(point,rt->sphere->coord));
+	norm = normalize_vector(ft_soustraction(point,sphere->coord));
 	return (norm);
 }
 

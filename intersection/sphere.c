@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:40:48 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/28 13:56:48 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:20:59 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int create_sphere_rgb_finale(float t,t_fct *fct,t_data *rt,t_sphere *sphere)
 	point = ft_addition(rt->cam->coord,ft_scal_one(fct->dir, t));
 	color = apply_amb(sphere->color, rt->ambiante->ratio);
 	rt->light->normal = get_normal_light(rt,point);
-	sphere->normal = get_normal_sphere(rt,point);
+	sphere->normal = get_normal_sphere(point,sphere);
 	rgb_diff = get_rgb_diff(sphere->normal
 		,rt->light->normal,rt->light->ratio,sphere->color);
 	rgb_finale = add_amb_and_diff(color,rgb_diff);
@@ -67,7 +67,7 @@ void intersec_sphere(t_fct *fct,t_data *rt,float x,float y)
 	}
 	if (t_nearest > 0 && t_nearest < INFINITY)
 	{
-		rgb = create_sphere_rgb_finale(t_nearest,fct,rt,nearest_sp );
+		rgb = create_sphere_rgb_finale(t_nearest,fct,rt, nearest_sp );
 		my_mlx_pxp(rt, (int)x, (int)y, rgb);
 		// mlx_pixel_put(rt->mlx_ptr, rt->win_ptr, (int)x, (int)y, rgb);
 	}
