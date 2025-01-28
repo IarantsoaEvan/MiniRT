@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:24:02 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/27 11:28:58 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/28 12:43:38 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int check_comma(char *str);
 void	init_graph(t_data *rt);
 int	close_win(t_data *data);
 void	ray_tracing(t_data *rt);
+void	my_mlx_pxp(t_data *rt, int x, int y, int color);
+
 
 
 

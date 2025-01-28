@@ -6,7 +6,7 @@
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:59 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/27 15:06:18 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/01/28 13:46:17 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,11 @@ typedef struct s_data
 	void	*mlx_ptr;
 	void	*win_ptr;
 	void	*img_ptr;
+	char	*img_data;
+	int	bpp;
+	int	endian;
+	int	size_line;
+	void *nearest;
 	t_ambiante	*ambiante;
 	t_camera	*cam;
 	t_light		*light;

@@ -6,7 +6,7 @@
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 09:36:21 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/24 10:57:20 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/01/28 13:49:05 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,6 @@ t_data *init_data(void)
 	data->cyl = NULL;
 	data->width = 700;
 	data->height = 540;
+	data->nearest = NULL;
 	return (data);
 }

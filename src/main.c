@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:24 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/22 08:19:28 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/28 12:47:14 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,7 @@ int	main(int argc ,char **argv)
 		return(1);
 	init_graph(data);
 	ray_tracing(data);
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0, 0);
 	mlx_hook(data->win_ptr, 17, 0L, close_win, data);
 	mlx_loop(data->mlx_ptr);
 }
