@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 21:34:36 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/16 21:45:10 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:50:20 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	ft_add_back_sphere(t_sphere **sphere, t_sphere *new);
 int fill_coord(char *val,t_coord *coord);
 int fill_sphere(t_sphere **sphere,char **elem);
 int fill_plane(t_plane **pl,char **elem);
+t_nearest *init_nearest(void);
 t_ambiante  *init_amb(void);
 t_color *init_color(void);
 t_coord *init_coord(void);

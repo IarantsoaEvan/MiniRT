@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:41:38 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/28 12:17:49 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:47:18 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ float ft_scal(t_coord *vect1,t_coord *vect2);
 void	real_ray_dir(t_fct *fct, t_camera *cam);
 float get_t_sphere(t_pol *pol, float delta);
 float	get_delta(t_pol *pol);
+void get_nearest_obj(t_data *rt ,t_fct *fct ,float x,float y);
 t_coord *ft_addition(t_coord *coord1,t_coord *coord2);
+int create_sphere_rgb_finale(float t,t_fct *fct,t_data *rt,t_sphere *sphere);
 // void	ft_screen(float *x_ndc, float *y_ndc, float *x_screen, float *y_screen);
 // t_pol *init_pol();
 t_fct *init_fct(t_data *rt);
@@ -29,7 +31,7 @@ void ft_set_abc_sphere(t_fct *fct,t_data *rt,t_sphere *sphere);
 // void	ft_screen(float *x_ndc, float *y_ndc, float *x_screen, float *y_screen);
 // void	ft_as_ratio(t_fct *fct, t_camera *cam, t_data *rt);
 // t_pol *init_pol();
-void intersec_sphere(t_fct *fct,t_data *rt,float x,float y);
+void intersec_sphere(t_fct *fct,t_data *rt);
 t_coord *ft_cross_product(t_coord *v1, t_coord *v2);
 t_coord *normalize_vector(t_coord *coord);
 t_coord	*ft_scal_one(t_coord *v1, float one);

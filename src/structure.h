@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   structure.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:59 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/28 13:46:17 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:51:46 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#ifndef STRUCTURE_H
+# define STRUCTURE_H
+# include "minirt.h"
+
+
+typedef struct s_nearest
+{
+	float t_near;
+	void *near_obj;
+	int	type;
+} t_nearest;
 
 typedef struct s_coord
 {
@@ -119,10 +129,10 @@ typedef struct s_data
 	int	bpp;
 	int	endian;
 	int	size_line;
-	void *nearest;
 	t_ambiante	*ambiante;
 	t_camera	*cam;
 	t_light		*light;
+	t_nearest	*near;
 	t_sphere	*sphere;
 	t_plane		*plane;
 	t_cyl		*cyl;
@@ -130,3 +140,4 @@ typedef struct s_data
 	float	height;
 } t_data;
 
+#endif

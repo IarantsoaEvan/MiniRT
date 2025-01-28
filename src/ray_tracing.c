@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:27:27 by irabesan          #+#    #+#             */
-/*   Updated: 2025/01/28 14:06:58 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:52:02 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,15 @@ void ft_set_cfct(t_fct *fct, float x, float y, t_data *rt)
 	real_ray_dir(fct,rt->cam);
 }
 
+void intersec_obj(t_fct	*fct, t_data *rt,float x,float y)
+{
+	if (rt->cyl)
+		intersec_cyl(fct,rt,x,y);
+	if (rt->plane)
+		intersec_plane(fct,rt,x,y);
+	if (rt->sphere)
+		intersec_sphere(fct,rt);
+}
 void	ray_tracing(t_data *rt)
 {
 	float x;
@@ -45,18 +54,21 @@ void	ray_tracing(t_data *rt)
 
 	y = 0;
 	fct = init_fct(rt);
+	rt->near = init_nearest();
 	while (y < rt->height)
 	{
 		x = 0;
 		while (x < rt->width)
 		{
 			ft_set_cfct(fct, x, y, rt);
-			if (rt->cyl)
-				intersec_cyl(fct,rt,x,y);
-			if (rt->plane)
-				intersec_plane(fct,rt,x,y);
-			if (rt->sphere)
-				intersec_sphere(fct,rt,x,y);
+			intersec_obj(fct, rt, x, y);
+			get_nearest_obj(rt ,fct , x,y);
+			// if (rt->cyl)
+			// 	intersec_cyl(fct,rt,x,y);
+			// if (rt->plane)
+			// 	intersec_plane(fct,rt,x,y);
+			// if (rt->sphere)
+			// 	intersec_sphere(fct,rt,x,y);
 			x++;
 		}
 		y++;

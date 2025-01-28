@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:24:02 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/28 12:43:38 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:27:03 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define MINIRT_H
 # define RATIO 1
 # define VECTOR 2
+# define SPHERE 3
+# define CYL 4
+# define PLANE 5
 # include <stdio.h> 
 # include "structure.h"
 # include "../minilibx-linux/mlx.h"

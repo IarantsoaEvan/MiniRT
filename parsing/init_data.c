@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 09:36:21 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/28 13:49:05 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:52:25 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,17 @@ t_cyl *init_cyl(void)
 	return (cyl);
 }
 
+t_nearest *init_nearest(void)
+{
+	t_nearest *near;
+
+	near = malloc(sizeof(t_nearest));
+	near->near_obj = NULL;
+	near->t_near = 0;
+	near->type = -1;
+	return (near);
+}
+
 t_data *init_data(void)
 {
 	t_data *data;
@@ -87,6 +98,6 @@ t_data *init_data(void)
 	data->cyl = NULL;
 	data->width = 700;
 	data->height = 540;
-	data->nearest = NULL;
+	data->near = NULL;
 	return (data);
 }
