@@ -6,20 +6,20 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 19:04:58 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/28 14:56:15 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/28 15:26:09 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intersection.h"
 
-float get_t_plane(t_fct *fct,t_data *rt)
+float get_t_plane(t_fct *fct,t_data *rt,t_plane *plane)
 {
 	t_coord *xc;
 	t_coord *norm;
 	float t;
 
-	xc = ft_soustraction(rt->cam->coord,rt->plane->coord);
-	norm = normalize_vector(rt->plane->vector);
+	xc = ft_soustraction(rt->cam->coord,plane->coord);
+	norm = normalize_vector(plane->vector);
 	t = ((-1) * (ft_scal(xc,norm))) / ft_scal(fct->dir,norm);
 	return (t);
 }
@@ -40,7 +40,7 @@ int create_plane_rgb_finale(float t,t_fct *fct,t_data *rt,t_plane *plane)
 	rgb = create_trgb(rgb_finale->r, rgb_finale->g, rgb_finale->b);
 	return (rgb);
 }
-void intersec_plane(t_fct *fct,t_data *rt,float x,float y)
+void intersec_plane(t_fct *fct,t_data *rt)
 {
 	t_plane *tmp;
 	float t;
@@ -51,7 +51,7 @@ void intersec_plane(t_fct *fct,t_data *rt,float x,float y)
 	rt->near->t_near = INFINITY;
 	while (tmp)
 	{
-		t = get_t_plane(fct,rt);
+		t = get_t_plane(fct,rt,tmp);
 		if (t > 0 && t < rt->near->t_near)
 		{
 			rt->near->t_near = t;
