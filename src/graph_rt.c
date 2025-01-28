@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 08:18:22 by irabesan          #+#    #+#             */
-/*   Updated: 2025/01/28 09:56:11 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/28 10:03:20 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	my_mlx_pxp(t_data *rt, int x, int y, int color)
 		*(unsigned int *)addr = color;
 	}
 }
+
 void	init_graph(t_data *rt)
 {
 	rt->mlx_ptr = mlx_init();

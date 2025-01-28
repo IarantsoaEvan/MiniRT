@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:27:27 by irabesan          #+#    #+#             */
-/*   Updated: 2025/01/27 19:13:17 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/28 12:10:12 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,10 @@ void	ray_tracing(t_data *rt)
 	float x;
 	float	y;
 	t_fct	*fct;
+	int rgb;
 
 	y = 0;
+	rgb = 0xfffff;
 	fct = init_fct(rt);
 	while (y < rt->height)
 	{
@@ -51,12 +53,18 @@ void	ray_tracing(t_data *rt)
 		while (x < rt->width)
 		{
 			ft_set_cfct(fct, x, y, rt);
-			if (rt->cyl)
-				intersec_cyl(fct,rt,x,y);
-			if (rt->plane)
-				intersec_plane(fct,rt,x,y);
+			// if (rt->cyl)
+			// 	intersec_cyl(fct,rt);
+			// if (rt->plane)
+			// 	intersec_plane(fct,rt);
 			if (rt->sphere)
 				intersec_sphere(fct,rt,x,y);
+			// rgb = get_color_nearest(rt,fct);
+			// printf("rt->obj_nearest->t  = %f\n",rt->obj_nearest->t);
+			if (rt->obj_nearest->type == SHPERE)
+			{
+				mlx_pixel_put(rt->mlx_ptr, rt->win_ptr, (int)x, (int)y, rgb);
+			}
 			x++;
 		}
 		y++;
