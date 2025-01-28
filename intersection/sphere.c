@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:40:48 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/28 18:48:34 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/28 20:27:15 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void intersec_sphere(t_fct *fct,t_data *rt)
 
 	// rgb = 0;
 	// t_nearest = INFINITY;
-	rt->near->t_near = INFINITY;
+	// rt->near->t_near = INFINITY;
 	tmp = rt->sphere;
 	while (tmp)
 	{

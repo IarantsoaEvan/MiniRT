@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:27:27 by irabesan          #+#    #+#             */
-/*   Updated: 2025/01/28 19:11:55 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/28 20:27:51 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void ft_set_cfct(t_fct *fct, float x, float y, t_data *rt)
 
 void intersec_obj(t_fct	*fct, t_data *rt)
 {
+	rt->near->t_near = INFINITY;
 	if (rt->cyl)
 		intersec_cyl(fct,rt);
 	if (rt->plane)

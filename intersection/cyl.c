@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:01:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/28 19:10:04 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/28 20:27:25 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void intersec_cyl(t_fct *fct,t_data *rt)
 	// color = init_color();
 	// rgb = 0;
 	tmp = rt->cyl;
-	rt->near->t_near = INFINITY;
+
 	while (tmp)
 	{
 		get_abc_cyl(rt,fct,tmp);
