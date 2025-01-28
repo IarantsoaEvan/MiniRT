@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:40:48 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/27 19:36:18 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/28 09:46:27 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,13 @@ void intersec_sphere(t_fct *fct,t_data *rt,float x,float y)
 	{
 		ft_set_abc_sphere(fct, rt);
 		t = get_t_sphere(fct->pol, get_delta(fct->pol));
-		if (t > 0)
+		if (t < rt->obj_nearest->t)
 		{
-			rgb = create_sphere_rgb_finale(t,fct,rt);
-			mlx_pixel_put(rt->mlx_ptr, rt->win_ptr, (int)x, (int)y, rgb);
+			rt->obj_nearest->t = t;
+			rt->obj_nearest->obj = tmp;
+			rt->obj_nearest->type = SHPERE;
+			// rgb = create_sphere_rgb_finale(t,fct,rt);
+			// mlx_pixel_put(rt->mlx_ptr, rt->win_ptr, (int)x, (int)y, rgb);
 		}
 		tmp = tmp->next;
 	}

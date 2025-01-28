@@ -23,6 +23,7 @@ SRC = 	parsing/init_data_utils.c\
 		intersection/sphere.c\
 		intersection/plane.c\
 		intersection/cyl.c\
+		intersection/nearest.c\
 		ambent_light/ambient.c\
 		ambent_light/ft_colors.c\
 		diffuse_light/diffuse_light.c\

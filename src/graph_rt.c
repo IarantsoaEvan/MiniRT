@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graph_rt.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 08:18:22 by irabesan          #+#    #+#             */
-/*   Updated: 2025/01/28 08:03:17 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/01/28 09:56:11 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 
 void	my_mlx_pxp(t_data *rt, int x, int y, int color)
 {
-	char*addr;
+	char *addr;
 
 	if ((x >= 0 && x <= rt->width) && (y >= 0 && y <= rt->height))
 	{
 		rt->img_data = mlx_get_data_addr(rt->img_ptr, &rt->bpp, &rt->size_line, &rt->endian);
-		addr = rt->img_data + (y * rt->size_line + x * rt-> bpp / 8);
-		*(unisgned int *)addr = color;
+		addr = rt->img_data + (y * rt->size_line + x * rt->bpp / 8);;
+		*(unsigned int *)addr = color;
 	}
-
 }
 void	init_graph(t_data *rt)
 {

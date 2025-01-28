@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:01:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/27 19:13:41 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/28 09:20:11 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,12 +103,15 @@ void intersec_cyl(t_fct *fct,t_data *rt,float x,float y)
 	{
 		get_abc_cyl(rt,fct);
 		t = get_t_cyl(fct, get_delta(fct->pol), rt);
-		if (t > 0)
+		if (t < rt->obj_nearest->t)
 		{
-			rgb = create_cyl_rgb_finale(t, fct, rt, get_m_scal(fct, rt, t));
+			rt->obj_nearest->t = t;
+			rt->obj_nearest->obj = tmp;
+			rt->obj_nearest->
+			// rgb = create_cyl_rgb_finale(t, fct, rt, get_m_scal(fct, rt, t));
 			// color = apply_amb(rt->cyl->color, rt->ambiante->ratio);
 			// rgb = create_trgb(color->r, color->g, color->b);
-			mlx_pixel_put(rt->mlx_ptr, rt->win_ptr, (int)x, (int)y, rgb);
+			// mlx_pixel_put(rt->mlx_ptr, rt->win_ptr, (int)x, (int)y, rgb);
 		}
 		tmp = tmp->next;
 	}
