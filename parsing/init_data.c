@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 09:36:21 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/28 14:52:25 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/28 19:00:45 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ t_cyl *init_cyl(void)
 	cyl->coord = init_coord();
 	cyl->vector = init_coord();
 	cyl->diam = 0;
+	cyl->m = 0;
 	cyl->height = 0;
 	cyl->id = 0;
 	cyl->next = NULL;

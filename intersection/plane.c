@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 19:04:58 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/28 15:26:09 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/28 18:49:14 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ void intersec_plane(t_fct *fct,t_data *rt)
 {
 	t_plane *tmp;
 	float t;
-	int rgb;
+	// int rgb;
 	
-	rgb = 0;
+	// rgb = 0;
 	tmp = rt->plane;
 	rt->near->t_near = INFINITY;
 	while (tmp)

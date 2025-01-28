@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:59 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/28 14:51:46 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/28 18:54:32 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ typedef struct s_cyl
 	t_coord	*normal;
 	float	diam;
 	float	height;
+	float m;
 	t_color	*color;
 	struct s_cyl *next;
 } t_cyl;
