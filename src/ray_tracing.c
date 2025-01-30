@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:27:27 by irabesan          #+#    #+#             */
-/*   Updated: 2025/01/28 20:27:51 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/30 14:51:10 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void ft_set_cfct(t_fct *fct, float x, float y, t_data *rt)
 	coo.top = rt->cam->coord->y - (fct->as_wi / 2);
 	coo.right = -(coo.left);
 	coo.bottom = -(coo.top);
-	fct->as_x = coo.left + (x + 0.5) * ((coo.right - coo.left) / rt->width);
-	fct->as_y = coo.bottom + (y + 0.5)* ((coo.top - coo.bottom) / rt->height);
+	fct->as_x = coo.left + (x + 0.5) * ((fct->as_he) / rt->width);
+	fct->as_y = coo.bottom + (y + 0.5) * ((-fct->as_wi) / rt->height);
 	real_ray_dir(fct,rt->cam);
 }
 

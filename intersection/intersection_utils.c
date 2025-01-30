@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:41:17 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/29 09:28:00 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/01/30 14:53:44 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	real_ray_dir(t_fct *fct, t_camera *cam)
 {
 	t_coord	*tmp;
 	t_coord	*cam_ort;
+	t_coord *up;
+	t_coord *right;
 	t_coord	*ort_y;
 
 	ort_y = init_coord();
@@ -34,9 +36,9 @@ void	real_ray_dir(t_fct *fct, t_camera *cam)
 		ort_y->y = 1;
 	cam->cam_right = normalize_vector(ft_cross_product(cam_ort, ort_y));
 	cam->cam_up = normalize_vector(ft_cross_product(cam_ort, cam->cam_right));
-	cam->cam_right = ft_scal_one(cam->cam_right, ((-1) * (fct->as_x)));
-	cam->cam_up = ft_scal_one(cam->cam_up, ((-1) * (fct->as_y)));
-	tmp = vect_add(cam->cam_right, cam->cam_up);
+	right = ft_scal_one(cam->cam_right, ((-1) * (fct->as_x)));
+	up = ft_scal_one(cam->cam_up, ((-1) * (fct->as_y)));
+	tmp = vect_add(right, up);
 	fct->dir = normalize_vector(vect_add(tmp, cam_ort));
 	free(tmp);
 }
