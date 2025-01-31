@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:27:27 by irabesan          #+#    #+#             */
-/*   Updated: 2025/01/31 09:54:56 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/31 12:43:17 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,21 +47,6 @@ void intersec_obj(t_fct	*fct, t_data *rt)
 	if (rt->sphere)
 		intersec_sphere(fct,rt);
 }
-
-// void cam_set_up(t_camera *cam)
-// {
-// 	t_coord	*cam_ort;
-// 	t_coord	*ort_y;
-
-// 	ort_y = init_coord();
-// 	cam_ort = normalize_vector(cam->vector);
-// 	if (cam_ort->y == 1 && !cam_ort->x && !cam_ort->z)
-// 		ort_y->z = -1;
-// 	else
-// 		ort_y->y = 1;
-// 	cam->cam_right = normalize_vector(ft_cross_product(cam_ort, ort_y));
-// 	cam->cam_up = normalize_vector(ft_cross_product(cam_ort, cam->cam_right));
-// }
 
 void	ray_tracing(t_data *rt)
 {

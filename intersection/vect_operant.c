@@ -3,15 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   vect_operant.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:31:27 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/27 14:12:17 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/31 14:12:58 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intersection.h"
 
+float	lenght_vector(t_coord *vect)
+{
+	float lenght;
+
+	lenght = 0.0;
+	lenght = sqrt(powf(vect->x, 2) + powf(vect->y, 2) + powf(vect->z, 2));
+	return (lenght);
+}
 t_coord *normalize_vector(t_coord *coord)
 {
 	t_coord *norm_vec;
@@ -77,7 +85,7 @@ t_coord	*ft_scal_one(t_coord *v1, float one)
 	prod->x = one * v1->x;
 	prod->y = one * v1->y;
 	prod->z = one * v1->z;
-	free(v1);
+	// free(v1);
 	return (prod);
 }
 t_coord	*vect_add(t_coord	*v1, t_coord *v2)

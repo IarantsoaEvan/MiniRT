@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:41:38 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/28 19:10:13 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/31 13:23:50 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,6 @@ void get_abc_cyl(t_data *rt,t_fct *fct,t_cyl *cyl);
 float get_t_cyl(t_fct *fct, float delta, t_data *rt,t_cyl *cyl);
 void intersec_plane(t_fct *fct,t_data *rt);
 void intersec_cyl(t_fct *fct,t_data *rt);
+float	lenght_vector(t_coord *vect);
+
 #endif

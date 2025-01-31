@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cyl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:01:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/28 20:27:25 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/31 14:37:36 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,34 +88,73 @@ float get_t_cyl(t_fct *fct, float delta, t_data *rt,t_cyl *cyl)
     }
     return (distance);
 }
+t_plane	*set_disk(t_cyl *cyl,int check_pos)
+{
+	t_plane *plane;
+
+	plane = init_plane();
+	if (check_pos == 0)
+	{
+		plane->coord = vect_add(cyl->coord, ft_scal_one(normalize_vector(cyl->vector), -cyl->height/ 2));
+		plane->vector = ft_scal_one(cyl->vector, -1.0);
+	}
+	else
+	{
+		plane->coord = vect_add(cyl->coord, ft_scal_one(normalize_vector(cyl->vector), cyl->height/ 2));
+		plane->vector = cyl->vector;
+	}
+	plane->color = cyl->color;
+	return (plane);
+}
+float	get_base_cyl(t_fct *fct, t_data *rt,  t_cyl *cyl,int check_pos)
+{
+	t_coord *xc;
+	t_coord *norm;
+	t_coord	*impact;
+	float	t_disk;
+
+	impact = init_coord();
+	cyl->disk = set_disk(cyl,check_pos);
+	xc = ft_soustraction(rt->cam->coord, cyl->disk->coord);
+	norm = normalize_vector(cyl->disk->vector);
+	t_disk = ((-1) * (ft_scal(xc,norm))) / ft_scal(fct->dir,norm);
+	impact = vect_add(rt->cam->coord, ft_scal_one(fct->dir, t_disk));
+	if (t_disk > 0 && lenght_vector(ft_soustraction(impact, cyl->disk->coord)) <= cyl->diam /  2)
+		return (t_disk);
+	return (-1);
+} 
 void intersec_cyl(t_fct *fct,t_data *rt)
 {
 	t_cyl *tmp;
-	float t;
-	// int rgb;
-	// t_color *color;
-
-	// color = init_color();
-	// rgb = 0;
+	float	t;
+	float	t_top;
+	float	t_bot;
 	tmp = rt->cyl;
 
 	while (tmp)
 	{
 		get_abc_cyl(rt,fct,tmp);
 		t = get_t_cyl(fct, get_delta(fct->pol), rt,tmp);
+		t_top = get_base_cyl(fct, rt, tmp,1);
+		t_bot = get_base_cyl(fct, rt, tmp,0);
 		if (t > 0 && t < rt->near->t_near)
 		{
 			rt->near->t_near = t;
 			rt->near->near_obj = tmp;
 			rt->near->type = CYL; 
 		}
-		// if (t > 0)
-		// {
-			// rgb = create_cyl_rgb_finale(t, fct, rt, get_m_scal(fct, rt, t));
-			// color = apply_amb(rt->cyl->color, rt->ambiante->ratio);
-			// rgb = create_trgb(color->r, color->g, color->b);
-			// mlx_pixel_put(rt->mlx_ptr, rt->win_ptr, (int)x, (int)y, rgb);
-		// }
+		if (t_top > 0 && t_top < rt->near->t_near)
+		{
+			rt->near->t_near = t_top;
+			rt->near->near_obj = tmp->disk;
+			rt->near->type = PLANE; 
+		}
+		if (t_bot > 0 && t_bot < rt->near->t_near)
+		{
+			rt->near->t_near = t_bot;
+			rt->near->near_obj = tmp->disk;
+			rt->near->type = PLANE; 
+		}
 		tmp = tmp->next;
 	}
 }
