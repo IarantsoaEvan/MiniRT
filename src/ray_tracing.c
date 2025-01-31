@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:27:27 by irabesan          #+#    #+#             */
-/*   Updated: 2025/01/30 14:51:10 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/31 09:54:56 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void ft_set_cfct(t_fct *fct, float x, float y, t_data *rt)
 	coo.right = -(coo.left);
 	coo.bottom = -(coo.top);
 	fct->as_x = coo.left + (x + 0.5) * ((fct->as_he) / rt->width);
-	fct->as_y = coo.bottom + (y + 0.5) * ((-fct->as_wi) / rt->height);
+	fct->as_y = (coo.bottom + (y + 0.5) * ((-fct->as_wi) / rt->height));
 	real_ray_dir(fct,rt->cam);
 }
 
@@ -43,14 +43,26 @@ void intersec_obj(t_fct	*fct, t_data *rt)
 	if (rt->cyl)
 		intersec_cyl(fct,rt);
 	if (rt->plane)
-	{
 		intersec_plane(fct,rt);
-	}
 	if (rt->sphere)
-	{
 		intersec_sphere(fct,rt);
-	}
 }
+
+// void cam_set_up(t_camera *cam)
+// {
+// 	t_coord	*cam_ort;
+// 	t_coord	*ort_y;
+
+// 	ort_y = init_coord();
+// 	cam_ort = normalize_vector(cam->vector);
+// 	if (cam_ort->y == 1 && !cam_ort->x && !cam_ort->z)
+// 		ort_y->z = -1;
+// 	else
+// 		ort_y->y = 1;
+// 	cam->cam_right = normalize_vector(ft_cross_product(cam_ort, ort_y));
+// 	cam->cam_up = normalize_vector(ft_cross_product(cam_ort, cam->cam_right));
+// }
+
 void	ray_tracing(t_data *rt)
 {
 	float x;
@@ -60,6 +72,7 @@ void	ray_tracing(t_data *rt)
 	y = 0;
 	fct = init_fct(rt);
 	rt->near = init_nearest();
+	// cam_set_up(rt->cam);
 	while (y < rt->height)
 	{
 		x = 0;
@@ -68,12 +81,7 @@ void	ray_tracing(t_data *rt)
 			ft_set_cfct(fct, x, y, rt);
 			intersec_obj(fct, rt);
 			get_nearest_obj(rt ,fct , x,y);
-			// if (rt->cyl)
-			// 	intersec_cyl(fct,rt,x,y);
-			// if (rt->plane)
-			// 	intersec_plane(fct,rt,x,y);
-			// if (rt->sphere)
-			// 	intersec_sphere(fct,rt,x,y);
+			
 			x++;
 		}
 		y++;
