@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:40:48 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/28 20:27:15 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/01/31 15:23:06 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,8 @@ int create_sphere_rgb_finale(float t,t_fct *fct,t_data *rt,t_sphere *sphere)
 void intersec_sphere(t_fct *fct,t_data *rt)
 {
     t_sphere *tmp;
-	// float t_nearest;
-	// t_sphere *nearest_sp;
-	// int rgb;
 	float t;
 
-	// rgb = 0;
-	// t_nearest = INFINITY;
-	// rt->near->t_near = INFINITY;
 	tmp = rt->sphere;
 	while (tmp)
 	{
@@ -61,17 +55,13 @@ void intersec_sphere(t_fct *fct,t_data *rt)
 		t = get_t_sphere(fct->pol, get_delta(fct->pol));
 		if (t > 0 && t < rt->near->t_near)
 		{
+			
 			rt->near->t_near = t;
 			rt->near->near_obj = tmp;
 			rt->near->type = SPHERE; 
 		}
 		tmp = tmp->next;
 	}
-	// if (t_nearest > 0 && t_nearest < INFINITY)
-	// {
-		// rgb = create_sphere_rgb_finale(t_nearest,fct,rt, nearest_sp);
-	// 	my_mlx_pxp(rt, (int)x, (int)y, rgb);
-	// }
 }
 float get_t_sphere(t_pol *pol, float delta)
 {
