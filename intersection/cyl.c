@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:01:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/01 21:49:00 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/01 22:42:18 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,8 @@ t_plane	*set_disk(t_cyl *cyl,int check_pos)
 	t_coord *norm_vec;
 
 
-	plane = init_plane();
+	// plane = init_plane();
+	plane = malloc(sizeof(t_plane));
 	norm_vec = normalize_vector(cyl->vector);
 	if (check_pos == 0)
 	{
@@ -114,11 +115,17 @@ t_plane	*set_disk(t_cyl *cyl,int check_pos)
 	else
 	{
 		plane->coord = ft_addition(cyl->coord, ft_scal_one(norm_vec, cyl->height/ 2));
-		plane->vector = cyl->vector;
+		plane->vector = ft_scal_one(cyl->vector, 1.0);
 	}
 	plane->color = cyl->color;
 	free(norm_vec);
 	return (plane);
+}
+void free_disk(t_plane *disk)
+{
+	free(disk->coord);
+	free(disk->vector);
+	free(disk);
 }
 float	get_base_cyl(t_fct *fct, t_data *rt,  t_cyl *cyl,int check_pos)
 {
@@ -127,15 +134,18 @@ float	get_base_cyl(t_fct *fct, t_data *rt,  t_cyl *cyl,int check_pos)
 	t_coord	*impact;
 	float	t_disk;
 
-	impact = init_coord();
 	cyl->disk = set_disk(cyl,check_pos);
 	xc = ft_soustraction(rt->cam->coord, cyl->disk->coord);
 	norm = normalize_vector(cyl->disk->vector);
 	t_disk = ((-1) * (ft_scal(xc,norm))) / ft_scal(fct->dir,norm);
 	impact = ft_addition(rt->cam->coord, ft_scal_one(fct->dir, t_disk));
 	if (t_disk > 0 && lenght_vector(ft_soustraction(impact, cyl->disk->coord)) <= cyl->diam /  2)
+	{
+		free_disk(cyl->disk);
 		return (free(impact),free(xc),free(norm),t_disk);
+	}
 	free(impact);
+	free_disk(cyl->disk);
 	free(xc);
 	free(norm);
 	return (-1);
