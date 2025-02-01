@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 19:04:58 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/28 20:34:00 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/01 21:25:22 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ float get_t_plane(t_fct *fct,t_data *rt,t_plane *plane)
 	xc = ft_soustraction(rt->cam->coord,plane->coord);
 	norm = normalize_vector(plane->vector);
 	t = ((-1) * (ft_scal(xc,norm))) / ft_scal(fct->dir,norm);
+	free(xc);
+	free(norm);
 	return (t);
 }
 int create_plane_rgb_finale(float t,t_fct *fct,t_data *rt,t_plane *plane)
@@ -38,6 +40,11 @@ int create_plane_rgb_finale(float t,t_fct *fct,t_data *rt,t_plane *plane)
 		,rt->light->normal,rt->light->ratio,plane->color);
 	rgb_finale = add_amb_and_diff(color,rgb_diff);
 	rgb = create_trgb(rgb_finale->r, rgb_finale->g, rgb_finale->b);
+	free(rt->light->normal);
+	free(point);
+	free(color);
+	free(rgb_diff);
+	free(rgb_finale);
 	return (rgb);
 }
 void intersec_plane(t_fct *fct,t_data *rt)

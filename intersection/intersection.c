@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:46:34 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/24 13:30:15 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/01 20:13:39 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ t_fct *init_fct(t_data *rt)
 	fct->as_x = 0;
 	fct->as_y = 0;
 	fct->as_z = 1;
-	fct->dir = init_coord();
+	// fct->dir = init_coord();
+	fct->dir = NULL;
 	fct->pol = init_pol();
 	fct->as_ratio = rt->width / rt->height;
 	fct->as_wi = (2 * fct->as_z) * tan(rt->cam->rad_fov / 2);

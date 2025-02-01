@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:40:48 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/31 15:23:06 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/01 21:10:28 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void ft_set_abc_sphere(t_fct *fct,t_data *rt,t_sphere *sphere)
 	fct->pol->a = 1;
 	fct->pol->b = 2 * ft_scal(oc,fct->dir);
 	fct->pol->c = ft_scal(oc,oc) - (r * r);
+	free(oc);
 }
 
 int create_sphere_rgb_finale(float t,t_fct *fct,t_data *rt,t_sphere *sphere)
@@ -40,6 +41,12 @@ int create_sphere_rgb_finale(float t,t_fct *fct,t_data *rt,t_sphere *sphere)
 		,rt->light->normal,rt->light->ratio,sphere->color);
 	rgb_finale = add_amb_and_diff(color,rgb_diff);
 	rgb = create_trgb(rgb_finale->r, rgb_finale->g, rgb_finale->b);
+	free(rt->light->normal);
+	free(point);
+	free(color);
+	free(rgb_diff);
+	free(rgb_finale);
+	free(sphere->normal);
 	return (rgb);
 }
 

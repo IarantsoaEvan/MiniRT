@@ -9,6 +9,7 @@ SRC = 	parsing/init_data_utils.c\
 		parsing/fill_data_utils.c\
 		parsing/print_parse.c\
 		parsing/add_back_lst.c\
+		parsing/check_map.c\
 		src/utils.c\
 		src/graph_rt.c\
 		src/ray_tracing.c\
@@ -28,6 +29,7 @@ SRC = 	parsing/init_data_utils.c\
 		ambent_light/ft_colors.c\
 		diffuse_light/diffuse_light.c\
 		diffuse_light/diffuse_object.c\
+		src/free_all.c\
 		src/main.c
 %.o: %.c
 	@$(CC) $(FLAGS) -I/usr/include -I$(MLX_D) -O3 -c $< -o $@

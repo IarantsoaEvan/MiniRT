@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:41:38 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/31 13:23:50 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/01 20:39:07 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void ft_set_abc_sphere(t_fct *fct,t_data *rt,t_sphere *sphere);
 // void	ft_screen(float *x_ndc, float *y_ndc, float *x_screen, float *y_screen);
 // void	ft_as_ratio(t_fct *fct, t_camera *cam, t_data *rt);
 // t_pol *init_pol();
+t_coord *normalize_vector_with_free(t_coord *coord);
 void intersec_sphere(t_fct *fct,t_data *rt);
 t_coord *ft_cross_product(t_coord *v1, t_coord *v2);
 t_coord *normalize_vector(t_coord *coord);

@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:24:02 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/28 14:27:03 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/01 22:16:24 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	init_graph(t_data *rt);
 int	close_win(t_data *data);
 void	ray_tracing(t_data *rt);
 void	my_mlx_pxp(t_data *rt, int x, int y, int color);
-
+void free_all(t_data *data);
+void free_plane(t_plane *plane);
 
 
 

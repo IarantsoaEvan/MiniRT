@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 21:34:36 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/28 14:50:20 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/01 18:44:26 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int     	check_color(int color);
 int check_positive(float nb);
 int check_valid_element(char **element);
 int     	check_vec_or_rat(float vector,int type);
+int fill_data(t_data *data,char **element);
 int     	check_and_fill_color(char *val,t_color *color);
 int     	fill_cam(t_camera **cam,char **element);
 void	ft_add_back_plane(t_plane **plane, t_plane *new);
@@ -38,7 +39,11 @@ t_plane *init_plane(void);
 int fill_cyl(t_cyl **cyl,char **elem);
 t_camera    *init_cam(void);
 t_light		*init_light(void);
+int	check_map_name(char **argv,int argc);
+char	*get_map(int fd);
 t_sphere *init_sphere(void);
+int	fill_and_check_map_valid(char *map,t_data *data);
+int get_element(char **v_map,t_data *data);
 void print_sp(t_sphere *sphere);
 void	ft_add_back_cyl(t_cyl **cyl, t_cyl *new);
 void print_cyl(t_cyl *cyl);

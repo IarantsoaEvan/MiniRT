@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 11:26:39 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/27 14:38:37 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/01 20:53:19 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_coord *get_normal_light(t_data *rt,t_coord *point)
 {
 	t_coord *norm;
 
-	norm = normalize_vector(ft_soustraction(rt->light->coord, point));
+	norm = normalize_vector_with_free(ft_soustraction(rt->light->coord, point));
 	return (norm);
 }
 

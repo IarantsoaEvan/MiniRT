@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cyl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:01:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/31 14:37:36 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/01 21:49:00 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void get_abc_cyl(t_data *rt,t_fct *fct,t_cyl *cyl)
 	fct->pol->a = scal_dir - powf(ft_scal(fct->dir,norm_vec),2);
 	fct->pol->b = (ft_scal(fct->dir,x) - (ft_scal(fct->dir,norm_vec) * ft_scal(x,norm_vec))) * 2;
 	fct->pol->c = ft_scal(x,x) - powf(ft_scal(x,norm_vec),2) - powf((float)(cyl->diam / 2),2);
+	free(norm_vec);
+	free(x);
 }
 
 int	create_cyl_rgb_finale(float t,t_fct *fct,t_data *rt, t_cyl *cyl)
@@ -42,6 +44,12 @@ int	create_cyl_rgb_finale(float t,t_fct *fct,t_data *rt, t_cyl *cyl)
 		,rt->light->normal,rt->light->ratio,cyl->color);
 	rgb_finale = add_amb_and_diff(color,rgb_diff);
 	rgb = create_trgb(rgb_finale->r, rgb_finale->g, rgb_finale->b);
+	free(rt->light->normal);
+	free(point);
+	free(color);
+	free(rgb_diff);
+	free(rgb_finale);
+	free(cyl->normal);
 	return (rgb);
 }
 float	get_m_scal(t_fct *fct, t_data *rt, float t,t_cyl *cyl)
@@ -52,6 +60,8 @@ float	get_m_scal(t_fct *fct, t_data *rt, float t,t_cyl *cyl)
 	norm_vec = normalize_vector(cyl->vector);
 	x = ft_soustraction(rt->cam->coord,cyl->coord);
 	cyl->m = (ft_scal(fct->dir, norm_vec) * t) + ft_scal(x, norm_vec);
+	free(norm_vec);
+	free(x);
 	return (cyl->m);
 }
 
@@ -91,19 +101,23 @@ float get_t_cyl(t_fct *fct, float delta, t_data *rt,t_cyl *cyl)
 t_plane	*set_disk(t_cyl *cyl,int check_pos)
 {
 	t_plane *plane;
+	t_coord *norm_vec;
+
 
 	plane = init_plane();
+	norm_vec = normalize_vector(cyl->vector);
 	if (check_pos == 0)
 	{
-		plane->coord = vect_add(cyl->coord, ft_scal_one(normalize_vector(cyl->vector), -cyl->height/ 2));
+		plane->coord = ft_addition(cyl->coord, ft_scal_one(norm_vec, -cyl->height/ 2));
 		plane->vector = ft_scal_one(cyl->vector, -1.0);
 	}
 	else
 	{
-		plane->coord = vect_add(cyl->coord, ft_scal_one(normalize_vector(cyl->vector), cyl->height/ 2));
+		plane->coord = ft_addition(cyl->coord, ft_scal_one(norm_vec, cyl->height/ 2));
 		plane->vector = cyl->vector;
 	}
 	plane->color = cyl->color;
+	free(norm_vec);
 	return (plane);
 }
 float	get_base_cyl(t_fct *fct, t_data *rt,  t_cyl *cyl,int check_pos)
@@ -118,9 +132,12 @@ float	get_base_cyl(t_fct *fct, t_data *rt,  t_cyl *cyl,int check_pos)
 	xc = ft_soustraction(rt->cam->coord, cyl->disk->coord);
 	norm = normalize_vector(cyl->disk->vector);
 	t_disk = ((-1) * (ft_scal(xc,norm))) / ft_scal(fct->dir,norm);
-	impact = vect_add(rt->cam->coord, ft_scal_one(fct->dir, t_disk));
+	impact = ft_addition(rt->cam->coord, ft_scal_one(fct->dir, t_disk));
 	if (t_disk > 0 && lenght_vector(ft_soustraction(impact, cyl->disk->coord)) <= cyl->diam /  2)
-		return (t_disk);
+		return (free(impact),free(xc),free(norm),t_disk);
+	free(impact);
+	free(xc);
+	free(norm);
 	return (-1);
 } 
 void intersec_cyl(t_fct *fct,t_data *rt)

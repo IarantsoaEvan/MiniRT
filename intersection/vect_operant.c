@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vect_operant.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:31:27 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/31 14:12:58 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/01 21:49:42 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ float	lenght_vector(t_coord *vect)
 
 	lenght = 0.0;
 	lenght = sqrt(powf(vect->x, 2) + powf(vect->y, 2) + powf(vect->z, 2));
+	free(vect);
 	return (lenght);
 }
 t_coord *normalize_vector(t_coord *coord)
@@ -33,6 +34,23 @@ t_coord *normalize_vector(t_coord *coord)
 	norm_vec->x /= magn;
 	norm_vec->y /= magn;
 	norm_vec->z /= magn;
+	return (norm_vec);
+}
+
+t_coord *normalize_vector_with_free(t_coord *coord)
+{
+	t_coord *norm_vec;
+	float	magn;
+	
+	norm_vec = init_coord();
+	norm_vec->x = coord->x;
+	norm_vec->y = coord->y;
+	norm_vec->z = coord->z;
+	magn = sqrt((norm_vec->x * norm_vec->x) + (norm_vec->y *norm_vec->y) + (norm_vec->z * norm_vec->z));
+	norm_vec->x /= magn;
+	norm_vec->y /= magn;
+	norm_vec->z /= magn;
+	free(coord);
 	return (norm_vec);
 }
 
@@ -63,6 +81,7 @@ t_coord *ft_addition(t_coord *coord1,t_coord *coord2)
 	oc->x = coord1->x + coord2->x;
 	oc->y = coord1->y + coord2->y;
 	oc->z = coord1->z + coord2->z;
+	free(coord2);
 	return(oc);
 }
 
