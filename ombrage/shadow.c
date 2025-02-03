@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shadow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 08:00:09 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/01 20:56:16 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/03 09:33:29 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,11 @@
 void	ray_shadowing(t_fct *fct, t_data *rt, t_coord *impact)
 {
 	t_vect ray;
-	float	direction;
+	float	l_dist;
+	t_coord *tmp_dir;
 
-	direction = 0.0;
-	ray.origin = &impact;
-	ray.direction = normalize_vector_with_free(ft_soustraction(rt->light->coord, impact));
-
-	
-
+	ray.origin = impact;
+	ray.direction = ft_soustraction(rt->light->coord, impact);
+	tmp_dir = ft_soustraction(rt->light->coord, impact);
+	l_dist = lenght_vector(tmp_dir);	 
 }
