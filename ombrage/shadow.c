@@ -3,23 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   shadow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 08:00:09 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/03 09:33:29 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/03 12:23:46 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shadow.h"
 
-void	ray_shadowing(t_fct *fct, t_data *rt, t_coord *impact)
+int intersec_lum_sphere(t_fct *fct,t_data *rt,int id,float t_lum)
 {
-	t_vect ray;
-	float	l_dist;
-	t_coord *tmp_dir;
+	t_sphere *tmp;
+	float t;
 
-	ray.origin = impact;
-	ray.direction = ft_soustraction(rt->light->coord, impact);
+
+	// (void)t_lum;
+	tmp = rt->sphere;
+	while (tmp)
+	{
+		if (tmp->id != id)
+		{
+			ft_set_abc_sphere(fct,tmp,fct->origin);
+			t = get_t_sphere(fct->pol, get_delta(fct->pol));
+			if (t > 0 && t < t_lum)
+				return (SHADOW);
+		}
+		tmp = tmp->next;
+	}
+	return (NO_SHADOW);
+}
+
+int	ray_shadowing(t_data *rt, t_coord *impact,int id)
+{
+	
+	t_fct	fct;
+	float	t_lum;
+	t_coord *tmp_dir;
+	int shadow;
+
+	
+	// shadow = NO_SHADOW;
+	fct.origin = impact;
+	fct.pol = init_pol();
+	fct.dir = ft_soustraction(rt->light->coord, impact);
 	tmp_dir = ft_soustraction(rt->light->coord, impact);
-	l_dist = lenght_vector(tmp_dir);	 
+	t_lum = lenght_vector(tmp_dir);
+	shadow = intersec_lum_sphere(&fct,rt,id,t_lum);
+	return(shadow);
 }

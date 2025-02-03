@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:59 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/01 18:57:05 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/03 10:14:38 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,15 @@ typedef struct s_camera
 	float	rad_fov;
 } t_camera;
 
-typedef struct s_vect
+typedef struct s_rgb
 {
-	t_coord *origin;
-	t_coord *direction;
-}	t_vect;
+	t_coord *point;
+	t_color *color;
+	t_color *rgb_diff;
+	t_color *rgb_finale;
+	int		flag;
+	int rgb;
+}	t_rgb;
 
 typedef struct s_light
 {
@@ -126,6 +130,7 @@ typedef struct s_fct
 	float	as_ratio;
 	t_pol	*pol;
 	t_coord *dir;
+	t_coord	*origin;
 }	t_fct;
 
 typedef struct s_data

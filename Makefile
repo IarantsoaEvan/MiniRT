@@ -27,6 +27,7 @@ SRC = 	parsing/init_data_utils.c\
 		intersection/nearest.c\
 		ambent_light/ambient.c\
 		ambent_light/ft_colors.c\
+		ombrage/shadow.c\
 		diffuse_light/diffuse_light.c\
 		diffuse_light/diffuse_object.c\
 		src/free_all.c\

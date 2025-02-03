@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:46:34 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/01 20:13:39 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/03 10:05:24 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 // }
 
 
-t_pol *init_pol()
+t_pol *init_pol(void)
 {
 	t_pol *pol;
 
