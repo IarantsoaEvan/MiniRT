@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 09:36:21 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/04 11:45:48 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/04 11:54:48 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_sphere *init_sphere(void)
 	sphere->coord = init_coord();
 	sphere->color = init_color();
 	sphere->diam = 0;
-	sphere->id = 50;
+	sphere->id = 1000;
 	sphere->next = NULL;
 	return (sphere);
 }
@@ -70,7 +70,7 @@ t_cyl *init_cyl(void)
 	cyl->diam = 0;
 	cyl->m = 0;
 	cyl->height = 0;
-	cyl->id = 100;
+	cyl->id = 2000;
 	cyl->next = NULL;
 	return (cyl);
 }
