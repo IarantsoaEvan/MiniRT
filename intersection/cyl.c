@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:01:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/04 19:46:01 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/04 20:23:01 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,32 @@ void get_abc_cyl(t_coord *origin,t_fct *fct,t_cyl *cyl)
 
 int	create_cyl_rgb_finale(float t,t_fct *fct,t_data *rt, t_cyl *cyl)
 {
-	t_coord *point;
-	t_color *color;
-	t_color *rgb_diff;
-	t_color *rgb_finale;
-	int rgb;
+	// t_coord *point;
+	// t_color *color;
+	// t_color *rgb_diff;
+	// t_color *rgb_finale;
+	// int rgb;
+	t_rgb rgb;
 	
-	point = ft_addition(rt->cam->coord,ft_scal_one(fct->dir, t));
-	color = apply_amb(cyl->color, rt->ambiante->ratio);
-	rt->light->normal = get_normal_light(rt,point);
-	cyl->normal = get_normal_cyl(rt, point, cyl);
-	rgb_diff = get_rgb_diff(cyl->normal
+	rgb.point = ft_addition(rt->cam->coord,ft_scal_one(fct->dir, t));
+	rgb.flag = NO_SHADOW;
+	rgb.color = apply_amb(cyl->color, rt->ambiante->ratio);
+	rgb.flag = ray_shadowing(rt, rgb.point,cyl->id);
+	rt->light->normal = get_normal_light(rt,rgb.point);
+	cyl->normal = get_normal_cyl(rt, rgb.point, cyl);
+	rgb.rgb_diff = get_rgb_diff(cyl->normal
 		,rt->light->normal,rt->light->ratio,cyl->color);
-	rgb_finale = add_amb_and_diff(color,rgb_diff);
-	rgb = create_trgb(rgb_finale->r, rgb_finale->g, rgb_finale->b);
+	rgb.rgb_finale = add_amb_and_diff(rgb.color,rgb.rgb_diff);
+	if (rgb.flag == SHADOW)
+		rgb.rgb_finale = apply_shadow_color(rgb.rgb_finale);
+	rgb.rgb = create_trgb(rgb.rgb_finale->r, rgb.rgb_finale->g, rgb.rgb_finale->b);
 	free(rt->light->normal);
-	free(point);
-	free(color);
-	free(rgb_diff);
-	free(rgb_finale);
+	// free(point);
+	// free(color);
+	// free(rgb_diff);
+	// free(rgb_finale);
 	free(cyl->normal);
-	return (rgb);
+	return (rgb.rgb);
 }
 float	get_m_scal(t_coord *dir, t_coord *origin, float t,t_cyl *cyl)
 {
