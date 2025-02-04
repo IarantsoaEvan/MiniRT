@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:27:27 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/03 09:56:27 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/04 10:39:11 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void	ray_tracing(t_data *rt)
 		{
 			ft_set_cfct(fct, x, y, rt);
 			intersec_obj(fct, rt);
-			
 			get_nearest_obj(rt ,fct , x,y);
 			x++;
 			free(fct->dir);

@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 12:06:43 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/16 22:05:39 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/04 11:50:02 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int fill_cyl(t_cyl **cyl,char **elem)
 	i = 0;
 	flag = 0;
 	temp = init_cyl();
-	temp->id = id;
+	temp->id = temp->id  + id;
 	while (elem[++i])
 	{
 		if (!fill_elem_cyl(&temp,elem[i],&flag))

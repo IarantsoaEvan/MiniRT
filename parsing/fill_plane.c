@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 10:20:29 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/16 22:06:26 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/04 11:50:17 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int fill_plane(t_plane **pl,char **elem)
 	i = 0;
 	flag = 0;
 	temp = init_plane();
-	temp->id = id;
+	temp->id = temp->id  + id;
 	while (elem[++i])
 	{
 		if (!fill_elem_pl(&temp,elem[i],&flag))

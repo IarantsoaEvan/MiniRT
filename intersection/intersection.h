@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:41:38 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/03 10:05:41 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/04 08:43:37 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "../src/minirt.h"
 
 t_coord *ft_soustraction(t_coord *coord1,t_coord *coord2);
-float get_t_plane(t_fct *fct,t_data *rt,t_plane *plane);
+float get_t_plane(t_coord *direction,t_coord *origin,t_plane *plane);
 float ft_scal(t_coord *vect1,t_coord *vect2);
 void	real_ray_dir(t_fct *fct, t_camera *cam);
 float get_t_sphere(t_pol *pol, float delta);

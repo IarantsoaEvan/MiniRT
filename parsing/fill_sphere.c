@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:20:19 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/16 22:06:46 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/04 11:50:25 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int fill_sphere(t_sphere **sphere,char **elem)
 	i = 0;
 	flag = 0;
 	temp = init_sphere();
-	temp->id = id;
+	temp->id = temp->id  + id;
 	while (elem[++i])
 	{
 		if (!fill_elem_sphere(&temp,elem[i],&flag))
