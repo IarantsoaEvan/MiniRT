@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 08:00:09 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/04 11:43:12 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/04 19:59:17 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@ void intersec_lum_sphere(t_fct *fct,t_data *rt,int id,float *t_near)
 	float t;
 
 
-	// (void)t_lum;
 	tmp = rt->sphere;
 	while (tmp)
 	{
-		printf("tmp->id = %d || id = %d\n",tmp->id,id);
 		if (tmp->id != id)
 		{
 			ft_set_abc_sphere(fct,tmp,fct->origin);
@@ -47,6 +45,33 @@ void intersec_lum_plane(t_fct *fct,t_data *rt,int id,float *t_near)
 			t = get_t_plane(fct->dir,fct->origin,tmp);
 			if (t > 0 && t < *t_near)
 				*t_near = t;
+		}
+		tmp = tmp->next;
+	}
+}
+
+void intersec_lum_cyl(t_fct *fct,t_data *rt,int id,float *t_near)
+{
+	t_cyl *tmp;
+	float	t;
+	float	t_top;
+	float	t_bot;
+	tmp = rt->cyl;
+
+	while (tmp)
+	{
+		if (tmp->id != id)
+		{
+			get_abc_cyl(fct->origin,fct,tmp);
+			t = get_t_cyl(fct, get_delta(fct->pol), fct->origin,tmp);
+			t_top = get_base_cyl(fct->dir, fct->origin, tmp,1);
+			t_bot = get_base_cyl(fct->dir, fct->origin, tmp,0);
+			if (t > 0 && t < *t_near)
+				*t_near = t;
+			if (t_top > 0 && t_top < *t_near)
+				*t_near = t_top;
+			if (t_bot > 0 && t_bot < *t_near)
+				*t_near = t_bot;
 		}
 		tmp = tmp->next;
 	}
@@ -79,6 +104,7 @@ int	ray_shadowing(t_data *rt, t_coord *impact,int id)
 	t_lum = lenght_vector(tmp_dir);
 	intersec_lum_sphere(&fct,rt,id,&t_near);
 	intersec_lum_plane(&fct, rt, id,&t_near);
+	intersec_lum_cyl(&fct, rt, id, &t_near);
 	shadow = intersec_obj_lum(t_lum,t_near);
 	return(shadow);
 }
