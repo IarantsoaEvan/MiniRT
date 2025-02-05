@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:24:02 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/03 10:20:31 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/05 09:52:25 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include "../minilibx-linux/mlx.h"
 # include "../libft/libft.h"
 # include "../parsing/parsing.h"
+# include "../matrix/matrix.h"
 # include "../intersection/intersection.h"
 # include "../ambent_light/ambiente.h"
 # include "../ombrage/shadow.h"

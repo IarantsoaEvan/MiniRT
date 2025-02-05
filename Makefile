@@ -30,6 +30,7 @@ SRC = 	parsing/init_data_utils.c\
 		ombrage/shadow.c\
 		diffuse_light/diffuse_light.c\
 		diffuse_light/diffuse_object.c\
+		matrix/transfo.c\
 		src/free_all.c\
 		src/main.c
 %.o: %.c
