@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:41:38 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/04 19:50:44 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/05 11:46:19 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ t_pol *init_pol(void);
 // void	ft_as_ratio(t_fct *fct, t_camera *cam, t_data *rt);
 // t_pol *init_pol();
 t_coord *normalize_vector_with_free(t_coord *coord);
-void intersec_sphere(t_fct *fct,t_data *rt);
+void intersec_sphere(t_fct *fct,t_data *rt,t_nearest *near);
 t_coord *ft_cross_product(t_coord *v1, t_coord *v2);
 t_coord *normalize_vector(t_coord *coord);
 t_coord	*ft_scal_one(t_coord *v1, float one);
 t_coord	*vect_add(t_coord	*v1, t_coord *v2);
 float get_t_cyl(t_fct *fct, float delta, t_coord *origin,t_cyl *cyl);
-void intersec_plane(t_fct *fct,t_data *rt);
-void intersec_cyl(t_fct *fct,t_data *rt);
+void intersec_plane(t_fct *fct,t_data *rt,t_nearest *near);
+void intersec_cyl(t_fct *fct,t_data *rt,t_nearest *near);
 float	lenght_vector(t_coord *vect);
 
 #endif

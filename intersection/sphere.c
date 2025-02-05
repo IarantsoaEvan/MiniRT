@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:40:48 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/04 10:06:59 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/05 14:23:48 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int create_sphere_rgb_finale(float t,t_fct *fct,t_data *rt,t_sphere *sphere)
 	return (rgb.rgb);
 }
 
-void intersec_sphere(t_fct *fct,t_data *rt)
+void intersec_sphere(t_fct *fct,t_data *rt,t_nearest *near)
 {
     t_sphere *tmp;
 	float t;
@@ -71,12 +71,14 @@ void intersec_sphere(t_fct *fct,t_data *rt)
 	{
 		ft_set_abc_sphere(fct,tmp,rt->cam->coord);
 		t = get_t_sphere(fct->pol, get_delta(fct->pol));
-		if (t > 0 && t < rt->near->t_near)
+		printf("t = %f  || near->t_near = %f\n",t,near->t_near);
+		if (t > 0 && t < near->t_near)
 		{
 			
-			rt->near->t_near = t;
-			rt->near->near_obj = tmp;
-			rt->near->type = SPHERE; 
+			near->t_near = t;
+			near->near_obj = tmp;
+			near->type = SPHERE; 
+			printf("Tonga ato\n");
 		}
 		tmp = tmp->next;
 	}
@@ -98,11 +100,11 @@ float get_t_sphere(t_pol *pol, float delta)
 	{
 		t1 = (((-1) * pol->b) - (sqrt(delta))) / (2 * pol->a);
 		t2 = (((-1) * pol->b) + (sqrt(delta))) / (2 * pol->a);
-		if (t1 > 0 && t2 > 0)
+		if (t1 > 0.001 && t2 > 0.001)
 			distance = fminf(t1, t2);
-		else if (t1 > 0 && t2 < 0)
+		else if (t1 > 0.001 && t2 < 0.001)
 			distance = t1;
-		else if (t1 < 0 && t2 > 0)
+		else if (t1 < 0.001 && t2 > 0.001)
 			distance = t2;		
 	}
 	return (distance);

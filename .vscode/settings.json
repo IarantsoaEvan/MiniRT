@@ -60,7 +60,16 @@
     "ambiente.h": "c",
     "intersection.h": "c",
     "diffuse_light.h": "c",
-    "minirt.h": "c"
+    "minirt.h": "c",
+    "array": "c",
+    "charconv": "c",
+    "compare": "c",
+    "functional": "c",
+    "ratio": "c",
+    "tuple": "c",
+    "type_traits": "c",
+    "utility": "c",
+    "variant": "c"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }

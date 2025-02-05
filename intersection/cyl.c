@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cyl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:01:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/05 09:36:11 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/05 14:41:13 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,7 +174,7 @@ void intersec_disk_cyl(t_nearest *near,t_cyl *tmp,float t_top,float t_bot)
 		near->type = PLANE; 
 	}
 }
-void intersec_cyl(t_fct *fct,t_data *rt)
+void intersec_cyl(t_fct *fct,t_data *rt,t_nearest *near)
 {
 	t_cyl *tmp;
 	float	t;
@@ -188,25 +188,13 @@ void intersec_cyl(t_fct *fct,t_data *rt)
 		t = get_t_cyl(fct, get_delta(fct->pol), rt->cam->coord,tmp);
 		t_top = get_base_cyl(fct->dir, rt->cam->coord, tmp,1);
 		t_bot = get_base_cyl(fct->dir, rt->cam->coord, tmp,0);
-		if (t > 0 && t < rt->near->t_near)
+		if (t > 0 && t < near->t_near)
 		{
-			rt->near->t_near = t;
-			rt->near->near_obj = tmp;
-			rt->near->type = CYL; 
+			near->t_near = t;
+			near->near_obj = tmp;
+			near->type = CYL; 
 		}
-		intersec_disk_cyl(rt->near, tmp, t_top, t_bot);
-		// if (t_top > 0 && t_top < rt->near->t_near)
-		// {
-		// 	rt->near->t_near = t_top;
-		// 	rt->near->near_obj = tmp->disk;
-		// 	rt->near->type = PLANE; 
-		// }
-		// if (t_bot > 0 && t_bot < rt->near->t_near)
-		// {
-		// 	rt->near->t_near = t_bot;
-		// 	rt->near->near_obj = tmp->disk;
-		// 	rt->near->type = PLANE; 
-		// }
+		intersec_disk_cyl(near, tmp, t_top, t_bot);
 		tmp = tmp->next;
 	}
 }

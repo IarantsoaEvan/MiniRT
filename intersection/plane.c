@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 19:04:58 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/04 09:33:37 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/05 11:44:38 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int create_plane_rgb_finale(float t,t_fct *fct,t_data *rt,t_plane *plane)
 	// free(rgb_finale);
 	return (rgb.rgb);
 }
-void intersec_plane(t_fct *fct,t_data *rt)
+void intersec_plane(t_fct *fct,t_data *rt,t_nearest *near)
 {
 	t_plane *tmp;
 	float t;
@@ -64,11 +64,11 @@ void intersec_plane(t_fct *fct,t_data *rt)
 	while (tmp)
 	{
 		t = get_t_plane(fct->dir,rt->cam->coord,tmp);
-		if (t > 0 && t < rt->near->t_near)
+		if (t > 0 && t < near->t_near)
 		{
-			rt->near->t_near = t;
-			rt->near->near_obj = tmp;
-			rt->near->type = PLANE; 
+			near->t_near = t;
+			near->near_obj = tmp;
+			near->type = PLANE; 
 		}
 		tmp = tmp->next;
 	}

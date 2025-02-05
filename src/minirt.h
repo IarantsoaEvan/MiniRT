@@ -6,7 +6,7 @@
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:24:02 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/05 09:52:25 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/05 11:51:01 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	ray_tracing(t_data *rt);
 void	my_mlx_pxp(t_data *rt, int x, int y, int color);
 void free_all(t_data *data);
 void free_plane(t_plane *plane);
-
+void ft_set_cfct(t_fct *fct, float x, float y, t_data *rt);
+void intersec_obj(t_fct	*fct, t_data *rt,t_nearest *near);
 
 
 #endif

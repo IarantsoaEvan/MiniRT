@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:27:27 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/04 10:39:11 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/05 14:38:30 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,16 @@ void ft_set_cfct(t_fct *fct, float x, float y, t_data *rt)
 	real_ray_dir(fct,rt->cam);
 }
 
-void intersec_obj(t_fct	*fct, t_data *rt)
+void intersec_obj(t_fct	*fct, t_data *rt,t_nearest *near)
 {
-	rt->near->t_near = INFINITY;
+	near->t_near = INFINITY;
 	if (rt->cyl)
-		intersec_cyl(fct,rt);
+		intersec_cyl(fct,rt,near);
 	if (rt->plane)
-		intersec_plane(fct,rt);
+		intersec_plane(fct,rt,near);
 	if (rt->sphere)
-		intersec_sphere(fct,rt);
+		intersec_sphere(fct,rt,near);
+	printf("|||||near->type == %d\n",near->type);
 }
 
 void	ray_tracing(t_data *rt)
@@ -63,7 +64,7 @@ void	ray_tracing(t_data *rt)
 		while (x < rt->width)
 		{
 			ft_set_cfct(fct, x, y, rt);
-			intersec_obj(fct, rt);
+			intersec_obj(fct, rt,rt->near);
 			get_nearest_obj(rt ,fct , x,y);
 			x++;
 			free(fct->dir);
