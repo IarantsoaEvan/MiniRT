@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:01:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/04 20:23:01 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/05 09:36:11 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,9 +128,12 @@ t_plane	*set_disk(t_cyl *cyl,int check_pos)
 }
 void free_disk(t_plane *disk)
 {
-	free(disk->coord);
-	free(disk->vector);
-	free(disk);
+	if (disk->coord)
+		free(disk->coord);
+	if (disk->vector)
+		free(disk->vector);
+	if (disk)
+		free(disk);
 }
 float	get_base_cyl(t_coord *dir, t_coord *origin,  t_cyl *cyl,int check_pos)
 {
@@ -144,17 +147,33 @@ float	get_base_cyl(t_coord *dir, t_coord *origin,  t_cyl *cyl,int check_pos)
 	norm = normalize_vector(cyl->disk->vector);
 	t_disk = ((-1) * (ft_scal(xc,norm))) / ft_scal(dir,norm);
 	impact = ft_addition(origin, ft_scal_one(dir, t_disk));
-	if (t_disk > 0 && lenght_vector(ft_soustraction(impact, cyl->disk->coord)) <= cyl->diam /  2)
+	if (t_disk > 0.001 && lenght_vector(ft_soustraction(impact, cyl->disk->coord)) <= cyl->diam /  2)
 	{
-		free_disk(cyl->disk);
+		// free_disk(cyl->disk);
 		return (free(impact),free(xc),free(norm),t_disk);
 	}
 	free(impact);
-	free_disk(cyl->disk);
+	// free_disk(cyl->disk);
 	free(xc);
 	free(norm);
 	return (-1);
-} 
+}
+
+void intersec_disk_cyl(t_nearest *near,t_cyl *tmp,float t_top,float t_bot)
+{
+	if (t_top > 0 && t_top < near->t_near)
+	{
+		near->t_near = t_top;
+		near->near_obj = tmp->disk;
+		near->type = PLANE; 
+	}
+	if (t_bot > 0 && t_bot < near->t_near)
+	{
+		near->t_near = t_bot;
+		near->near_obj = tmp->disk;
+		near->type = PLANE; 
+	}
+}
 void intersec_cyl(t_fct *fct,t_data *rt)
 {
 	t_cyl *tmp;
@@ -175,18 +194,19 @@ void intersec_cyl(t_fct *fct,t_data *rt)
 			rt->near->near_obj = tmp;
 			rt->near->type = CYL; 
 		}
-		if (t_top > 0 && t_top < rt->near->t_near)
-		{
-			rt->near->t_near = t_top;
-			rt->near->near_obj = tmp->disk;
-			rt->near->type = PLANE; 
-		}
-		if (t_bot > 0 && t_bot < rt->near->t_near)
-		{
-			rt->near->t_near = t_bot;
-			rt->near->near_obj = tmp->disk;
-			rt->near->type = PLANE; 
-		}
+		intersec_disk_cyl(rt->near, tmp, t_top, t_bot);
+		// if (t_top > 0 && t_top < rt->near->t_near)
+		// {
+		// 	rt->near->t_near = t_top;
+		// 	rt->near->near_obj = tmp->disk;
+		// 	rt->near->type = PLANE; 
+		// }
+		// if (t_bot > 0 && t_bot < rt->near->t_near)
+		// {
+		// 	rt->near->t_near = t_bot;
+		// 	rt->near->near_obj = tmp->disk;
+		// 	rt->near->type = PLANE; 
+		// }
 		tmp = tmp->next;
 	}
 }
