@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:27:27 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/05 14:38:30 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/05 21:25:04 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,11 @@ void ft_set_cfct(t_fct *fct, float x, float y, t_data *rt)
 	coo.top = rt->cam->coord->y - (fct->as_wi / 2);
 	coo.right = -(coo.left);
 	coo.bottom = -(coo.top);
+	// printf("x = %f y = %f\n",x,y);
+	// printf("fct->as_he = %f fct->as_wi = %f\n\n",fct->as_he,fct->as_wi);
 	fct->as_x = coo.left + (x + 0.5) * ((fct->as_he) / rt->width);
 	fct->as_y = (coo.bottom + (y + 0.5) * ((-fct->as_wi) / rt->height));
+	// printf("fct->as_x = %f fct->as_y = %f\n",fct->as_x,fct->as_y);
 	real_ray_dir(fct,rt->cam);
 }
 
@@ -46,12 +49,12 @@ void intersec_obj(t_fct	*fct, t_data *rt,t_nearest *near)
 		intersec_plane(fct,rt,near);
 	if (rt->sphere)
 		intersec_sphere(fct,rt,near);
-	printf("|||||near->type == %d\n",near->type);
+	// printf("|||||near->type == %d\n",near->type);
 }
 
 void	ray_tracing(t_data *rt)
 {
-	float x;
+	float	x;
 	float	y;
 	t_fct	*fct;
 

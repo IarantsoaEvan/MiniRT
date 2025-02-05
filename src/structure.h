@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:59 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/04 11:37:10 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/05 21:22:52 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,7 @@ typedef struct s_data
 	t_camera	*cam;
 	t_light		*light;
 	t_nearest	*near;
+	t_nearest	*near_moove;
 	t_sphere	*sphere;
 	t_plane		*plane;
 	t_cyl		*cyl;

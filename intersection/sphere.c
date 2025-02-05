@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:40:48 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/05 14:23:48 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/05 19:29:44 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,12 @@ void intersec_sphere(t_fct *fct,t_data *rt,t_nearest *near)
 	{
 		ft_set_abc_sphere(fct,tmp,rt->cam->coord);
 		t = get_t_sphere(fct->pol, get_delta(fct->pol));
-		printf("t = %f  || near->t_near = %f\n",t,near->t_near);
 		if (t > 0 && t < near->t_near)
 		{
 			
 			near->t_near = t;
 			near->near_obj = tmp;
 			near->type = SPHERE; 
-			printf("Tonga ato\n");
 		}
 		tmp = tmp->next;
 	}
