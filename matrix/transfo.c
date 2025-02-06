@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 09:43:25 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/06 10:46:37 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/06 21:48:03 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ int	select_obj(t_data *rt, int x, int y,t_nearest *near)
 		if (near->t_near > 0 && near->near_obj
 			&& near->type == CYL)
 			return (free_fct(fct),CYL);
+		if (near->t_near > 0 && near->near_obj && near->cyl_parent
+			&& near->type == DISK)
+			return (free_fct(fct),DISK);
 	}
 	return (free_fct(fct),-1);
 }
@@ -55,20 +58,22 @@ void zoom_object_pos(t_nearest *near,int type)
 	t_cyl *cyl;
 	
 		printf("near->type = %d\n",near->type);
-
 		if (type == SPHERE)
 		{
 			sphere = (t_sphere *)near->near_obj;
-			sphere->coord->z += 0.4;
+			sphere->coord->z += 0.2;
 		}
 		if (type == PLANE)
 		{
 			plane = near->near_obj;
 			plane->coord->z += 0.2;
 		}
-		if (type == CYL)
+		if (type == CYL ||  type == DISK)
 		{
-			cyl = near->near_obj;
+			if (type == DISK)
+				cyl = near->cyl_parent;
+			else
+				cyl = near->near_obj;
 			cyl->coord->z += 0.2;
 		}
 
@@ -91,10 +96,13 @@ void zoom_object_neg(t_nearest *near,int type)
 		plane = (t_plane *)near->near_obj;
 		plane->coord->z -= 0.2;
 	}
-	if (type == CYL)
+	if (type == CYL ||  type == DISK)
 	{
-		cyl = (t_cyl *)near->near_obj;
-		cyl->coord->z -= 0.2;
+			if (type == DISK)
+				cyl = near->cyl_parent;
+			else
+				cyl = near->near_obj;
+			cyl->coord->z -= 0.2;
 	}
 
 }

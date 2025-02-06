@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:59 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/06 14:04:07 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/06 21:04:46 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,7 @@
 # include "minirt.h"
 
 
-typedef struct s_nearest
-{
-	float t_near;
-	void *near_obj;
-	int	type;
-} t_nearest;
+
 
 typedef struct s_coord
 {
@@ -104,6 +99,14 @@ typedef struct s_cyl
 	t_color	*color;
 	struct s_cyl *next;
 } t_cyl;
+
+typedef struct s_nearest
+{
+	float t_near;
+	void *near_obj;
+	t_cyl *cyl_parent;
+	int	type;
+} t_nearest;
 
 typedef struct s_pol
 {

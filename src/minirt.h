@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:24:02 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/05 11:51:01 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/06 21:27:17 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define PLANE 5
 # define SHADOW 6
 # define NO_SHADOW 7
+# define DISK 8
 # include <stdio.h> 
 # include "structure.h"
 # include "../minilibx-linux/mlx.h"
@@ -35,6 +36,7 @@ int check_valid_object(char  **elem);
 int check_valid_a_c_l(char  **elem);
 int check_comma(char *str);
 void	init_graph(t_data *rt);
+void free_disk(t_plane *disk);
 int	close_win(t_data *data);
 void	ray_tracing(t_data *rt);
 void	my_mlx_pxp(t_data *rt, int x, int y, int color);

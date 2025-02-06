@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 19:04:58 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/05 11:44:38 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/06 21:54:14 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int create_plane_rgb_finale(float t,t_fct *fct,t_data *rt,t_plane *plane)
 		rgb.rgb_finale = apply_shadow_color(rgb.rgb_finale);
 	rgb.rgb = create_trgb(rgb.rgb_finale->r, rgb.rgb_finale->g, rgb.rgb_finale->b);
 	free(rt->light->normal);
+	free_rgb(&rgb);
 	// free(point);
 	// free(color);
 	// free(rgb_diff);

@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:57:09 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/06 13:57:55 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/06 22:01:20 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,16 @@ void free_plane(t_plane *plane)
 	}
 }
 
+void free_disk(t_plane *disk)
+{
+	if (disk->coord)
+		free(disk->coord);
+	if (disk->vector)
+		free(disk->vector);
+	if (disk)
+		free(disk);
+}
+
 void free_cyl(t_cyl *cyl)
 {
 	t_cyl *tmp_cyl;
@@ -56,7 +66,10 @@ void free_cyl(t_cyl *cyl)
 		cyl = cyl->next;
 		free(tmp_cyl->coord);
 		free(tmp_cyl->color);
-		// free(tmp_cyl->disk);
+		if (tmp_cyl->disk_top)
+			free_disk(tmp_cyl->disk_top);
+		if (tmp_cyl->disk_bot)
+			free_disk(tmp_cyl->disk_bot);
 		free(tmp_cyl->vector);
 		free(tmp_cyl);
 	}

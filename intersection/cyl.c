@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:01:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/06 14:22:35 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/06 21:58:37 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,33 +116,32 @@ void set_disk(t_cyl *cyl,int check_pos)
 
 	if (check_pos == 0)
 	{
-		if (cyl->disk_bot == NULL)
-			cyl->disk_bot = malloc(sizeof(t_plane));
+		// if (cyl->disk_bot == NULL)
+		// 	cyl->disk_bot = malloc(sizeof(t_plane));
 		cyl->disk_bot->id = cyl->id;
+		if (cyl->disk_bot->coord)
+			free(cyl->disk_bot->coord);
 		cyl->disk_bot->coord = ft_addition(cyl->coord, ft_scal_one(norm_vec, -cyl->height/ 2));
+		if (cyl->disk_bot->vector)
+			free(cyl->disk_bot->vector);
 		cyl->disk_bot->vector = ft_scal_one(cyl->vector, -1.0);
 		cyl->disk_bot->color = cyl->color;
 	}
 	else
 	{
-		if (cyl->disk_top == NULL)
-			cyl->disk_top = malloc(sizeof(t_plane));
+		// if (cyl->disk_top == NULL)
+		// 	cyl->disk_top = malloc(sizeof(t_plane));
 		cyl->disk_top->id = cyl->id;
+		if (cyl->disk_top->coord)
+			free(cyl->disk_top->coord);
 		cyl->disk_top->coord = ft_addition(cyl->coord, ft_scal_one(norm_vec, cyl->height/ 2));
+		if (cyl->disk_top->vector)
+			free(cyl->disk_top->vector);
 		cyl->disk_top->vector = ft_scal_one(cyl->vector, 1.0);
 		cyl->disk_top->color = cyl->color;
 	}
 	free(norm_vec);
 	// return (cyl);
-}
-void free_disk(t_plane *disk)
-{
-	if (disk->coord)
-		free(disk->coord);
-	if (disk->vector)
-		free(disk->vector);
-	if (disk)
-		free(disk);
 }
 float	get_base_cyl(t_coord *dir, t_coord *origin,  t_cyl *cyl,int check_pos)
 {
@@ -188,13 +187,15 @@ void intersec_disk_cyl(t_nearest *near,t_cyl *tmp,float t_top,float t_bot)
 	{
 		near->t_near = t_top;
 		near->near_obj = tmp->disk_top;
-		near->type = PLANE; 
+		near->cyl_parent = tmp;
+		near->type = DISK; 
 	}
 	if (t_bot > 0 && t_bot < near->t_near)
 	{
 		near->t_near = t_bot;
 		near->near_obj = tmp->disk_bot;
-		near->type = PLANE; 
+		near->cyl_parent = tmp;
+		near->type = DISK; 
 	}
 }
 void intersec_cyl(t_fct *fct,t_data *rt,t_nearest *near)

@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:27:27 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/06 10:42:31 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/06 21:35:58 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,13 @@ void intersec_obj(t_fct	*fct, t_data *rt,t_nearest *near)
 	if (rt->sphere)
 		intersec_sphere(fct,rt,near);
 }
-
+void check_and_free_disl(t_cyl *cyl)
+{
+	if (cyl->disk_top)
+		free_disk(cyl->disk_top);
+	if (cyl->disk_bot)
+		free_disk(cyl->disk_bot);
+}
 void	ray_tracing(t_data *rt)
 {
 	float	x;
@@ -65,6 +71,8 @@ void	ray_tracing(t_data *rt)
 			ft_set_cfct(fct, x, y, rt);
 			intersec_obj(fct, rt,rt->near);
 			get_nearest_obj(rt ,fct , x,y);
+			// if (rt->cyl)
+			// 	check_and_free_disl(rt->cyl);
 			x++;
 			free(fct->dir);
 		}

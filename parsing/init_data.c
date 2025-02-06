@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 09:36:21 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/06 14:04:28 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/06 21:50:05 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,12 @@ t_cyl *init_cyl(void)
 	cyl->coord = init_coord();
 	cyl->vector = init_coord();
 	cyl->diam = 0;
-	cyl->disk_top = NULL;
-	cyl->disk_bot = NULL;
+	cyl->disk_top = malloc(sizeof(t_plane));
+	cyl->disk_top->coord = NULL;
+	cyl->disk_top->vector = NULL;
+	cyl->disk_bot = malloc(sizeof(t_plane));
+	cyl->disk_bot->coord = NULL;
+	cyl->disk_bot->vector = NULL;
 	cyl->m = 0;
 	cyl->height = 0;
 	cyl->id = 2000;
