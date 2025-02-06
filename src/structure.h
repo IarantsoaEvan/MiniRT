@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structure.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:59 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/06 08:18:39 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/06 14:04:07 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,8 @@ typedef struct s_cyl
 	t_coord	*coord;
 	t_coord	*vector;
 	t_coord	*normal;
-	t_plane *disk;
+	t_plane *disk_top;
+	t_plane *disk_bot;
 	float	diam;
 	float	height;
 	float m;

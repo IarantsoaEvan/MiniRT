@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:40:48 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/06 10:24:45 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/06 11:08:20 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,7 @@ void ft_set_abc_sphere(t_fct *fct,t_sphere *sphere,t_coord *origin)
 	free(oc);
 }
 
-void free_rgb(t_rgb *rgb)
-{
-	free(rgb->point);
-	free(rgb->color);
-	free(rgb->rgb_diff);
-	free(rgb->rgb_finale);
-}
+
 
 int create_sphere_rgb_finale(float t,t_fct *fct,t_data *rt,t_sphere *sphere)
 {

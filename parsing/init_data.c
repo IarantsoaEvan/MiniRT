@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 09:36:21 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/06 08:19:11 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/06 14:04:28 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ t_cyl *init_cyl(void)
 	cyl->coord = init_coord();
 	cyl->vector = init_coord();
 	cyl->diam = 0;
+	cyl->disk_top = NULL;
+	cyl->disk_bot = NULL;
 	cyl->m = 0;
 	cyl->height = 0;
 	cyl->id = 2000;

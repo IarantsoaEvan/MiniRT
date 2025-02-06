@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cyl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:01:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/05 14:41:13 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/06 14:22:35 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	create_cyl_rgb_finale(float t,t_fct *fct,t_data *rt, t_cyl *cyl)
 	// free(color);
 	// free(rgb_diff);
 	// free(rgb_finale);
+	free_rgb(&rgb);
 	free(cyl->normal);
 	return (rgb.rgb);
 }
@@ -103,28 +104,36 @@ float get_t_cyl(t_fct *fct, float delta, t_coord *origin,t_cyl *cyl)
     }
     return (distance);
 }
-t_plane	*set_disk(t_cyl *cyl,int check_pos)
+void set_disk(t_cyl *cyl,int check_pos)
 {
-	t_plane *plane;
+	// t_plane *cyl;
 	t_coord *norm_vec;
 
 
 	// plane = init_plane();
-	plane = malloc(sizeof(t_plane));
+	
 	norm_vec = normalize_vector(cyl->vector);
+
 	if (check_pos == 0)
 	{
-		plane->coord = ft_addition(cyl->coord, ft_scal_one(norm_vec, -cyl->height/ 2));
-		plane->vector = ft_scal_one(cyl->vector, -1.0);
+		if (cyl->disk_bot == NULL)
+			cyl->disk_bot = malloc(sizeof(t_plane));
+		cyl->disk_bot->id = cyl->id;
+		cyl->disk_bot->coord = ft_addition(cyl->coord, ft_scal_one(norm_vec, -cyl->height/ 2));
+		cyl->disk_bot->vector = ft_scal_one(cyl->vector, -1.0);
+		cyl->disk_bot->color = cyl->color;
 	}
 	else
 	{
-		plane->coord = ft_addition(cyl->coord, ft_scal_one(norm_vec, cyl->height/ 2));
-		plane->vector = ft_scal_one(cyl->vector, 1.0);
+		if (cyl->disk_top == NULL)
+			cyl->disk_top = malloc(sizeof(t_plane));
+		cyl->disk_top->id = cyl->id;
+		cyl->disk_top->coord = ft_addition(cyl->coord, ft_scal_one(norm_vec, cyl->height/ 2));
+		cyl->disk_top->vector = ft_scal_one(cyl->vector, 1.0);
+		cyl->disk_top->color = cyl->color;
 	}
-	plane->color = cyl->color;
 	free(norm_vec);
-	return (plane);
+	// return (cyl);
 }
 void free_disk(t_plane *disk)
 {
@@ -140,18 +149,32 @@ float	get_base_cyl(t_coord *dir, t_coord *origin,  t_cyl *cyl,int check_pos)
 	t_coord *xc;
 	t_coord *norm;
 	t_coord	*impact;
+	t_coord *disk_coord;
 	float	t_disk;
 
-	cyl->disk = set_disk(cyl,check_pos);
-	xc = ft_soustraction(origin, cyl->disk->coord);
-	norm = normalize_vector(cyl->disk->vector);
+	// if (cyl->disk)
+	// 	free(cyl->disk);
+	set_disk(cyl,check_pos);
+	if (check_pos == 0)
+	{
+		xc = ft_soustraction(origin, cyl->disk_bot->coord);
+		norm = normalize_vector(cyl->disk_bot->vector);
+		disk_coord = cyl->disk_bot->coord;
+	}
+	else 
+	{
+		xc = ft_soustraction(origin, cyl->disk_top->coord);
+		norm = normalize_vector(cyl->disk_top->vector);
+		disk_coord = cyl->disk_top->coord;
+	}
+	// if (check_pos == 0)
+	// 	cyl->disk_bot set_disk(cyl,check_pos);
+	// xc = ft_soustraction(origin, cyl->disk->coord);
+	// norm = normalize_vector(cyl->disk->vector);
 	t_disk = ((-1) * (ft_scal(xc,norm))) / ft_scal(dir,norm);
 	impact = ft_addition(origin, ft_scal_one(dir, t_disk));
-	if (t_disk > 0.001 && lenght_vector(ft_soustraction(impact, cyl->disk->coord)) <= cyl->diam /  2)
-	{
-		// free_disk(cyl->disk);
+	if (t_disk > 0.001 && lenght_vector(ft_soustraction(impact, disk_coord)) <= cyl->diam /  2)
 		return (free(impact),free(xc),free(norm),t_disk);
-	}
 	free(impact);
 	// free_disk(cyl->disk);
 	free(xc);
@@ -164,13 +187,13 @@ void intersec_disk_cyl(t_nearest *near,t_cyl *tmp,float t_top,float t_bot)
 	if (t_top > 0 && t_top < near->t_near)
 	{
 		near->t_near = t_top;
-		near->near_obj = tmp->disk;
+		near->near_obj = tmp->disk_top;
 		near->type = PLANE; 
 	}
 	if (t_bot > 0 && t_bot < near->t_near)
 	{
 		near->t_near = t_bot;
-		near->near_obj = tmp->disk;
+		near->near_obj = tmp->disk_bot;
 		near->type = PLANE; 
 	}
 }
