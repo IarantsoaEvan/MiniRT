@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 10:31:40 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/15 13:50:54 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/06 09:06:42 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int		ft_printf(const char *format, ...);
 int		ft_print_char(char c);
 int		print_str(char *str);
 int		print_int(int nbr);
+int     ft_count_world(char **str);
 int		print_unsigned_dec(unsigned int nbr);
 int		print_hex(int nbr, char c);
 int		print_adress_hex(void *adress);

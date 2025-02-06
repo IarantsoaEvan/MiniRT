@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 09:43:25 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/05 21:30:42 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/06 07:58:45 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,10 @@ int	select_obj(t_data *rt, int x, int y,t_nearest *near)
 
 	near->near_obj = NULL;
 	fct = init_fct(rt);
-	// fct.as_ratio = rt->width / rt->height;
-	// fct.as_wi = (2 * fct.as_z) * tan(rt->cam->rad_fov / 2);
-	// fct.as_he = fct.as_ratio * fct.as_wi;
-	// fct.pol = malloc(sizeof(t_pol));
-	
 	if (y < rt->height && x < rt->width)
 	{
-		// printf("--------------------------------\n");
 		ft_set_cfct(fct, (float)x, (float)y, rt);
-		// printf("--------------------------------\n");
 		intersec_obj(fct, rt,near);
-		// printf("near->type = %d\n",near->type);
 		if (near->t_near > 0 && near->near_obj
 			&& near->type == SPHERE)
 			return (SPHERE);
@@ -62,24 +54,21 @@ void zoom_object_pos(t_nearest *near,int type)
 	t_plane *plane;
 	t_cyl *cyl;
 	
-		// printf("type = %d\n",type);
-		printf("near->type = %d\n",near->type);
-
-		if (type == SPHERE)
-		{
-			sphere = (t_sphere *)near->near_obj;
-			sphere->coord->z += 0.4;
-		}
-		if (type == PLANE)
-		{
-			plane = near->near_obj;
-			plane->coord->z += 0.2;
-		}
-		if (type == CYL)
-		{
-			cyl = near->near_obj;
-			cyl->coord->z += 0.2;
-		}
+	if (type == SPHERE)
+	{
+		sphere = (t_sphere *)near->near_obj;
+		sphere->coord->z += 0.4;
+	}
+	if (type == PLANE)
+	{
+		plane = near->near_obj;
+		plane->coord->z += 0.2;
+	}
+	if (type == CYL)
+	{
+		cyl = near->near_obj;
+		cyl->coord->z += 0.2;
+	}
 
 }
 

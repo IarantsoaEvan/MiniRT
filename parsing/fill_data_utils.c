@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:28:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/27 13:56:02 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/06 09:12:14 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ int check_and_fill_color(char *val,t_color *color)
 	if (!check_comma(val))
 			return(0);
 	elem  = ft_split(val,',');
+	if (ft_count_world(elem) != 3)
+	{
+		printf("ERROR: Please check the RGB color !\n");
+		return (ft_free_str(elem),0);
+	}	
 	if (elem)
 	{
 		color->r = ft_atflo(elem[0]);
@@ -69,6 +74,11 @@ int fill_coord(char *val,t_coord *coord)
 	if (!check_comma(val))
 			return(0);
 	elem  = ft_split(val,',');
+	if (ft_count_world(elem) != 3)
+	{
+		printf("ERROR: Please check the RGB color !\n");
+		return (ft_free_str(elem),0);
+	}	
 	if (elem)
 	{
 		coord->x = ft_atflo(elem[0]);
