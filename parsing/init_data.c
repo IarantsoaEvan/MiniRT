@@ -6,7 +6,7 @@
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 09:36:21 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/06 08:19:11 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/06 13:56:57 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,11 @@ t_data *init_data(void)
 	data->width = 700;
 	data->height = 540;
 	data->near = NULL;
-	data->flag_rot = 0;
+	data->flag_rot_x = 0;
+	data->flag_rot_y = 0;
+	data->flag_rot_z = 0;
+	data->alpha = 0.0;
+	data->beta = 0.0;
+	data->teta = 0.0;
 	return (data);
 }

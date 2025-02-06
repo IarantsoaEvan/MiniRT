@@ -69,7 +69,8 @@
     "tuple": "c",
     "type_traits": "c",
     "utility": "c",
-    "variant": "c"
+    "variant": "c",
+    "matrix.h": "c"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }

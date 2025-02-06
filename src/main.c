@@ -6,7 +6,7 @@
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:24 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/06 08:25:11 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/06 11:14:23 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ int	main(int argc ,char **argv)
 	mlx_hook(data->win_ptr, 17, 0L, close_win, data);
 	mlx_hook(data->win_ptr, 4, 1L << 2, mouse_handler, data);
 	mlx_hook(data->win_ptr, 2, 1L << 0, keyboard_handler, data);
+	mlx_hook(data->win_ptr, 3, 1L << 1, no_comb, data);
 	mlx_loop(data->mlx_ptr);
 }
