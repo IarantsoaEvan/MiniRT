@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_int.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: mariosteven <mariosteven@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 10:26:02 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/06 09:03:47 by mrambelo         ###   ########.fr       */
+/*   Updated: 2024/04/30 19:19:37 by mariosteven      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

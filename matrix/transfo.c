@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transfo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 09:43:25 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/06 07:58:45 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/06 08:25:53 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	select_obj(t_data *rt, int x, int y,t_nearest *near)
 
 	near->near_obj = NULL;
 	fct = init_fct(rt);
+	
 	if (y < rt->height && x < rt->width)
 	{
 		ft_set_cfct(fct, (float)x, (float)y, rt);
@@ -54,21 +55,23 @@ void zoom_object_pos(t_nearest *near,int type)
 	t_plane *plane;
 	t_cyl *cyl;
 	
-	if (type == SPHERE)
-	{
-		sphere = (t_sphere *)near->near_obj;
-		sphere->coord->z += 0.4;
-	}
-	if (type == PLANE)
-	{
-		plane = near->near_obj;
-		plane->coord->z += 0.2;
-	}
-	if (type == CYL)
-	{
-		cyl = near->near_obj;
-		cyl->coord->z += 0.2;
-	}
+		printf("near->type = %d\n",near->type);
+
+		if (type == SPHERE)
+		{
+			sphere = (t_sphere *)near->near_obj;
+			sphere->coord->z += 0.4;
+		}
+		if (type == PLANE)
+		{
+			plane = near->near_obj;
+			plane->coord->z += 0.2;
+		}
+		if (type == CYL)
+		{
+			cyl = near->near_obj;
+			cyl->coord->z += 0.2;
+		}
 
 }
 
@@ -99,31 +102,17 @@ void zoom_object_neg(t_nearest *near,int type)
 int mouse_handler(int keycode , int x, int y, t_data *rt)
 {
 	static int  type;
-	// (void)x;
-	// t_sphere *tmp;
-	// (void)y;
-	static t_nearest near;
+	// static t_nearest near;
 
 
 	if (keycode == 1)
-		type = select_obj(rt,  x,  y,&near);
-	// sphere = rt->sphere;
-	// tmp = rt->near->near_obj;
-	// while (sphere)
-	// {
-	// 	if (sphere->id == tmp->id)
-	// 		break;
-	// 	sphere = sphere->next;
-	// }
-	
-	// printf("avant sphere->coord->x = %f\n",sphere->coord->x);
+		type = select_obj(rt,  x,  y,rt->near_moove);	
 	if (keycode == 4 || keycode == 5)
 	{
-
 		if (keycode == 4)
-			zoom_object_pos(&near,type);
+			zoom_object_pos(rt->near_moove,type);
 		if (keycode == 5)
-			zoom_object_neg(&near,type);
+			zoom_object_neg(rt->near_moove,type);
 		mlx_destroy_image(rt->mlx_ptr, rt->img_ptr);
 		rt->img_ptr = mlx_new_image(rt->mlx_ptr, rt->width, rt->height);
 		ray_tracing(rt);

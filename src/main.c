@@ -6,7 +6,7 @@
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:24 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/05 10:02:36 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/06 08:25:11 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	main(int argc ,char **argv)
 	t_data *data;
 	
 	data = init_data();
+	data->near_moove = init_nearest();
 	if (!check_map_name(argv,argc))
 		return (1);
 	if (!fill_and_check_map_valid(argv[1],data))
@@ -53,5 +54,6 @@ int	main(int argc ,char **argv)
 	mlx_key_hook(data->win_ptr, esc_win, data);
 	mlx_hook(data->win_ptr, 17, 0L, close_win, data);
 	mlx_hook(data->win_ptr, 4, 1L << 2, mouse_handler, data);
+	mlx_hook(data->win_ptr, 2, 1L << 0, keyboard_handler, data);
 	mlx_loop(data->mlx_ptr);
 }

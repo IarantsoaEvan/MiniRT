@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: mariosteven <mariosteven@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 14:50:40 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/06 09:02:37 by mrambelo         ###   ########.fr       */
+/*   Updated: 2024/04/30 19:20:51 by mariosteven      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
