@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 08:00:09 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/04 19:59:17 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/06 10:34:50 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,7 @@ int	ray_shadowing(t_data *rt, t_coord *impact,int id)
 	intersec_lum_plane(&fct, rt, id,&t_near);
 	intersec_lum_cyl(&fct, rt, id, &t_near);
 	shadow = intersec_obj_lum(t_lum,t_near);
+	free(fct.pol);
+	free(fct.dir);
 	return(shadow);
 }

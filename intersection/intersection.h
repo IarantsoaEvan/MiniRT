@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:41:38 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/05 11:46:19 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/06 10:39:39 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ float get_t_sphere(t_pol *pol, float delta);
 t_fct *init_fct(t_data *rt);
 float	get_base_cyl(t_coord *dir, t_coord *origin,  t_cyl *cyl,int check_pos);
 t_pol *init_pol(void);
+void free_fct(t_fct *fct);
 // void ft_set_abc_sphere(t_fct *fct,t_data *rt,t_sphere *sphere);
 // void	ft_ndc(float *x, float *y, t_data *rt);
 // void	ft_screen(float *x_ndc, float *y_ndc, float *x_screen, float *y_screen);

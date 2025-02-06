@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transfo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 09:43:25 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/06 08:25:53 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/06 10:46:37 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,21 @@ int	select_obj(t_data *rt, int x, int y,t_nearest *near)
 
 	near->near_obj = NULL;
 	fct = init_fct(rt);
-	
 	if (y < rt->height && x < rt->width)
 	{
 		ft_set_cfct(fct, (float)x, (float)y, rt);
 		intersec_obj(fct, rt,near);
 		if (near->t_near > 0 && near->near_obj
 			&& near->type == SPHERE)
-			return (SPHERE);
+			return (free_fct(fct),SPHERE);
 		if (near->t_near > 0 && near->near_obj
 			&& near->type == PLANE)
-			return (PLANE);
+			return (free_fct(fct),PLANE);
 		if (near->t_near > 0 && near->near_obj
 			&& near->type == CYL)
-			return (CYL);
+			return (free_fct(fct),CYL);
 	}
-	return (-1);
+	return (free_fct(fct),-1);
 }
 void zoom_object_pos(t_nearest *near,int type)
 {

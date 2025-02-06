@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:46:34 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/03 10:05:24 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/06 10:40:16 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,10 @@ t_fct *init_fct(t_data *rt)
 	fct->as_wi = (2 * fct->as_z) * tan(rt->cam->rad_fov / 2);
 	fct->as_he = fct->as_ratio * fct->as_wi;
 	return (fct);
+}
+void free_fct(t_fct *fct)
+{
+	free(fct->pol);
+	free(fct->dir);
+	free(fct);
 }

@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:57:09 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/01 22:25:47 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/06 10:44:12 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void free_all(t_data *data)
 	if (data->cyl)
 		free_cyl(data->cyl);
 	free_light_cam_amb(data);
-	free(data->near);
+	// free(data->near);
 	free(data->mlx_ptr);
 	// free(data->win_ptr);
 	// free(data->img_ptr);

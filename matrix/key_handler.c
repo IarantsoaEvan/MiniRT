@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 08:11:45 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/06 09:30:36 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/06 10:11:13 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@ void	trp_following_x(t_nearest *near_moove, int keycode)
 	t_plane *plane;
 	t_cyl *cyl;
 	
-	if (near_moove->type == SPHERE && keycode == 65361)
+	if (near_moove->type == SPHERE && keycode == 65361 && near_moove->near_obj)
 	{
 		sphere = (t_sphere *)near_moove->near_obj;
 		sphere->coord->x -= 0.5;
 	}
-	if (near_moove->type == PLANE && keycode == 65361)
+	if (near_moove->type == PLANE && keycode == 65361 && near_moove->near_obj)
 	{
 		plane = (t_plane *)near_moove->near_obj;
 		plane->coord->x -= 0.5;
 	}
-	if (near_moove->type == CYL && keycode == 65361)
+	if (near_moove->type == CYL && keycode == 65361 && near_moove->near_obj)
 	{
 		cyl = (t_cyl *)near_moove->near_obj;
 		cyl->coord->x -= 0.5;
@@ -41,17 +41,17 @@ void	trn_following_x(t_nearest *near_moove, int keycode)
 	t_plane *plane;
 	t_cyl *cyl;
 	
-	if (near_moove->type == SPHERE && keycode == 65363)
+	if (near_moove->type == SPHERE && keycode == 65363 && near_moove->near_obj)
 	{
 		sphere = (t_sphere *)near_moove->near_obj;
 		sphere->coord->x += 0.5;
 	}
-	if (near_moove->type == PLANE && keycode == 65363)
+	if (near_moove->type == PLANE && keycode == 65363 && near_moove->near_obj)
 	{
 		plane = (t_plane *)near_moove->near_obj;
 		plane->coord->x += 0.5;
 	}
-	if (near_moove->type == CYL && keycode == 65363)
+	if (near_moove->type == CYL && keycode == 65363 && near_moove->near_obj)
 	{
 		cyl = (t_cyl *)near_moove->near_obj;
 		cyl->coord->x += 0.5;
