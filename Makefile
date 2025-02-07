@@ -32,6 +32,10 @@ SRC = 	parsing/init_data_utils.c\
 		diffuse_light/diffuse_object.c\
 		matrix/transfo.c\
 		matrix/key_handler.c\
+		matrix/trs_x.c\
+		matrix/trs_y.c\
+		matrix/mlx_rotation.c\
+		matrix/matrix_rot.c\
 		src/free_all.c\
 		src/main.c
 %.o: %.c

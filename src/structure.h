@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structure.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:59 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/06 21:04:46 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/07 08:42:53 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,12 @@ typedef struct s_fct
 	t_coord	*origin;
 }	t_fct;
 
+typedef struct s_comb
+{
+	int	flag_press;
+	
+}	t_comb;
+
 typedef struct s_data
 {
 	void	*mlx_ptr;
@@ -146,7 +152,9 @@ typedef struct s_data
 	int	bpp;
 	int	endian;
 	int	size_line;
-	int	flag_rot;
+	int	flag_rot_x;
+	int	flag_rot_y;
+	int	flag_rot_z;
 	t_ambiante	*ambiante;
 	t_camera	*cam;
 	t_light		*light;
@@ -155,6 +163,9 @@ typedef struct s_data
 	t_sphere	*sphere;
 	t_plane		*plane;
 	t_cyl		*cyl;
+	float	alpha;
+	float	beta;
+	float	teta;
 	float	width;
 	float	height;
 } t_data;
