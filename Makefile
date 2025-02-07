@@ -35,6 +35,7 @@ SRC = 	parsing/init_data_utils.c\
 		matrix/trs_x.c\
 		matrix/trs_y.c\
 		matrix/mlx_rotation.c\
+		matrix/matrix_rot.c\
 		src/free_all.c\
 		src/main.c
 %.o: %.c
