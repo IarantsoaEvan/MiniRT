@@ -6,7 +6,7 @@
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 08:11:45 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/07 08:49:34 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/07 09:30:01 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	keyboard_handler(int keycode, t_data *rt)
 	trs_x(rt->near_moove, keycode);
 	trs_y(rt->near_moove, keycode);
 	rot_x(keycode, rt, rt->near_moove);
+	rot_y(keycode, rt, rt->near_moove);
+	rot_z(keycode, rt, rt->near_moove);
 	mlx_destroy_image(rt->mlx_ptr, rt->img_ptr);
 	rt->img_ptr = mlx_new_image(rt->mlx_ptr, rt->width, rt->height);
 	ray_tracing(rt);
