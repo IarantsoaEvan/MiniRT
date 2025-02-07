@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:08:35 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/04 10:15:29 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/07 08:23:24 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ t_color	*apply_shadow_color(t_color *col_obj)
 	color->r = (col_obj->r ) * 0.3;
 	color->g = (col_obj->g ) * 0.3;
 	color->b = (col_obj->b ) * 0.3;
+	free(col_obj);
 	return (color);
 }

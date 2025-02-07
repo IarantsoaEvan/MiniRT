@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 08:11:45 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/06 21:49:07 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/07 08:13:31 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void	trp_following_x(t_nearest *near_moove, int keycode)
 		plane->coord->x -= 0.5;
 	}
 	if ((near_moove->type == CYL || near_moove->type == DISK)
-		&& keycode == 65361 && (near_moove->near_obj || near_moove->cyl_parent))
+		&& keycode == 65361 && near_moove->near_obj )
 	{
-		if (near_moove->type == DISK)
+		if (near_moove->type == DISK && near_moove->cyl_parent)
 			cyl = near_moove->cyl_parent;
 		else
 			cyl = (t_cyl *)near_moove->near_obj;
@@ -56,7 +56,7 @@ void	trn_following_x(t_nearest *near_moove, int keycode)
 		plane->coord->x += 0.5;
 	}
 	if ((near_moove->type == CYL || near_moove->type == DISK)
-		&& keycode == 65363 && (near_moove->near_obj || near_moove->cyl_parent))
+		&& keycode == 65363 && near_moove->near_obj)
 	{
 		if (near_moove->type == DISK)
 			cyl = near_moove->cyl_parent;
