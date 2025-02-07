@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   trs_y.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 10:24:27 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/06 10:33:30 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/07 09:12:39 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,13 @@ void	trp_following_y(t_nearest *near_moove, int keycode)
 		plane = (t_plane *)near_moove->near_obj;
 		plane->coord->y -= 0.5;
 	}
-	if (near_moove->type == CYL && keycode == 65364 && near_moove->near_obj)
+	if ((near_moove->type == CYL || near_moove->type == DISK)
+		&& keycode == 65364 && near_moove->near_obj )
 	{
-		cyl = (t_cyl *)near_moove->near_obj;
+		if (near_moove->type == DISK && near_moove->cyl_parent)
+			cyl = near_moove->cyl_parent;
+		else
+			cyl = (t_cyl *)near_moove->near_obj;
 		cyl->coord->y -= 0.5;
 	}
 }
@@ -51,9 +55,13 @@ void	trn_following_y(t_nearest *near_moove, int keycode)
 		plane = (t_plane *)near_moove->near_obj;
 		plane->coord->y += 0.5;
 	}
-	if (near_moove->type == CYL && keycode == 65362 && near_moove->near_obj)
+	if ((near_moove->type == CYL || near_moove->type == DISK)
+		&& keycode == 65362 && near_moove->near_obj)
 	{
-		cyl = (t_cyl *)near_moove->near_obj;
+		if (near_moove->type == DISK)
+			cyl = near_moove->cyl_parent;
+		else
+			cyl = (t_cyl *)near_moove->near_obj;
 		cyl->coord->y += 0.5;
 	}
 }
