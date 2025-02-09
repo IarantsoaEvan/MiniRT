@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:01:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/06 21:58:37 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/08 22:28:59 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void get_abc_cyl(t_coord *origin,t_fct *fct,t_cyl *cyl)
 	float scal_dir;
 
 	norm_vec = normalize_vector(cyl->vector);
+	// printf("Mande\n");
+	// printf("real norm_vec = %f %f %f\n",norm_vec->x,norm_vec->y,norm_vec->z);
 	x = ft_soustraction(origin,cyl->coord);
 	scal_dir = ft_scal(fct->dir,fct->dir);
 	fct->pol->a = scal_dir - powf(ft_scal(fct->dir,norm_vec),2);
