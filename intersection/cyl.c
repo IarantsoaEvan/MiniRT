@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:01:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/09 11:03:33 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/09 19:20:03 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,13 +91,13 @@ float get_t_cyl(t_fct *fct, float delta, t_coord *origin,t_cyl *cyl)
     {
         t1 = (((-1) * fct->pol->b) - (sqrt(delta))) / (2 * fct->pol->a);
         t2 = (((-1) * fct->pol->b) + (sqrt(delta))) / (2 * fct->pol->a);
-        if (t1 > 0)
+        if (t1 > 0.001)
         {
             cyl->m = get_m_scal(fct->dir, origin, t1,cyl);
             if (cyl->m >= -cyl->height / 2 && cyl->m <= cyl->height / 2)
                 distance = t1;
         }
-        if (t2 > 0)
+        if (t2 > 0.001)
         {
            cyl->m = get_m_scal(fct->dir, origin, t2,cyl);
             if (cyl->m >= -cyl->height / 2 &&cyl->m <= cyl->height / 2 && (distance < 0 || t2 < t1))
@@ -185,14 +185,14 @@ float	get_base_cyl(t_coord *dir, t_coord *origin,  t_cyl *cyl,int check_pos)
 
 void intersec_disk_cyl(t_nearest *near,t_cyl *tmp,float t_top,float t_bot)
 {
-	if (t_top > 0 && t_top < near->t_near)
+	if (t_top > 0.001 && t_top < near->t_near)
 	{
 		near->t_near = t_top;
 		near->near_obj = tmp->disk_top;
 		near->cyl_parent = tmp;
 		near->type = DISK; 
 	}
-	if (t_bot > 0 && t_bot < near->t_near)
+	if (t_bot > 0.001 && t_bot < near->t_near)
 	{
 		near->t_near = t_bot;
 		near->near_obj = tmp->disk_bot;
