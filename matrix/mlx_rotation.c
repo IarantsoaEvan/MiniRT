@@ -3,9 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_rotation.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:21:02 by irabesan          #+#    #+#             */
+/*   Updated: 2025/02/07 10:12:41 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +41,11 @@ void select_sign(int keycode, float angle, t_coord *vect, t_data *rt)
 	if (keycode == 45)
 	{
 		angle -= 0.3;
-		angle = angle - 0.3;
 		select_axe(rt, angle, vect);
 	}
 	if (keycode == 61)
 	{
 		angle += 0.3;
-		angle = angle + 0.3;
 		select_axe(rt, angle, vect);
 	}
 }
