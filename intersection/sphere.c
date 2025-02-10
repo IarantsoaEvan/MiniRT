@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:40:48 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/10 10:25:24 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/10 21:51:48 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int create_sphere_rgb_finale(float t,t_fct *fct,t_data *rt,t_sphere *sphere)
 	rgb.rgb_diff = get_rgb_diff(sphere->normal
 		,rt->light->normal,rt->light->ratio,sphere->color);
 	rgb.rgb_finale = add_amb_and_diff(rgb.color,rgb.rgb_diff);
-	if (rgb.flag == SHADOW)
+	if (rgb.flag == SHADOW && rt->light->ratio > 0.01)
 		rgb.rgb_finale = apply_shadow_color(rgb.rgb_finale);
 	rgb.rgb = create_trgb(rgb.rgb_finale->r, rgb.rgb_finale->g, rgb.rgb_finale->b);
 	free(rt->light->normal);
