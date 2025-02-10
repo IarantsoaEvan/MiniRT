@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:21:02 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/10 09:31:18 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/10 09:40:22 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	select_axe(t_data *rt, float angle, t_coord *vect)
 	if (rt->flag_rot_z == 1)
 		rot_foll_z(vect, angle);
 	vect = normalize_vector(vect);
-	printf("x = %f || y == %f || z == %f\n", vect->x, vect->y, vect->z);
 	return ;
 
 }
@@ -40,12 +39,12 @@ void select_sign(int keycode, float angle, t_coord *vect, t_data *rt)
 {
 	if (keycode == 45)
 	{
-		angle -= 0.3;
+		angle -= 0.1;
 		select_axe(rt, angle, vect);
 	}
 	if (keycode == 61)
 	{
-		angle += 0.3;
+		angle += 0.1;
 		select_axe(rt, angle, vect);
 	}
 }

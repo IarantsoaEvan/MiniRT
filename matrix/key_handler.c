@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 08:11:45 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/10 08:48:20 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/10 09:37:23 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,6 @@ void	trs_light(int keycode, t_light *light)
 {
 	if (keycode == 49 || keycode == 50)
 		ratio_light(keycode, light);
-	// {
-	// 	if (light->ratio >= 0 && light->ratio <= 1)
-	// 		light->ratio -= 0.2;
-	// }
-	// if (keycode == 50)
-	// {
-	// 	if (light->ratio >= 0 && light->ratio <= 1)
-	// 		light->ratio += 0.2;
-	// }
-	// if (light->ratio > 1.0f)
-	// 	light->ratio = 1.0f;
-	// if (light->ratio < 0.0f)
-	// 	light->ratio = 0.0f;
-	// printf("light->ratio = %f\n",light->ratio);
 	if (keycode == 100)
 		light->coord->x += 0.9;
 	if (keycode == 119)
@@ -74,6 +60,6 @@ int	keyboard_handler(int keycode, t_data *rt)
 	rt->img_ptr = mlx_new_image(rt->mlx_ptr, rt->width, rt->height);
 	ray_tracing(rt);
 	mlx_put_image_to_window(rt->mlx_ptr, rt->win_ptr, rt->img_ptr, 0, 0);
-	printf("keycode = %d\n",keycode);
+	// printf("keycode = %d\n",keycode);
 	return (0);
 }
