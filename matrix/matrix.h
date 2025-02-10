@@ -6,7 +6,7 @@
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 09:42:07 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/07 08:31:12 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/07 09:29:18 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	rot_foll_y(t_coord *rot, float beta);
 void	rot_foll_z(t_coord *rot, float teta);
 int no_comb(int keycode, t_data *rt);
 void rot_x(int keycode, t_data *rt, t_nearest *near);
+void rot_y(int keycode, t_data *rt, t_nearest *near);
+void rot_z(int keycode, t_data *rt, t_nearest *near);
 
 
 #endif
