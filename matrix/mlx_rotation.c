@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_rotation.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:21:02 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/10 14:41:56 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/10 20:01:37 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int no_comb(int keycode, t_data *rt)
 {
 	
+	esc_win(keycode, rt);
 	if (keycode == 120)
 		rt->flag_rot_x = 0;
 	if (keycode == 121)
@@ -34,8 +35,7 @@ void	select_axe(t_data *rt, float angle, t_coord *vect)
 		rot_foll_y(vect, angle);
 	if (rt->flag_rot_z == 1)
 		rot_foll_z(vect, angle);
-	vect = normalize_vector(vect);
-	printf("x = %f || y == %f || z == %f\n", vect->x, vect->y, vect->z);
+	// vect = normalize_vector(vect);
 	return ;
 
 }
@@ -68,9 +68,13 @@ void rot_x(int keycode, t_data *rt, t_nearest *near)
 	t_cyl *cyl;
 
 	change_flag_rot(keycode, rt);
-	if (near->type == CYL && rt->flag_rot_x == 1)
+	if ((near->type == CYL || near->type == DISK)
+		&& rt->flag_rot_x == 1 && near->near_obj)
 	{
-		cyl = (t_cyl *)near->near_obj;
+		if (near->type == DISK)
+			cyl = near->cyl_parent;
+		else
+			cyl = (t_cyl *)near->near_obj;
 		select_sign(keycode, rt->alpha, cyl->vector,rt);
 	}
 	if (near->type == PLANE && rt->flag_rot_x == 1)
@@ -86,9 +90,13 @@ void rot_y(int keycode, t_data *rt, t_nearest *near)
 	t_cyl *cyl;
 
 	change_flag_rot(keycode, rt);
-	if (near->type == CYL && rt->flag_rot_y == 1)
+	if ((near->type == CYL || near->type == DISK)
+	&& rt->flag_rot_y == 1 && near->near_obj)
 	{
-		cyl = (t_cyl *)near->near_obj;
+		if (near->type == DISK)
+			cyl = near->cyl_parent;
+		else
+			cyl = (t_cyl *)near->near_obj;
 		select_sign(keycode, rt->beta, cyl->vector,rt);
 	}
 	if (near->type == PLANE && rt->flag_rot_y == 1)
@@ -104,9 +112,13 @@ void rot_z(int keycode, t_data *rt, t_nearest *near)
 	t_cyl *cyl;
 
 	change_flag_rot(keycode, rt);
-	if (near->type == CYL && rt->flag_rot_z == 1)
+	if ((near->type == CYL || near->type == DISK)
+		&& rt->flag_rot_z == 1 && near->near_obj)
 	{
-		cyl = (t_cyl *)near->near_obj;
+		if (near->type == DISK)
+			cyl = near->cyl_parent;
+		else
+			cyl = (t_cyl *)near->near_obj;
 		select_sign(keycode, rt->teta, cyl->vector, rt);
 	}
 	if (near->type == PLANE && rt->flag_rot_z == 1)

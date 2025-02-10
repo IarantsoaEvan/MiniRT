@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transfo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 09:43:25 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/10 12:26:33 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/10 19:29:16 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,6 @@ int mouse_handler(int keycode , int x, int y, t_data *rt)
 	static int  type;
 	// static t_nearest near;
 
-		printf("%d\n", keycode);
 	if (keycode == 1)
 		type = select_obj(rt,  x,  y,rt->near_moove);	
 	if (keycode == 4 || keycode == 5)
