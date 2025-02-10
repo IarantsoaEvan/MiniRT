@@ -6,7 +6,6 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:21:02 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/08 22:30:56 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +24,6 @@ int no_comb(int keycode, t_data *rt)
 
 void	select_axe(t_data *rt, float angle, t_coord *vect)
 {
-	// vect = normalize_vector(vect);
 	if (rt->flag_rot_x == 1)
 		rot_foll_x(vect, angle);
 	if (rt->flag_rot_y == 1)
@@ -33,7 +31,7 @@ void	select_axe(t_data *rt, float angle, t_coord *vect)
 	if (rt->flag_rot_z == 1)
 		rot_foll_z(vect, angle);
 	vect = normalize_vector(vect);
-	// printf("x = %f || y == %f || z == %f\n", vect->x, vect->y, vect->z);
+	printf("x = %f || y == %f || z == %f\n", vect->x, vect->y, vect->z);
 	return ;
 
 }
@@ -41,11 +39,13 @@ void select_sign(int keycode, float angle, t_coord *vect, t_data *rt)
 {
 	if (keycode == 45)
 	{
+		angle -= 0.3;
 		angle = angle - 0.3;
 		select_axe(rt, angle, vect);
 	}
 	if (keycode == 61)
 	{
+		angle += 0.3;
 		angle = angle + 0.3;
 		select_axe(rt, angle, vect);
 	}
@@ -102,12 +102,9 @@ void rot_z(int keycode, t_data *rt, t_nearest *near)
 	t_cyl *cyl;
 
 	change_flag_rot(keycode, rt);
-	if ((near->type == CYL || near->type == DISK)&& rt->flag_rot_z == 1)
+	if (near->type == CYL && rt->flag_rot_z == 1)
 	{
-		if (near->type == DISK)
-			cyl = (t_cyl *)near->cyl_parent;
-		else
-			cyl = (t_cyl *)near->near_obj;
+		cyl = (t_cyl *)near->near_obj;
 		select_sign(keycode, rt->teta, cyl->vector, rt);
 	}
 	if (near->type == PLANE && rt->flag_rot_z == 1)

@@ -6,7 +6,6 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 10:33:33 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/09 19:42:34 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +30,20 @@ void	rot_foll_y(t_coord *rot, float beta)
 
 	tmp = rot->x;
 	
+	printf("beta = %f\n",beta);
+	rot->x = tmp * cos(beta) + rot->z * sin(beta);
+	rot->z = -(tmp) * sin(beta) + rot->z * cos(beta);
+	// printf("beta = %f\n",beta);
 	// printf("beta = %f\n",beta);
 	rot->x = tmp * cos(beta) + rot->z * sin(beta);
 	rot->z = -(tmp) * sin(beta) + rot->z * cos(beta);
-
 }
 
 void	rot_foll_z(t_coord *rot, float teta)
 {
 	float	tmp;
 
-	// printf("teta = %f\n",teta);
+	printf("teta = %f\n",teta);
 	tmp = rot->x;
 	// printf("Avnat rot->x = %f\n",rot->x);
 	// printf("Avnat rot->y = %f\n\n",rot->y);
