@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ambient.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:08:35 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/07 08:23:24 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/10 10:25:32 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

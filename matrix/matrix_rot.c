@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_rot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 10:33:33 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/10 09:37:54 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/10 09:02:34 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	rot_foll_y(t_coord *rot, float beta)
 
 	tmp = rot->x;
 	
+	printf("beta = %f\n",beta);
 	rot->x = tmp * cos(beta) + rot->z * sin(beta);
 	rot->z = -(tmp) * sin(beta) + rot->z * cos(beta);
 	// printf("beta = %f\n",beta);
@@ -36,6 +37,7 @@ void	rot_foll_z(t_coord *rot, float teta)
 {
 	float	tmp;
 
+	printf("teta = %f\n",teta);
 	tmp = rot->x;
 	rot->x = tmp * cos(teta) - rot->y * sin(teta);
 	rot->y = tmp * sin(teta) + rot->y * cos(teta);

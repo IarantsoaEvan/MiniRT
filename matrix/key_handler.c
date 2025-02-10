@@ -3,15 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 08:11:45 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/10 09:37:23 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/10 14:44:39 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "matrix.h"
+
+void	trs_cam(int keycode, t_data *rt)
+{
+	if (keycode == 99)
+	{
+		rt->flag_cam = 1;
+		// printf("flag == 1\n");
+	}
+	if (keycode == 65361 && rt->flag_cam == 1)
+		rt->cam->coord->x -= 0.2;
+	if (keycode == 65363 && rt->flag_cam == 1)
+		rt->cam->coord->x += 0.2;
+	if (keycode == 65364 && rt->flag_cam == 1)
+		rt->cam->coord->y -= 0.2;
+	if (keycode == 65362 && rt->flag_cam == 1)
+		rt->cam->coord->y += 0.2;
+}
 
 void ratio_light(int keycode, t_light *light)
 {
@@ -50,6 +67,7 @@ void	trs_light(int keycode, t_light *light)
 }
 int	keyboard_handler(int keycode, t_data *rt)
 {
+	trs_cam(keycode, rt);
 	trs_light(keycode, rt->light);
 	trs_x(rt->near_moove, keycode);
 	trs_y(rt->near_moove, keycode);
@@ -60,6 +78,5 @@ int	keyboard_handler(int keycode, t_data *rt)
 	rt->img_ptr = mlx_new_image(rt->mlx_ptr, rt->width, rt->height);
 	ray_tracing(rt);
 	mlx_put_image_to_window(rt->mlx_ptr, rt->win_ptr, rt->img_ptr, 0, 0);
-	// printf("keycode = %d\n",keycode);
 	return (0);
 }

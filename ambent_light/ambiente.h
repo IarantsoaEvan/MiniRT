@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ambiente.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:09:26 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/03 12:18:17 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/10 10:56:32 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
