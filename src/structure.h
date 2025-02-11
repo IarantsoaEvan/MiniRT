@@ -6,7 +6,7 @@
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:59 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/11 09:17:00 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/11 10:02:16 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,9 @@ typedef struct s_data
 	int	flag_camy;
 	int flag_camz;
 	int	flag_cam;
+	int	flag_radius;
+	int flag_rdisk;
+	int	flag_hcyl;
 	t_ambiante	*ambiante;
 	t_camera	*cam;
 	t_light		*light;

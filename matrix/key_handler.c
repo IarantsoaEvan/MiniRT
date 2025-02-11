@@ -6,7 +6,7 @@
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 08:11:45 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/11 09:34:35 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/11 10:06:23 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	trs_cam(int keycode, t_data *rt)
 		rt->cam->coord->z -= 0.2;
 	if (keycode == 65508 && rt->flag_cam == 1)
 		rt->cam->coord->z += 0.2;
-	//  printf("keycode = %d\n", keycode);
+	printf("keycode = %d\n", keycode);
 }
 
 void ratio_light(int keycode, t_light *light)

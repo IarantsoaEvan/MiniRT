@@ -6,7 +6,7 @@
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:21:02 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/11 09:30:42 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/11 10:43:32 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ int no_comb(int keycode, t_data *rt)
 		rt->flag_camy = 0;
 	if (keycode == 53)
 		rt->flag_camz = 0;
+	if (keycode == 114)
+		rt->flag_radius = 0;
+	if (keycode == 104)
+		rt->flag_hcyl = 0;
+	if (keycode == 108)
+		rt->flag_rdisk = 0;
 	return (0);
 }
 
@@ -72,6 +78,12 @@ void	change_flag_rot(int keycode, t_data *rt)
 		rt->flag_camy = 1;
 	if (keycode == 53)
 		rt->flag_camz = 1;
+	if (keycode == 114)
+		rt->flag_radius = 1;
+	if (keycode == 104)
+		rt->flag_hcyl = 1;
+	if (keycode == 108)
+		rt->flag_rdisk = 1;
 }
 
 void rot_x(int keycode, t_data *rt, t_nearest *near)
