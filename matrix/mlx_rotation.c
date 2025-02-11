@@ -6,7 +6,7 @@
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:21:02 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/11 08:32:46 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/11 09:30:42 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,24 @@ int no_comb(int keycode, t_data *rt)
 		rt->flag_rot_z = 0;
 	if (keycode == 99)
 		rt->flag_cam = 0;
+	if (keycode == 51)
+		rt->flag_camx = 0;
+	if (keycode == 52)
+		rt->flag_camy = 0;
+	if (keycode == 53)
+		rt->flag_camz = 0;
 	return (0);
 }
 
 void	select_axe(t_data *rt, float angle, t_coord *vect)
 {
-	if (rt->flag_rot_x == 1)
+	if (rt->flag_rot_x == 1 || rt->flag_camx == 1)
 		rot_foll_x(vect, angle);
-	if (rt->flag_rot_y == 1)
+	if (rt->flag_rot_y == 1 || rt->flag_camy == 1)
 		rot_foll_y(vect, angle);
-	if (rt->flag_rot_z == 1)
+	if (rt->flag_rot_z == 1 || rt->flag_camz == 1)
 		rot_foll_z(vect, angle);
-	// vect = normalize_vector(vect);
+
 	return ;
 
 }
@@ -60,6 +66,12 @@ void	change_flag_rot(int keycode, t_data *rt)
 		rt->flag_rot_y = 1;
 	if (keycode == 122)
 		rt->flag_rot_z = 1;
+	if (keycode == 51)
+		rt->flag_camx = 1;
+	if (keycode == 52)
+		rt->flag_camy = 1;
+	if (keycode == 53)
+		rt->flag_camz = 1;
 }
 
 void rot_x(int keycode, t_data *rt, t_nearest *near)

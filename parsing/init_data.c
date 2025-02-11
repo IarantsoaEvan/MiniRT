@@ -6,7 +6,7 @@
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 09:36:21 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/10 11:03:05 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/11 09:14:45 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,14 @@ t_data *init_data(void)
 	data->flag_rot_y = 0;
 	data->flag_rot_z = 0;
 	data->flag_cam = 0;
+	data->flag_camx = 0;
+	data->flag_camy = 0;
+	data->flag_camz = 0;
 	data->alpha = 0.0;
 	data->beta = 0.0;
 	data->teta = 0.0;
+	data->alpha_cam = 0.0;
+	data->beta_cam = 0.0;
+	data->teta_cam = 0.0;
 	return (data);
 }

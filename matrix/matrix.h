@@ -6,7 +6,7 @@
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 09:42:07 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/07 09:29:18 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/11 09:21:38 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ int no_comb(int keycode, t_data *rt);
 void rot_x(int keycode, t_data *rt, t_nearest *near);
 void rot_y(int keycode, t_data *rt, t_nearest *near);
 void rot_z(int keycode, t_data *rt, t_nearest *near);
+void	change_flag_rot(int keycode, t_data *rt);
+void select_sign(int keycode, float angle, t_coord *vect, t_data *rt);
+void	select_axe(t_data *rt, float angle, t_coord *vect);
 
 
 #endif
