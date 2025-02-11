@@ -6,7 +6,7 @@
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:59 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/10 11:02:49 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/11 13:56:19 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,20 @@ typedef struct s_fct
 	t_coord *dir;
 	t_coord	*origin;
 }	t_fct;
+
+typedef struct s_phong
+{
+	float	intensity;
+	float	k;
+	int	n_pw;
+	t_coord	*ort_light;
+	t_coord	*ort_lr;
+	t_coord	*ort_le;
+	t_coord *obj_normal;
+
+
+
+}	t_phong;
 
 typedef struct s_comb
 {
