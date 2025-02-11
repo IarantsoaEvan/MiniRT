@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_rotation.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:21:02 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/10 20:01:37 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/11 08:32:46 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
