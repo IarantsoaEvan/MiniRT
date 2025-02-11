@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:01:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/06 21:58:37 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/11 14:05:35 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,29 @@ int	create_cyl_rgb_finale(float t,t_fct *fct,t_data *rt, t_cyl *cyl)
 	// t_color *rgb_finale;
 	// int rgb;
 	t_rgb rgb;
+	t_nearest cyl_current;
+	
+	
+	cyl_current.near_obj = cyl;
+	cyl_current.type = CYL;
+	cyl_current.id = cyl->id;
 	
 	rgb.point = ft_addition(rt->cam->coord,ft_scal_one(fct->dir, t));
 	rgb.flag = NO_SHADOW;
 	rgb.color = apply_amb(cyl->color, rt->ambiante->ratio);
-	rgb.flag = ray_shadowing(rt, rgb.point,cyl->id);
+	rgb.flag = ray_shadowing(rt, rgb.point,&cyl_current);
 	rt->light->normal = get_normal_light(rt,rgb.point);
 	cyl->normal = get_normal_cyl(rt, rgb.point, cyl);
 	rgb.rgb_diff = get_rgb_diff(cyl->normal
 		,rt->light->normal,rt->light->ratio,cyl->color);
 	rgb.rgb_finale = add_amb_and_diff(rgb.color,rgb.rgb_diff);
 	if (rgb.flag == SHADOW)
-		rgb.rgb_finale = apply_shadow_color(rgb.rgb_finale);
+	{
+		if (rgb.rgb_finale)
+			free(rgb.rgb_finale);
+		rgb.rgb_finale = apply_shadow_color(rgb.color);
+	}
+		
 	rgb.rgb = create_trgb(rgb.rgb_finale->r, rgb.rgb_finale->g, rgb.rgb_finale->b);
 	free(rt->light->normal);
 	// free(point);

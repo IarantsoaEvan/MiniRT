@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 19:04:58 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/06 21:54:14 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/11 14:05:30 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,27 @@ int create_plane_rgb_finale(float t,t_fct *fct,t_data *rt,t_plane *plane)
 	// t_color *rgb_finale;
 	// int rgb;
 	t_rgb rgb;
+	t_nearest pl_current;
+	
+	
+	pl_current.near_obj = plane;
+	pl_current.type = PLANE;
+	pl_current.id = plane->id;
 	
 	rgb.point = ft_addition(rt->cam->coord,ft_scal_one(fct->dir, t));
 	rgb.flag = NO_SHADOW;
 	rgb.color = apply_amb(plane->color, rt->ambiante->ratio);
-	rgb.flag = ray_shadowing(rt, rgb.point,plane->id);
+	rgb.flag = ray_shadowing(rt, rgb.point,&pl_current);
 	rt->light->normal = get_normal_light(rt,rgb.point);
 	rgb.rgb_diff = get_rgb_diff(plane->vector
 		,rt->light->normal,rt->light->ratio,plane->color);
 	rgb.rgb_finale = add_amb_and_diff(rgb.color,rgb.rgb_diff);
-	if (rgb.flag == SHADOW)
-		rgb.rgb_finale = apply_shadow_color(rgb.rgb_finale);
+if (rgb.flag == SHADOW)
+	{
+		if (rgb.rgb_finale)
+			free(rgb.rgb_finale);
+		rgb.rgb_finale = apply_shadow_color(rgb.color);
+	}
 	rgb.rgb = create_trgb(rgb.rgb_finale->r, rgb.rgb_finale->g, rgb.rgb_finale->b);
 	free(rt->light->normal);
 	free_rgb(&rgb);
