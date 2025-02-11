@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:01:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/11 14:05:35 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/11 20:23:38 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,13 +100,13 @@ float get_t_cyl(t_fct *fct, float delta, t_coord *origin,t_cyl *cyl)
     {
         t1 = (((-1) * fct->pol->b) - (sqrt(delta))) / (2 * fct->pol->a);
         t2 = (((-1) * fct->pol->b) + (sqrt(delta))) / (2 * fct->pol->a);
-        if (t1 > 0)
+        if (t1 > 0.0001)
         {
             cyl->m = get_m_scal(fct->dir, origin, t1,cyl);
             if (cyl->m >= -cyl->height / 2 && cyl->m <= cyl->height / 2)
                 distance = t1;
         }
-        if (t2 > 0)
+        if (t2 > 0.0001)
         {
            cyl->m = get_m_scal(fct->dir, origin, t2,cyl);
             if (cyl->m >= -cyl->height / 2 &&cyl->m <= cyl->height / 2 && (distance < 0 || t2 < t1))
@@ -183,7 +183,7 @@ float	get_base_cyl(t_coord *dir, t_coord *origin,  t_cyl *cyl,int check_pos)
 	// norm = normalize_vector(cyl->disk->vector);
 	t_disk = ((-1) * (ft_scal(xc,norm))) / ft_scal(dir,norm);
 	impact = ft_addition(origin, ft_scal_one(dir, t_disk));
-	if (t_disk > 0.001 && lenght_vector(ft_soustraction(impact, disk_coord)) <= cyl->diam /  2)
+	if (t_disk > 0.0001 && lenght_vector(ft_soustraction(impact, disk_coord)) <= cyl->diam /  2)
 		return (free(impact),free(xc),free(norm),t_disk);
 	free(impact);
 	// free_disk(cyl->disk);
@@ -194,14 +194,14 @@ float	get_base_cyl(t_coord *dir, t_coord *origin,  t_cyl *cyl,int check_pos)
 
 void intersec_disk_cyl(t_nearest *near,t_cyl *tmp,float t_top,float t_bot)
 {
-	if (t_top > 0 && t_top < near->t_near)
+	if (t_top > 0.0001 && t_top < near->t_near)
 	{
 		near->t_near = t_top;
 		near->near_obj = tmp->disk_top;
 		near->cyl_parent = tmp;
 		near->type = DISK; 
 	}
-	if (t_bot > 0 && t_bot < near->t_near)
+	if (t_bot > 0.0001 && t_bot < near->t_near)
 	{
 		near->t_near = t_bot;
 		near->near_obj = tmp->disk_bot;
@@ -223,7 +223,7 @@ void intersec_cyl(t_fct *fct,t_data *rt,t_nearest *near)
 		t = get_t_cyl(fct, get_delta(fct->pol), rt->cam->coord,tmp);
 		t_top = get_base_cyl(fct->dir, rt->cam->coord, tmp,1);
 		t_bot = get_base_cyl(fct->dir, rt->cam->coord, tmp,0);
-		if (t > 0 && t < near->t_near)
+		if (t > 0.0001 && t < near->t_near)
 		{
 			near->t_near = t;
 			near->near_obj = tmp;
