@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:01:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/12 11:31:19 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:44:13 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	create_cyl_rgb_finale(float t,t_fct *fct,t_data *rt, t_cyl *cyl)
 	// t_color *rgb_diff;
 	// t_color *rgb_finale;
 	// int rgb;
+	float scal_nl;
 	t_rgb rgb;
 	t_nearest cyl_current;
 	
@@ -47,11 +48,19 @@ int	create_cyl_rgb_finale(float t,t_fct *fct,t_data *rt, t_cyl *cyl)
 	rgb.flag = NO_SHADOW;
 	rgb.color = apply_amb(cyl->color, rt->ambiante->ratio);
 	rgb.flag = ray_shadowing(rt, rgb.point,&cyl_current);
+
 	rt->light->normal = get_normal_light(rt,rgb.point);
+
 	cyl->normal = get_normal_cyl(rt, rgb.point, cyl);
+	
 	rgb.rgb_diff = get_rgb_diff(cyl->normal
 		,rt->light->normal,rt->light->ratio,cyl->color);
-	rgb.rgb_finale = add_amb_and_diff(rgb.color,rgb.rgb_diff);
+
+	scal_nl = ft_scal(cyl->normal,rt->light->normal);
+	if (scal_nl < 0)
+		rgb.rgb_finale = apply_shadow_color(rgb.color);
+	else
+		rgb.rgb_finale = add_amb_and_diff(rgb.color,rgb.rgb_diff);
 	if (rgb.flag == SHADOW)
 	{
 		if (rgb.rgb_finale)
