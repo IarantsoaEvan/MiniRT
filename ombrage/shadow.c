@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 08:00:09 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/12 14:42:31 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/12 20:14:52 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,51 +131,6 @@ int intersec_obj_lum(float t_lum,float t_near)
 	return (NO_SHADOW);
 }
 
-// int check_self(t_nearest *current,t_fct *fct)
-// {
-// 	float te;
-// 	t_cyl *cyl;
-// 	float t_top;
-// 	float t_bot;
-// 	float t;
-	
-	
-// 	te = INFINITY;
-// 	cyl = NULL;
-// 	if (current->type == SPHERE)
-// 	{
-// 		ft_set_abc_sphere(fct,(t_sphere *)current->near_obj,fct->origin);
-// 		te = get_t_sphere(fct->pol, get_delta(fct->pol));
-// 		if (te > 0.001 )
-// 			return(0);
-// 	}
-// 	if (current->type == CYL)
-// 	{
-// 		cyl = (t_cyl *)current->near_obj;
-// 		get_abc_cyl(fct->origin,fct,(t_cyl *)current->near_obj);
-// 		t = get_t_cyl(fct, get_delta(fct->pol), fct->origin,cyl);
-// 		// t_top = get_base_cyl(fct->dir, fct->origin,cyl ,1);
-// 		// t_bot = get_base_cyl(fct->dir, fct->origin, cyl,0);
-// 		t_top = get_t_plane(fct->dir,fct->origin,cyl->disk_top);
-// 		t_bot = get_t_plane(fct->dir,fct->origin,cyl->disk_bot);
-		
-// 		if (t_top > 0.0001 && t_top < t &&  t_top < t_bot)
-// 			return (0);	
-// 		if (t_bot > 0.0001 && t_bot < t &&  t_bot < t_top)
-// 			return (0);	
-// 		if (t > 0.0001)
-// 			return (0);
-// 	}
-// 	if (current->type == PLANE || current->type == DISK)
-// 	{
-// 		t = get_t_plane(fct->dir,fct->origin,(t_plane *)current->near_obj);
-// 		if (t > 0.001)
-// 			return (0);
-			
-// 	}
-// 	return (1);
-// }
-
 int	ray_shadowing(t_data *rt, t_coord *impact,t_nearest *current)
 {
 	
@@ -185,39 +140,28 @@ int	ray_shadowing(t_data *rt, t_coord *impact,t_nearest *current)
 	float t_near;
 	// float te;
 	int shadow;
-	t_plane *plane;
+	// t_plane *plane;
 	// t_sphere *sphere;
 
 	
 	shadow = NO_SHADOW;
 	t_near = INFINITY;
-	// fct.origin = impact;
-	if (current->type == SPHERE)
-		fct.origin = vect_add(impact,ft_scal_one(get_normal_sphere(impact,(t_sphere *)current->near_obj),0.0001));
-	if (current->type == PLANE)
-	{
-		plane = (t_plane *)current->near_obj;
-		fct.origin = vect_add(impact,ft_scal_one(plane->vector,0.0001));
-	}	
-	if (current->type == CYL)
-		fct.origin = vect_add(impact,ft_scal_one(get_normal_cyl(rt,impact,(t_cyl *)current->near_obj),0.0001));
+	fct.origin = impact;
+	// if (current->type == SPHERE)
+	// 	fct.origin = vect_add(impact,ft_scal_one(get_normal_sphere(impact,(t_sphere *)current->near_obj),0.0001));
+	// if (current->type == PLANE)
+	// {
+	// 	plane = (t_plane *)current->near_obj;
+	// 	fct.origin = vect_add(impact,ft_scal_one(plane->vector,0.0001));
+	// }	
+	// if (current->type == CYL)
+	// 	fct.origin = vect_add(impact,ft_scal_one(get_normal_cyl(rt,impact,(t_cyl *)current->near_obj),0.0001));
 	fct.pol = init_pol();
 	fct.dir = normalize_vector_with_free(ft_soustraction(rt->light->coord, fct.origin));
 	fct.origin = vect_add(impact,ft_scal_one(fct.dir,0.001));
 
 	tmp_dir = ft_soustraction(rt->light->coord, fct.origin);
 	t_lum = lenght_vector(tmp_dir);
-	// if (check_self(current,&fct))
-	// 	shadow = NO_SHADOW;
-	// if (current->type == SPHERE)
-	// {
-	// 	// printf("Miditra ato\n");
-	// 	sphere = (t_sphere *)current->near_obj;
-	// 	ft_set_abc_sphere(&fct,sphere,fct.origin);
-	// 	te = get_t_sphere(fct.pol, get_delta(fct.pol));
-	// 	if (te > 0.001)
-	// 		return shadow;
-	// }
 	intersec_lum_sphere(&fct,rt, current,&t_near);
 	intersec_lum_plane(&fct, rt, current,&t_near);
 	intersec_lum_cyl(&fct, rt, current, &t_near);

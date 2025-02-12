@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_rotation.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:21:02 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/11 10:43:32 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/12 20:36:11 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 int no_comb(int keycode, t_data *rt)
 {
 	
-	esc_win(keycode, rt);
+	if (keycode == 65307)
+		esc_win(keycode, rt);
 	if (keycode == 120)
 		rt->flag_rot_x = 0;
 	if (keycode == 121)
