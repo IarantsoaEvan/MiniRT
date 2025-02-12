@@ -6,25 +6,12 @@
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 11:26:39 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/11 14:11:46 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/12 08:57:36 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "diffuse_light.h"
-t_color	*calculate_spec(t_light *lum, t_nearest)
-{
-	t_color *spec_light;
-	float	lphi;
-	t_phong	phong;	
 
-	lphi = 0.0;
-	spec_light = init_color();
-	phong.intensity = 0.3;
-	phong.k = 0.3;
-	phong.n_pw = 2;
-	phong.
-
-}
 t_coord *get_normal_light(t_data *rt,t_coord *point)
 {
 	t_coord *norm;

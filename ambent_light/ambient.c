@@ -6,7 +6,7 @@
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:08:35 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/10 10:25:32 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/12 10:37:28 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ t_color	*apply_amb(t_color *col_obj, float ratio_amb)
 	t_color *color;
 
 	color = init_color();
-	color->r = (col_obj->r / 255.0f) * ratio_amb;
-	color->g = (col_obj->g / 255.0f) * ratio_amb;
-	color->b = (col_obj->b / 255.0f) * ratio_amb;
+	color->r = (col_obj->r / 255.0f) * ratio_amb * 0.5;
+	color->g = (col_obj->g / 255.0f) * ratio_amb * 0.5;
+	color->b = (col_obj->b / 255.0f) * ratio_amb * 0.5;
 	return (color);
 }
 
