@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 11:26:39 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/01 20:53:19 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/12 13:59:13 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ t_color *get_rgb_diff(t_coord *norm_obj,t_coord *norm_light,float ratio,t_color 
 
 	rgb_diff = init_color();
 	scal_nl = ratio * ft_scal(norm_obj, norm_light);
-	rgb_diff->r = scal_nl * (color->r / 255);
-	rgb_diff->g = scal_nl * (color->g / 255); 
-	rgb_diff->b = scal_nl * (color->b / 255);
+	rgb_diff->r = scal_nl * (color->r);
+	rgb_diff->g = scal_nl * (color->g ); 
+	rgb_diff->b = scal_nl * (color->b );
 	return (rgb_diff);
 }
 
@@ -48,9 +48,9 @@ t_color *add_amb_and_diff(t_color *amb,t_color *diff)
 	t_color *res;
 
 	res = init_color();
-	res->r = amb->r + diff->r;
-	res->g = amb->g + diff->g;
-	res->b = amb->b + diff->b;
+	res->r = (amb->r + diff->r) / 255;
+	res->g = (amb->g + diff->g) / 255;
+	res->b = (amb->b + diff->b) / 255;
 	
 	res->r = res->r * 255;
 	res->g = res->g * 255;

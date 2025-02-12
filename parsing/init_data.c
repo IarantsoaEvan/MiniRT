@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 09:36:21 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/11 10:04:48 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/12 12:11:37 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ t_data *init_data(void)
 	data->plane = NULL;
 	data->sphere = NULL;
 	data->cyl = NULL;
-	data->width = 700;
-	data->height = 540;
+	data->width = 650;
+	data->height = 490;
 	data->near = NULL;
 	data->flag_rot_x = 0;
 	data->flag_rot_y = 0;

@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:40:48 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/11 13:48:10 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:39:01 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int create_sphere_rgb_finale(float t,t_fct *fct,t_data *rt,t_sphere *sphere)
 	// t_coord *point;
 	// t_color *color;
 	// t_color *rgb_diff;
+	float scal_nl;
 	// t_color *rgb_finale;
 	// int rgb;
 	t_nearest sp_current;
@@ -46,11 +47,17 @@ int create_sphere_rgb_finale(float t,t_fct *fct,t_data *rt,t_sphere *sphere)
 	rgb.flag = NO_SHADOW;
 	rgb.color = apply_amb(sphere->color, rt->ambiante->ratio);
 	rgb.flag = ray_shadowing(rt, rgb.point,&sp_current);
+
 	rt->light->normal = get_normal_light(rt,rgb.point);
 	sphere->normal = get_normal_sphere(rgb.point,sphere);
+
 	rgb.rgb_diff = get_rgb_diff(sphere->normal
 		,rt->light->normal,rt->light->ratio,sphere->color);
-	rgb.rgb_finale = add_amb_and_diff(rgb.color,rgb.rgb_diff);
+	scal_nl = ft_scal(sphere->normal,rt->light->normal);
+	if (scal_nl < 0)
+		rgb.rgb_finale = apply_shadow_color(rgb.color);
+	else
+		rgb.rgb_finale = add_amb_and_diff(rgb.color,rgb.rgb_diff);
 	if (rgb.flag == SHADOW && rt->light->ratio > 0.01)
 	{
 		if (rgb.rgb_finale)
