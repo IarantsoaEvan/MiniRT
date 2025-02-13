@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 14:32:10 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/13 08:39:21 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/13 09:18:11 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int creat_rgb_amb(t_data *rt)
 	
 	color = apply_amb(rt->ambiante->color, rt->ambiante->ratio);
 	rgb = create_trgb(color->r, color->g, color->b);
+	free(color);
 	return (rgb);
 }
 

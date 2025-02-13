@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 08:00:09 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/12 20:14:52 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/13 08:51:24 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,7 @@ int	ray_shadowing(t_data *rt, t_coord *impact,t_nearest *current)
 	// 	fct.origin = vect_add(impact,ft_scal_one(get_normal_cyl(rt,impact,(t_cyl *)current->near_obj),0.0001));
 	fct.pol = init_pol();
 	fct.dir = normalize_vector_with_free(ft_soustraction(rt->light->coord, fct.origin));
-	fct.origin = vect_add(impact,ft_scal_one(fct.dir,0.001));
+	// fct.origin = vect_add(impact,ft_scal_one(fct.dir,0.001));
 
 	tmp_dir = ft_soustraction(rt->light->coord, fct.origin);
 	t_lum = lenght_vector(tmp_dir);

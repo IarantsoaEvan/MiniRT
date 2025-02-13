@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:27:27 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/13 08:30:22 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/13 11:29:18 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,3 +80,16 @@ void	ray_tracing(t_data *rt)
 	free(fct->pol);
 	free(fct);
 }
+
+// void get_rx_ry(t_data *rt,float rx,float ry)
+// {
+// 	rx += 2
+// 	ry += 2
+// 	if ()
+
+// }
+
+// void optimize_ray_tracing(t_data *rt)
+// {
+	
+// }

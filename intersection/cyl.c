@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:01:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/13 08:35:04 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/13 08:44:19 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,14 @@ int	create_cyl_rgb_finale(float t,t_fct *fct,t_data *rt, t_cyl *cyl)
 
 	scal_nl = ft_scal(cyl->normal,rt->light->normal);
 	if (scal_nl < 0)
-		rgb.rgb_finale = rgb.color;
+		rgb.rgb_finale = apply_shadow_color(rgb.color);
 	else
 		rgb.rgb_finale = add_amb_and_diff(rgb.color,rgb.rgb_diff);
 	if (rgb.flag == SHADOW)
 	{
 		if (rgb.rgb_finale)
 			free(rgb.rgb_finale);
-		rgb.rgb_finale = rgb.color;
+		rgb.rgb_finale = apply_shadow_color(rgb.color);
 	}
 		
 	rgb.rgb = create_trgb(rgb.rgb_finale->r, rgb.rgb_finale->g, rgb.rgb_finale->b);

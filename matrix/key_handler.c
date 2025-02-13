@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 08:11:45 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/12 21:21:41 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/13 11:41:01 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void	trs_cam(int keycode, t_data *rt)
 		rt->cam->coord->y += 0.2;
 	if (keycode == 65362 && rt->flag_cam == 1)
 		rt->cam->coord->y -= 0.2;
-	if (keycode == 65507 && rt->flag_cam == 1)
+	if (keycode == 65507)
 		rt->cam->coord->z -= 0.2;
-	if (keycode == 65508 && rt->flag_cam == 1)
+	if (keycode == 65508)
 		rt->cam->coord->z += 0.2;
 	// printf("keycode = %d\n", keycode);
 }
