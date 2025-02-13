@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:27:27 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/07 08:42:31 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/13 08:30:22 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,6 @@ void	ray_tracing(t_data *rt)
 			ft_set_cfct(fct, x, y, rt);
 			intersec_obj(fct, rt,rt->near);
 			get_nearest_obj(rt ,fct , x,y);
-			// if (rt->cyl)
-			// 	check_and_free_disl(rt->cyl);
 			x++;
 			free(fct->dir);
 		}

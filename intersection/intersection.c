@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:46:34 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/06 11:08:12 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/13 08:36:11 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void free_fct(t_fct *fct)
 void free_rgb(t_rgb *rgb)
 {
 	free(rgb->point);
-	free(rgb->color);
+	// free(rgb->color);
 	free(rgb->rgb_diff);
 	free(rgb->rgb_finale);
 }

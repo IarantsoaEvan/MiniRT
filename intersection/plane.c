@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 19:04:58 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/12 20:14:28 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/13 08:35:16 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ int create_plane_rgb_finale(float t,t_fct *fct,t_data *rt,t_plane *plane)
 		,rt->light->normal,rt->light->ratio,plane->color);
 	scal_nl = ft_scal(plane->vector,rt->light->normal);
 	if (scal_nl < 0)
-		rgb.rgb_finale = apply_shadow_color(rgb.color);
+		rgb.rgb_finale = rgb.color;
 	else
 		rgb.rgb_finale = add_amb_and_diff(rgb.color,rgb.rgb_diff);
 	if (rgb.flag == SHADOW)
 	{
 		if (rgb.rgb_finale)
 			free(rgb.rgb_finale);
-		rgb.rgb_finale = apply_shadow_color(rgb.color);
+		rgb.rgb_finale = rgb.color;
 	}
 	rgb.rgb = create_trgb(rgb.rgb_finale->r, rgb.rgb_finale->g, rgb.rgb_finale->b);
 	free(rt->light->normal);

@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:40:48 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/12 14:39:01 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/13 08:29:37 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,14 @@ int create_sphere_rgb_finale(float t,t_fct *fct,t_data *rt,t_sphere *sphere)
 		,rt->light->normal,rt->light->ratio,sphere->color);
 	scal_nl = ft_scal(sphere->normal,rt->light->normal);
 	if (scal_nl < 0)
-		rgb.rgb_finale = apply_shadow_color(rgb.color);
+		rgb.rgb_finale = rgb.color;
 	else
 		rgb.rgb_finale = add_amb_and_diff(rgb.color,rgb.rgb_diff);
 	if (rgb.flag == SHADOW && rt->light->ratio > 0.01)
 	{
 		if (rgb.rgb_finale)
 			free(rgb.rgb_finale);
-		rgb.rgb_finale = apply_shadow_color(rgb.color);
+		rgb.rgb_finale = rgb.color;
 	}
 	rgb.rgb = create_trgb(rgb.rgb_finale->r, rgb.rgb_finale->g, rgb.rgb_finale->b);
 	free(rt->light->normal);
