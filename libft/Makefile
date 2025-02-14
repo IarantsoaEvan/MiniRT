@@ -53,11 +53,14 @@ OFILES = $(CFILES:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OFILES) libft.h
-	ar rc $(NAME) $(OFILES)
+	@ar rc $(NAME) $(OFILES)
+	@echo "Make LIBFT [OK]"
 %.o: %.c
-	gcc $(CFLAGS) -c $< -o $@
+	@gcc $(CFLAGS) -c $< -o $@
 clean:
-	rm -f $(OFILES)
+	@rm -f $(OFILES)
+	@echo "Make clean LIBFT [OK]"
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "Make fclean LIBFT [OK]"
 re: fclean all

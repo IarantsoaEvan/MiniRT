@@ -39,7 +39,6 @@ SRC = 	parsing/init_data_utils.c\
 		src/main.c
 %.o: %.c
 	@$(CC) $(FLAGS) -I/usr/include -I$(MLX_D) -O3 -c $< -o $@
-	@ echo "Make MLx[OK]"
 all : $(NAME)
 $(NAME): $(SRC)
 	@make -C $(MLX_D)
