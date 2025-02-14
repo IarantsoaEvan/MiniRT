@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 09:42:07 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/11 10:36:33 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/14 10:47:57 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 int	esc_win(int keycode, t_data *rt);
 int mouse_handler(int keycode , int x, int y, t_data *rt);
 int	keyboard_handler(int keycode, t_data *rt);
-void trs_x(t_nearest *near_moove, int keycode);
-void trs_y(t_nearest *near_moove, int keycode);
+void trs_x(t_nearest *near_moove, int keycode,t_data *rt);
+void trs_y(t_nearest *near_moove, int keycode,t_data *rt);
 void	rot_foll_x(t_coord *rot, float alpha);
 void	rot_foll_y(t_coord *rot, float beta);
 void	rot_foll_z(t_coord *rot, float teta);

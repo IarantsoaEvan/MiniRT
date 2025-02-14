@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   trs_x.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 10:22:43 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/11 11:06:11 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/14 10:43:03 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,24 +43,24 @@ void	set_dimension(t_nearest *near_moove, int keycode)
 		cyl_dimension(keycode, cyl);
 	}
 }
-void	trp_following_x(t_nearest *near_moove, int keycode)
+void	trp_following_x(t_nearest *near_moove, int keycode,t_data *rt)
 {
 	t_sphere *sphere;
 	t_plane *plane;
 	t_cyl *cyl;
 	
-	if (near_moove->type == SPHERE && keycode == 65361 && near_moove->near_obj)
+	if (near_moove->type == SPHERE && keycode == 65361 && near_moove->near_obj && rt->flag_cam != 1)
 	{
 		sphere = (t_sphere *)near_moove->near_obj;
 		sphere->coord->x -= 0.5;
 	}
-	if (near_moove->type == PLANE && keycode == 65361 && near_moove->near_obj)
+	if (near_moove->type == PLANE && keycode == 65361 && near_moove->near_obj && rt->flag_cam != 1)
 	{
 		plane = (t_plane *)near_moove->near_obj;
 		plane->coord->x -= 0.5;
 	}
 	if ((near_moove->type == CYL || near_moove->type == DISK)
-		&& keycode == 65361 && near_moove->near_obj )
+		&& keycode == 65361 && near_moove->near_obj && rt->flag_cam != 1)
 	{
 		if (near_moove->type == DISK && near_moove->cyl_parent)
 			cyl = near_moove->cyl_parent;
@@ -70,24 +70,24 @@ void	trp_following_x(t_nearest *near_moove, int keycode)
 	}
 }
 
-void	trn_following_x(t_nearest *near_moove, int keycode)
+void	trn_following_x(t_nearest *near_moove, int keycode,t_data *rt)
 {
 	t_sphere *sphere;
 	t_plane *plane;
 	t_cyl *cyl;
 	
-	if (near_moove->type == SPHERE && keycode == 65363 && near_moove->near_obj)
+	if (near_moove->type == SPHERE && keycode == 65363 && near_moove->near_obj && rt->flag_cam != 1)
 	{
 		sphere = (t_sphere *)near_moove->near_obj;
 		sphere->coord->x += 0.5;
 	}
-	if (near_moove->type == PLANE && keycode == 65363 && near_moove->near_obj)
+	if (near_moove->type == PLANE && keycode == 65363 && near_moove->near_obj && rt->flag_cam != 1)
 	{
 		plane = (t_plane *)near_moove->near_obj;
 		plane->coord->x += 0.5;
 	}
 	if ((near_moove->type == CYL || near_moove->type == DISK)
-		&& keycode == 65363 && near_moove->near_obj)
+		&& keycode == 65363 && near_moove->near_obj && rt->flag_cam != 1)
 	{
 		if (near_moove->type == DISK)
 			cyl = near_moove->cyl_parent;
@@ -96,9 +96,9 @@ void	trn_following_x(t_nearest *near_moove, int keycode)
 		cyl->coord->x += 0.5;
 	}
 }
-void trs_x(t_nearest *near_moove, int keycode)
+void trs_x(t_nearest *near_moove, int keycode,t_data *rt)
 {
 	set_dimension(near_moove, keycode);
-	trn_following_x(near_moove, keycode);
-	trp_following_x(near_moove, keycode);
+	trn_following_x(near_moove, keycode,rt);
+	trp_following_x(near_moove, keycode,rt);
 }
