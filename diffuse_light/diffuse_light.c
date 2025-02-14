@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   diffuse_light.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 11:26:39 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/12 13:59:13 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/14 11:32:55 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,18 @@ t_color *get_rgb_diff(t_coord *norm_obj,t_coord *norm_light,float ratio,t_color 
 	return (rgb_diff);
 }
 
-t_color *add_amb_and_diff(t_color *amb,t_color *diff)
+t_color *add_amb_and_diff(t_color *amb,t_color *diff,t_color *spec)
 {
 	t_color *res;
 
 	res = init_color();
-	res->r = (amb->r + diff->r) / 255;
-	res->g = (amb->g + diff->g) / 255;
-	res->b = (amb->b + diff->b) / 255;
+	res->r = amb->r + diff->r + spec->r;
+	res->g = amb->g + diff->g + spec->g;
+	res->b = amb->b + diff->b + spec->b;
 	
-	res->r = res->r * 255;
-	res->g = res->g * 255;
-	res->b = res->b * 255;
+	// res->r = res->r * 255;
+	// res->g = res->g * 255;
+	// res->b = res->b * 255;
 	res->r = check_plage_color(res->r);
 	res->g = check_plage_color(res->g);
 	res->b = check_plage_color(res->b);

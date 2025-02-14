@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cyl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:01:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/13 08:44:19 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/14 11:37:25 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,17 @@ void get_abc_cyl(t_coord *origin,t_fct *fct,t_cyl *cyl)
 
 int	create_cyl_rgb_finale(float t,t_fct *fct,t_data *rt, t_cyl *cyl)
 {
-	// t_coord *point;
-	// t_color *color;
-	// t_color *rgb_diff;
-	// t_color *rgb_finale;
-	// int rgb;
+
 	float scal_nl;
 	t_rgb rgb;
+	t_color *spec;
 	t_nearest cyl_current;
 	
 	
 	cyl_current.near_obj = cyl;
 	cyl_current.type = CYL;
 	cyl_current.id = cyl->id;
-	
+	spec = init_color();
 	rgb.point = ft_addition(rt->cam->coord,ft_scal_one(fct->dir, t));
 	rgb.flag = NO_SHADOW;
 	rgb.color = apply_amb(cyl->color, rt->ambiante->ratio);
@@ -53,6 +50,13 @@ int	create_cyl_rgb_finale(float t,t_fct *fct,t_data *rt, t_cyl *cyl)
 
 	cyl->normal = get_normal_cyl(rt, rgb.point, cyl);
 	
+	if (rt->flag_spec)
+	{
+		if (spec)
+			free(spec);
+		spec =  get_specular(rt ,&cyl_current,rgb.point,fct);
+	}
+
 	rgb.rgb_diff = get_rgb_diff(cyl->normal
 		,rt->light->normal,rt->light->ratio,cyl->color);
 
@@ -60,7 +64,7 @@ int	create_cyl_rgb_finale(float t,t_fct *fct,t_data *rt, t_cyl *cyl)
 	if (scal_nl < 0)
 		rgb.rgb_finale = apply_shadow_color(rgb.color);
 	else
-		rgb.rgb_finale = add_amb_and_diff(rgb.color,rgb.rgb_diff);
+		rgb.rgb_finale = add_amb_and_diff(rgb.color,rgb.rgb_diff,spec);
 	if (rgb.flag == SHADOW)
 	{
 		if (rgb.rgb_finale)

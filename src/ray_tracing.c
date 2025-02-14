@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:27:27 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/13 11:29:18 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/14 11:39:55 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	ray_tracing(t_data *rt)
 	y = 0;
 	fct = init_fct(rt);
 	rt->near = init_nearest();
+	rt->flag_spec = 1;
 	while (y < rt->height)
 	{
 		x = 0;

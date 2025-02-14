@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structure.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:59 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/13 09:55:21 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/14 11:30:54 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,11 +138,16 @@ typedef struct s_fct
 	t_coord	*origin;
 }	t_fct;
 
-typedef struct s_comb
+typedef struct s_blinn
 {
-	int	flag_press;
-	
-}	t_comb;
+	float	intensity;
+	float	k;
+	int	n_pw;
+	t_coord	*ort_light;
+	t_coord *obj_normal;
+	t_coord	*opp_cam;
+	t_coord	*biss;
+}	t_blinn;
 
 typedef struct s_data
 {
@@ -161,6 +166,7 @@ typedef struct s_data
 	int flag_camz;
 	int	flag_cam;
 	int	flag_radius;
+	int flag_spec;
 	int flag_rdisk;
 	int	flag_hcyl;
 	t_ambiante	*ambiante;

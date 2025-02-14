@@ -29,6 +29,7 @@ SRC = 	parsing/init_data_utils.c\
 		ombrage/shadow.c\
 		diffuse_light/diffuse_light.c\
 		diffuse_light/diffuse_object.c\
+		diffuse_light/specular.c\
 		matrix/transfo.c\
 		matrix/key_handler.c\
 		matrix/trs_x.c\

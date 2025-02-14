@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 19:04:58 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/13 08:44:13 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/14 11:37:32 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int create_plane_rgb_finale(float t,t_fct *fct,t_data *rt,t_plane *plane)
 	// t_color *rgb_finale;
 	// int rgb;
 	float scal_nl;
+	t_color *spec;
 	t_rgb rgb;
 	t_nearest pl_current;
 	
@@ -40,7 +41,7 @@ int create_plane_rgb_finale(float t,t_fct *fct,t_data *rt,t_plane *plane)
 	pl_current.near_obj = plane;
 	pl_current.type = PLANE;
 	pl_current.id = plane->id;
-	
+	spec = init_color();
 	rgb.point = ft_addition(rt->cam->coord,ft_scal_one(fct->dir, t));
 	rgb.flag = NO_SHADOW;
 	rgb.color = apply_amb(plane->color, rt->ambiante->ratio);
@@ -51,10 +52,18 @@ int create_plane_rgb_finale(float t,t_fct *fct,t_data *rt,t_plane *plane)
 	rgb.rgb_diff = get_rgb_diff(plane->vector
 		,rt->light->normal,rt->light->ratio,plane->color);
 	scal_nl = ft_scal(plane->vector,rt->light->normal);
+
+	if (rt->flag_spec)
+	{
+		if (spec)
+			free(spec);
+		spec =  get_specular(rt ,&pl_current,rgb.point,fct);
+	}
+
 	if (scal_nl < 0)
 		rgb.rgb_finale = apply_shadow_color(rgb.color);
 	else
-		rgb.rgb_finale = add_amb_and_diff(rgb.color,rgb.rgb_diff);
+		rgb.rgb_finale = add_amb_and_diff(rgb.color,rgb.rgb_diff,spec);
 	if (rgb.flag == SHADOW)
 	{
 		if (rgb.rgb_finale)
