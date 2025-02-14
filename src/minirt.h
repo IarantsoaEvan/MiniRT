@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:24:02 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/06 21:27:17 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/14 08:17:00 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@ void free_all(t_data *data);
 void free_plane(t_plane *plane);
 void ft_set_cfct(t_fct *fct, float x, float y, t_data *rt);
 void intersec_obj(t_fct	*fct, t_data *rt,t_nearest *near);
-
+void	free_sphere(t_sphere *sphere);
+void free_plane(t_plane *plane);
+void free_cyl(t_cyl *cyl);
+void free_light_cam_amb(t_data *data);
 
 #endif

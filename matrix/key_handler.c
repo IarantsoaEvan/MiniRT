@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 08:11:45 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/13 11:41:01 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/14 08:55:30 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,37 @@
 
 void	rot_cam(int keycode, t_data *rt, t_camera *cam)
 {
+	
+	// if (keycode == 51)
+	// {
+	// 	rt->alpha_cam += 0.4;
+	// 	rot_foll_x(cam->vector, rt->alpha_cam);
+	// 	// printf("keycode == %d\n",keycode);
+	// }
 	change_flag_rot(keycode, rt);
 	if (rt->flag_camx == 1)
-		select_sign(keycode, rt->alpha_cam, cam->coord, rt);
+		select_sign(keycode, rt->alpha_cam, cam->vector, rt);
 	if (rt->flag_camy == 1)
-		select_sign(keycode, rt->beta_cam, cam->coord, rt);
+		select_sign(keycode, rt->beta_cam, cam->vector, rt);
 	if (rt->flag_camz == 1)
-		select_sign(keycode, rt->teta_cam, cam->coord, rt);
+		select_sign(keycode, rt->teta_cam, cam->vector, rt);
 }
 void	trs_cam(int keycode, t_data *rt)
 {
 	if (keycode == 99)
 		rt->flag_cam = 1;
 	if (keycode == 65361 && rt->flag_cam == 1)
-		rt->cam->coord->x -= 0.2;
+		rt->cam->coord->x -= 0.1;
 	if (keycode == 65363 && rt->flag_cam == 1)
-		rt->cam->coord->x += 0.2;
+		rt->cam->coord->x += 0.1;
 	if (keycode == 65364 && rt->flag_cam == 1)
-		rt->cam->coord->y += 0.2;
+		rt->cam->coord->y += 0.1;
 	if (keycode == 65362 && rt->flag_cam == 1)
-		rt->cam->coord->y -= 0.2;
+		rt->cam->coord->y -= 0.1;
 	if (keycode == 65507)
-		rt->cam->coord->z -= 0.2;
+		rt->cam->coord->z -= 0.1;
 	if (keycode == 65508)
-		rt->cam->coord->z += 0.2;
+		rt->cam->coord->z += 0.1;
 	// printf("keycode = %d\n", keycode);
 }
 
@@ -82,11 +89,11 @@ int	keyboard_handler(int keycode, t_data *rt)
 	trs_light(keycode, rt->light);
 	trs_x(rt->near_moove, keycode);
 	trs_y(rt->near_moove, keycode);
+	trs_cam(keycode, rt);
 	rot_x(keycode, rt, rt->near_moove);
 	rot_y(keycode, rt, rt->near_moove);
 	rot_z(keycode, rt, rt->near_moove);
 	rot_cam(keycode, rt, rt->cam);
-	trs_cam(keycode, rt);
 	mlx_destroy_image(rt->mlx_ptr, rt->img_ptr);
 	rt->img_ptr = mlx_new_image(rt->mlx_ptr, rt->width, rt->height);
 	ray_tracing(rt);

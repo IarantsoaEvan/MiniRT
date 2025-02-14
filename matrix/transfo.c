@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 09:43:25 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/10 19:29:16 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/14 08:16:22 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@ int	esc_win(int keycode, t_data *rt)
 		mlx_destroy_window(rt->mlx_ptr, rt->win_ptr);
 		mlx_destroy_display(rt->mlx_ptr);
 		free(rt->mlx_ptr);
+		if (rt->sphere)
+			free_sphere(rt->sphere);
+		if (rt->plane)
+			free_plane(rt->plane);
+		if (rt->cyl)
+			free_cyl(rt->cyl);
+		free_light_cam_amb(rt);
+		free(rt->near_moove);
 		free(rt);
 		exit(EXIT_SUCCESS);
 	}

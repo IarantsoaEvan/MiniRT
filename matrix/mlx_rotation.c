@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:21:02 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/13 11:32:06 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/14 08:56:04 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	select_axe(t_data *rt, float angle, t_coord *vect)
 		rot_foll_y(vect, angle);
 	if (rt->flag_rot_z == 1 || rt->flag_camz == 1)
 		rot_foll_z(vect, angle);
-
 	return ;
 
 }
@@ -56,12 +55,12 @@ void select_sign(int keycode, float angle, t_coord *vect, t_data *rt)
 {
 	if (keycode == 45)
 	{
-		angle -= 0.3;
+		angle -= 0.1;
 		select_axe(rt, angle, vect);
 	}
 	if (keycode == 61)
 	{
-		angle += 0.3;
+		angle += 0.1;
 		select_axe(rt, angle, vect);
 	}
 }
