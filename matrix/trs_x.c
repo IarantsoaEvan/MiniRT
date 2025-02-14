@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 10:22:43 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/14 10:43:03 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/14 13:24:10 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ void	trp_following_x(t_nearest *near_moove, int keycode,t_data *rt)
 	if (near_moove->type == SPHERE && keycode == 65361 && near_moove->near_obj && rt->flag_cam != 1)
 	{
 		sphere = (t_sphere *)near_moove->near_obj;
-		sphere->coord->x -= 0.5;
+		sphere->coord->x -= 0.2;
 	}
 	if (near_moove->type == PLANE && keycode == 65361 && near_moove->near_obj && rt->flag_cam != 1)
 	{
 		plane = (t_plane *)near_moove->near_obj;
-		plane->coord->x -= 0.5;
+		plane->coord->x -= 0.2;
 	}
 	if ((near_moove->type == CYL || near_moove->type == DISK)
 		&& keycode == 65361 && near_moove->near_obj && rt->flag_cam != 1)
@@ -66,7 +66,7 @@ void	trp_following_x(t_nearest *near_moove, int keycode,t_data *rt)
 			cyl = near_moove->cyl_parent;
 		else
 			cyl = (t_cyl *)near_moove->near_obj;
-		cyl->coord->x -= 0.5;
+		cyl->coord->x -= 0.2;
 	}
 }
 
@@ -79,12 +79,12 @@ void	trn_following_x(t_nearest *near_moove, int keycode,t_data *rt)
 	if (near_moove->type == SPHERE && keycode == 65363 && near_moove->near_obj && rt->flag_cam != 1)
 	{
 		sphere = (t_sphere *)near_moove->near_obj;
-		sphere->coord->x += 0.5;
+		sphere->coord->x += 0.2;
 	}
 	if (near_moove->type == PLANE && keycode == 65363 && near_moove->near_obj && rt->flag_cam != 1)
 	{
 		plane = (t_plane *)near_moove->near_obj;
-		plane->coord->x += 0.5;
+		plane->coord->x += 0.2;
 	}
 	if ((near_moove->type == CYL || near_moove->type == DISK)
 		&& keycode == 65363 && near_moove->near_obj && rt->flag_cam != 1)
@@ -93,7 +93,7 @@ void	trn_following_x(t_nearest *near_moove, int keycode,t_data *rt)
 			cyl = near_moove->cyl_parent;
 		else
 			cyl = (t_cyl *)near_moove->near_obj;
-		cyl->coord->x += 0.5;
+		cyl->coord->x += 0.2;
 	}
 }
 void trs_x(t_nearest *near_moove, int keycode,t_data *rt)

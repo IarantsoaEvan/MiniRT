@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 09:36:21 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/12 12:11:37 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/14 13:15:26 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ t_data *init_data(void)
 	data->flag_hcyl = 0;
 	data->alpha = 0.0;
 	data->beta = 0.0;
+	data->flag_spec = 0;
 	data->teta = 0.0;
 	data->alpha_cam = 0.0;
 	data->beta_cam = 0.0;
