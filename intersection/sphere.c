@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:40:48 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/14 11:37:14 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/15 09:45:51 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,7 @@ int create_sphere_rgb_finale(float t,t_fct *fct,t_data *rt,t_sphere *sphere)
 	free(rt->light->normal);
 	free(sphere->normal);
 	free_rgb(&rgb);
-	// printf("rgb = %d\n",rgb.rgb);
-	// free_rgb(&rgb);
+	free(spec);
 	return (rgb.rgb);
 }
 

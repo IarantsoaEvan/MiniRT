@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 12:06:43 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/04 11:50:02 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/15 10:05:29 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int fill_cyl_vector(char *element,t_cyl **cyl)
 {
 	if (!check_comma(element))
 		return (0);
-	fill_coord(element,(*cyl)->vector);
+	if (!fill_coord(element,(*cyl)->vector))
+		return (0);
 	if (!check_vec_or_rat((*cyl)->vector->x ,VECTOR)
 		|| !check_vec_or_rat((*cyl)->vector->y ,VECTOR)
 		|| !check_vec_or_rat((*cyl)->vector->z ,VECTOR))

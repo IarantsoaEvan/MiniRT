@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 10:20:29 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/04 11:50:17 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/15 10:04:14 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int fill_pl_vector(char *element,t_plane **pl)
 {
 	if (!check_comma(element))
 		return (0);
-	fill_coord(element,(*pl)->vector);
+	if (!fill_coord(element,(*pl)->vector))
+		return (0);
 	if (!check_vec_or_rat((*pl)->vector->x ,VECTOR)
 		|| !check_vec_or_rat((*pl)->vector->y ,VECTOR)
 		|| !check_vec_or_rat((*pl)->vector->z ,VECTOR))

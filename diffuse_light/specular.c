@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 11:23:12 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/14 13:31:10 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/15 09:51:09 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ float	set_spec_sph(t_data *rt, t_nearest *object, t_coord *impact, t_fct *fct)
 	blinn.intensity = 0.9;
 	blinn.k = 0.356;
 	blinn.n_pw = 80;
-	printf("object->type == %d\n",object->type);
 	if (object->type == SPHERE)
 		blinn.obj_normal = get_normal_sphere(impact, (t_sphere *)object->near_obj);
 	if (object->type == CYL)

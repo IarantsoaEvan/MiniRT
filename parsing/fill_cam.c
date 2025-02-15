@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_cam.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 22:04:37 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/24 11:17:56 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/15 10:05:40 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int fill_cam_vector(char *element,t_camera **cam)
 {
 	if (!check_comma(element))
 		return (0);
-	fill_coord(element,(*cam)->vector);
+	if (!fill_coord(element,(*cam)->vector))
+		return (0);
 	if (!check_vec_or_rat((*cam)->vector->x ,VECTOR)
 		|| !check_vec_or_rat((*cam)->vector->y ,VECTOR)
 		|| !check_vec_or_rat((*cam)->vector->z ,VECTOR))

@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 10:31:40 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/15 13:50:54 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/15 09:53:59 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 int		ft_toupper(int c);
 int		ft_isalnum(char c);
 float   ft_atflo(char *str);
-int	ft_count_char_in_str(char *str, char c);
+int     ft_count_char_in_str(char *str, char c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
 int		ft_isdigit(int c);
@@ -32,6 +32,7 @@ int     ft_strcmp(char *s1, char *s2);
 long	ft_atoi(const char *str);
 int		ft_tolower(int character);
 int		ft_printf(const char *format, ...);
+int     ft_count_world(char **str);
 int		ft_print_char(char c);
 int		print_str(char *str);
 int		print_int(int nbr);
