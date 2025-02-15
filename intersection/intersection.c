@@ -6,36 +6,11 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:46:34 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/13 08:44:44 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/15 10:21:20 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intersection.h"
-
-// void	ft_ndc(float *x, float *y, t_data *rt)
-// {
-// 	*x = (*x + 0.5) / (rt->width);
-// 	*y = (*y + 0.5) / (rt->height);
-// }
-
-// void	ft_screen(float *x_ndc, float *y_ndc, float *x_screen, float *y_screen)
-// {
-// 	*x_screen = (2 * (*x_ndc)) - 1;
-// 	*y_screen = (2 * (*y_ndc)) - 1;
-// 	// *y_screen = 1  + (-(2 * (*y_ndc)));
-// }
-
-// void	ft_as_ratio(t_fct *fct, t_camera *cam, t_data *rt)
-// {
-// 	float	rad_alpha;
-// 	float	as_ratio;
-
-// 	as_ratio = rt->width / rt->height;
-// 	rad_alpha = cam->fov * (M_PI / 180);
-// 	fct->as_x = ((2 * fct->x_screen) - 1) * as_ratio * tan(rad_alpha / 2);
-// 	fct->as_y = (1 + (-2 * fct->y_screen)) * tan(rad_alpha / 2);
-// }
-
 
 t_pol *init_pol(void)
 {

@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 09:43:25 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/14 08:16:22 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/15 10:14:50 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,25 +65,24 @@ void zoom_object_pos(t_nearest *near,int type)
 	t_plane *plane;
 	t_cyl *cyl;
 	
-		printf("near->type = %d\n",near->type);
-		if (type == SPHERE)
-		{
-			sphere = (t_sphere *)near->near_obj;
-			sphere->coord->z += 0.2;
-		}
-		if (type == PLANE)
-		{
-			plane = near->near_obj;
-			plane->coord->z += 0.2;
-		}
-		if (type == CYL ||  type == DISK)
-		{
-			if (type == DISK)
-				cyl = near->cyl_parent;
-			else
-				cyl = near->near_obj;
-			cyl->coord->z += 0.2;
-		}
+	if (type == SPHERE)
+	{
+		sphere = (t_sphere *)near->near_obj;
+		sphere->coord->z += 0.2;
+	}
+	if (type == PLANE)
+	{
+		plane = near->near_obj;
+		plane->coord->z += 0.2;
+	}
+	if (type == CYL ||  type == DISK)
+	{
+		if (type == DISK)
+			cyl = near->cyl_parent;
+		else
+			cyl = near->near_obj;
+		cyl->coord->z += 0.2;
+	}
 
 }
 

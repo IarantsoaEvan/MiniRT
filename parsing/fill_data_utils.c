@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:28:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/15 09:58:23 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/15 10:18:15 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ int check_vec_or_rat(float vector,int type)
 	{
 		if (vector >= 0.0 && vector <= 1.0)
 			return (1);
-		printf("Ratio must be between 0.0 - 1.0\n");
+		printf("Error\nRatio must be between 0.0 - 1.0\n");
 	}
 	else
 	{
 		if (vector >= -1.0 && vector <= 1.0)
 			return (1);
-		printf("Vector must be between -1 - 1\n");
+		printf("Error\nVector must be between -1 - 1\n");
 	}	
 	return (0);
 }
@@ -45,7 +45,7 @@ int check_and_fill_color(char *val,t_color *color)
 			return(0);
 	elem  = ft_split(val,',');
 	if (ft_count_world(elem) != 3)
-		return (printf("Color must have 3 values\n"),ft_free_str(elem),0);
+		return (printf("Error\nColor must have 3 values\n"),ft_free_str(elem),0);
 	if (elem)
 	{
 		color->r = ft_atflo(elem[0]);
@@ -54,7 +54,7 @@ int check_and_fill_color(char *val,t_color *color)
 		if (!check_color(color->r) || !check_color(color->g)
 			|| !check_color(color->b))
 		{
-			printf("Color must be between 0 - 255\n");
+			printf("Error\nColor must be between 0 - 255\n");
 			return (ft_free_str(elem),0);
 		}	
 	}
@@ -72,7 +72,7 @@ int fill_coord(char *val,t_coord *coord)
 			return(0);
 	elem  = ft_split(val,',');
 	if (ft_count_world(elem) != 3)
-		return (printf("Coord or vector must have 3 values\n"),ft_free_str(elem),0);
+		return (printf("Error\nCoord or vector must have 3 values\n"),ft_free_str(elem),0);
 	if (elem)
 	{
 		coord->x = ft_atflo(elem[0]);
@@ -88,6 +88,6 @@ int check_angle(float angle)
 {
 	if (angle >= 0 && angle <= 180)
 		return (1);
-	printf("Angle of the camera must be between 0 - 180\n");
+	printf("Error\nAngle of the camera must be between 0 - 180\n");
 	return (0);
 }

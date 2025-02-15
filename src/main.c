@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:24 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/12 21:09:05 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/15 10:19:04 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int fill_data(t_data *data,char **element)
 		else if (!ft_strcmp(element[0],"cy"))
 			return (fill_cyl(&data->cyl,element));
 		else
-			return (printf("'%s' : invalid id\n",element[0]),0);
+			return (printf("Error\n'%s' : invalid id\n",element[0]),0);
 		return (1);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:39:30 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/01 18:42:07 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/15 10:18:33 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	check_map_name(char **argv,int argc)
 
 	if (argc != 2)
 	{
-		printf("Please enter only one map!\n");
+		printf("Error\nPlease enter only one map!\n");
 		return (0);
 	}
 	len = ft_strlen(argv[1]);
@@ -25,7 +25,7 @@ int	check_map_name(char **argv,int argc)
 	if (argv  && argv[1] && (argv[1][len] == 't' && argv[1][len - 1] == 'r'
 		&& argv[1][len - 2] == '.'))
 		return (1);
-	printf("The map name must be a .rt file\n");
+	printf("Error\nThe map name must be a .rt file\n");
 	return (0);
 }
 
@@ -70,7 +70,7 @@ int	fill_and_check_map_valid(char *map,t_data *data)
 			ft_free_str(v_map);
 		return (1);
 	}
-	printf("Map does not exist\n");
+	printf("Error\nMap does not exist\n");
 	return (0);
 }
 
