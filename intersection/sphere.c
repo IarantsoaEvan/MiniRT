@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:40:48 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/15 09:45:51 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/15 12:11:00 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,45 @@ void ft_set_abc_sphere(t_fct *fct,t_sphere *sphere,t_coord *origin)
 	free(oc);
 }
 
+void init_current_sp(t_nearest *sp_current,t_sphere *sphere)
+{	
+	sp_current->near_obj = sphere;
+	sp_current->type = SPHERE;
+	sp_current->id = sphere->id;
+}
+void aply_color_sp(t_fct *fct,t_rgb *rgb,t_data *rt,t_sphere *sphere)
+{
+	float scal_nl;
+	t_color *spec;
+	t_nearest sp_current;
 
-
+	init_current_sp(&sp_current,sphere);
+	spec = init_color();
+	scal_nl = ft_scal(sphere->normal,rt->light->normal);
+	if (rt->flag_spec)
+	{
+		if (spec)
+			free(spec);
+		spec =  get_specular(rt ,&sp_current,rgb->point,fct);
+	}	
+	
+	if (scal_nl < 0)
+		rgb->rgb_finale = apply_shadow_color(rgb->color);
+	else
+		rgb->rgb_finale = add_amb_and_diff(rgb->color,rgb->rgb_diff,spec);
+	if (rgb->flag == SHADOW && rt->light->ratio > 0.01)
+	{
+		if (rgb->rgb_finale)
+			free(rgb->rgb_finale);
+		rgb->rgb_finale = apply_shadow_color(rgb->color);
+	}
+}
 int create_sphere_rgb_finale(float t,t_fct *fct,t_data *rt,t_sphere *sphere)
 {
 	t_rgb rgb;
-	// t_coord *point;
-	// t_color *color;
-	// t_color *rgb_diff;
-	float scal_nl;
-	t_color *spec;
-	// t_color *rgb_finale;
-	// int rgb;
 	t_nearest sp_current;
 	
-	
-	sp_current.near_obj = sphere;
-	sp_current.type = SPHERE;
-	sp_current.id = sphere->id;
-	spec = init_color();
+	init_current_sp(&sp_current,sphere);
 	rgb.point = ft_addition(rt->cam->coord,ft_scal_one(fct->dir, t));
 	rgb.flag = NO_SHADOW;
 	rgb.color = apply_amb(sphere->color, rt->ambiante->ratio);
@@ -51,33 +71,12 @@ int create_sphere_rgb_finale(float t,t_fct *fct,t_data *rt,t_sphere *sphere)
 
 	rt->light->normal = get_normal_light(rt,rgb.point);
 	sphere->normal = get_normal_sphere(rgb.point,sphere);
-
-	if (rt->flag_spec)
-	{
-		if (spec)
-			free(spec);
-		spec =  get_specular(rt ,&sp_current,rgb.point,fct);
-	}	
-	
 	rgb.rgb_diff = get_rgb_diff(sphere->normal
 		,rt->light->normal,rt->light->ratio,sphere->color);
-	scal_nl = ft_scal(sphere->normal,rt->light->normal);
-	if (scal_nl < 0)
-		rgb.rgb_finale = apply_shadow_color(rgb.color);
-	else
-		rgb.rgb_finale = add_amb_and_diff(rgb.color,rgb.rgb_diff,spec);
-	if (rgb.flag == SHADOW && rt->light->ratio > 0.01)
-	{
-		if (rgb.rgb_finale)
-			free(rgb.rgb_finale);
-		rgb.rgb_finale = apply_shadow_color(rgb.color);
-	}
+	aply_color_sp(fct,&rgb,rt,sphere);
 	rgb.rgb = create_trgb(rgb.rgb_finale->r, rgb.rgb_finale->g, rgb.rgb_finale->b);
-	free(rt->light->normal);
-	free(sphere->normal);
 	free_rgb(&rgb);
-	free(spec);
-	return (rgb.rgb);
+	return (free(rt->light->normal),free(sphere->normal),rgb.rgb);
 }
 
 void intersec_sphere(t_fct *fct,t_data *rt,t_nearest *near)

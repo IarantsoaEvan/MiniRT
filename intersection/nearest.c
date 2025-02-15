@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 14:32:10 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/13 09:18:11 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/15 12:11:17 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ void get_nearest_obj(t_data *rt ,t_fct *fct ,float x,float y)
 {
 	int rgb;
 	int rgb_amb;
-	// (void)x;
-	// (void)y;
+
 	if (rt->near->type == SPHERE)
 		rgb = create_sphere_rgb_finale(rt->near->t_near,fct,rt,rt->near->near_obj);
 	if (rt->near->type == PLANE || rt->near->type == DISK)
