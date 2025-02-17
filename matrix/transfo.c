@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transfo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 09:43:25 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/17 09:17:49 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/17 12:20:33 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,19 +63,19 @@ void	zoom_object_pos(t_nearest *near, int type)
 	t_plane		*plane;
 	t_cyl		*cyl;
 
-	if (type == SPHERE)
+	if ((type == SPHERE) && near && near->near_obj)
 	{
 		sphere = (t_sphere *)near->near_obj;
 		sphere->coord->z += 0.2;
 	}
-	if (type == PLANE)
+	if ((type == PLANE )&& near && near->near_obj)
 	{
 		plane = near->near_obj;
 		plane->coord->z += 0.2;
 	}
-	if (type == CYL || type == DISK)
+	if ((type == CYL || type == DISK) && near && near->near_obj)
 	{
-		if (type == DISK)
+		if (type == DISK && near->cyl_parent)
 			cyl = near->cyl_parent;
 		else
 			cyl = near->near_obj;
@@ -89,19 +89,19 @@ void	zoom_object_neg(t_nearest *near, int type)
 	t_plane		*plane;
 	t_cyl		*cyl;
 
-	if (type == SPHERE)
+	if ((type == SPHERE) && (near && near->near_obj))
 	{
 		sphere = (t_sphere *)near->near_obj;
 		sphere->coord->z -= 0.4;
 	}
-	if (type == PLANE)
+	if ((type == PLANE) && near && near->near_obj)
 	{
 		plane = (t_plane *)near->near_obj;
 		plane->coord->z -= 0.2;
 	}
-	if (type == CYL || type == DISK)
+	if ((type == CYL || type == DISK) && near && near->near_obj)
 	{
-		if (type == DISK)
+		if (type == DISK && near->cyl_parent)
 			cyl = near->cyl_parent;
 		else
 			cyl = near->near_obj;

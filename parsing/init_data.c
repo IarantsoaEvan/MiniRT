@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 09:36:21 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/17 09:34:43 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/17 11:29:10 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,14 @@ t_data	*init_data(void)
 	data->flag_camz = 0;
 	data->flag_radius = 0;
 	data->flag_rdisk = 0;
+	data->alpha = 0.0;
+	data->beta = 0.0;
+	data->flag_spec = 0;
+	data->teta = 0.0;
+	data->alpha_cam = 0.0;
+	data->beta_cam = 0.0;
+	data->teta_cam = 0.0;
 	data->flag_hcyl = 0;
-	init_flt_data(data);
+	// init_flt_data(data);
 	return (data);
 }

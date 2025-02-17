@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   diffuse_light.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 11:26:50 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/17 10:03:34 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/17 11:39:12 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define DIFFUSE_LIGHT_H
 # include "../src/minirt.h"
 # include "../src/structure.h"
-t_color	*get_rgb_diff(t_coord *norm_obj, t_coord *norm_light, float ratio,
+t_color	*get_rgb_diff(t_coord *, t_coord *norm_light, float ratio,
 			t_color *color);
 t_color	*add_amb_and_diff(t_color *amb, t_color *diff, t_color *spec);
 t_coord	*get_normal_sphere(t_coord *point, t_sphere *sphere);

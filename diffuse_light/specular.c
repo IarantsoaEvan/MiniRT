@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   specular.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 11:23:12 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/14 14:26:10 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/17 11:05:51 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "diffuse_light.h"
+
+static void free_blinn(t_blinn *blinn)
+{
+	free(blinn->obj_normal);
+	free(blinn->ort_light);
+	free(blinn->opp_cam);
+	free(blinn->biss);
+}
 
 float	set_spec_sph(t_data *rt, t_nearest *object, t_coord *impact, t_fct *fct)
 {
@@ -28,7 +36,7 @@ float	set_spec_sph(t_data *rt, t_nearest *object, t_coord *impact, t_fct *fct)
 	if (object->type == PLANE)
 	{
 		plane = (t_plane *)object->near_obj;
-		blinn.obj_normal = plane->vector;
+		blinn.obj_normal = ft_scal_one(plane->vector,1.0);
 	}
 	blinn.ort_light = normalize_vector_with_free(
 			ft_soustraction(rt->light->coord, impact));
@@ -37,7 +45,7 @@ float	set_spec_sph(t_data *rt, t_nearest *object, t_coord *impact, t_fct *fct)
 			vect_add(blinn.opp_cam, blinn.ort_light));
 	prod = powf(ft_scal(blinn.obj_normal, blinn.biss), 80.0f);
 	l_sph = prod * 0.9 * 0.356;
-	return (l_sph);
+	return (free_blinn(&blinn),l_sph);
 }
 
 t_color	*get_specular(t_data *rt, t_nearest *object, t_coord *impact,

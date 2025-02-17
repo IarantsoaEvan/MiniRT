@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   trs_y.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 10:24:27 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/17 09:18:49 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/17 12:26:30 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

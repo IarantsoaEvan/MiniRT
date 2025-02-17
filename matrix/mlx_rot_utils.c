@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_rot_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 09:14:08 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/17 09:14:44 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/17 12:28:23 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:27:27 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/17 09:40:07 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/17 12:06:42 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
