@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:40:48 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/17 09:05:46 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:50:21 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	aply_color_sp(t_fct *fct, t_rgb *rgb, t_data *rt, t_sphere *sphere)
 			free(rgb->rgb_finale);
 		rgb->rgb_finale = apply_shadow_color(rgb->color);
 	}
+	free(spec);
 }
 
 int	create_sphere_rgb_finale(float t, t_fct *fct, t_data *rt, t_sphere *sphere)
