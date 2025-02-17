@@ -14,7 +14,7 @@
 
 int	create_trgb(int r, int g, int b)
 {
-		return (r << 16 | g << 8 | b);
+	return (r << 16 | g << 8 | b);
 }
 
 // int	get_r(int trgb)
