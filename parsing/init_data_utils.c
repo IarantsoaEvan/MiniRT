@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 22:40:29 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/17 09:35:27 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/17 20:18:07 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_ambiante	*init_amb(void)
 int	check_positive(float nb)
 {
 	if (nb < 0)
-		return (printf("Diameter or height must be positive\n "), 0);
+		return (printf("Error\nDiameter or height must be positive\n "), 0);
 	return (1);
 }
 
@@ -67,7 +67,7 @@ int	check_valid_element(char **element)
 				|| element[i][j] == '+')
 				j++;
 			else
-				return (printf("Invalid map!\n"), 0);
+				return (printf("Error\nInvalid map!\n"), 0);
 		}
 	}
 	return (1);

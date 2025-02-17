@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 09:30:50 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/17 11:28:50 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/17 20:18:33 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ t_camera	*init_cam(void)
 	return (cam);
 }
 
-// void	init_flt_data(t_data *data)
-// {
-// 	data->alpha = 0.0;
-// 	data->beta = 0.0;
-// 	data->flag_spec = 0;
-// 	data->teta = 0.0;
-// 	data->alpha_cam = 0.0;
-// 	data->beta_cam = 0.0;
-// 	data->teta_cam = 0.0;
-// }
+void	init_flt_data(t_data *data)
+{
+	data->alpha = 0.0;
+	data->beta = 0.0;
+	data->flag_spec = 0;
+	data->teta = 0.0;
+	data->alpha_cam = 0.0;
+	data->beta_cam = 0.0;
+	data->teta_cam = 0.0;
+}
