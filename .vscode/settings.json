@@ -73,7 +73,8 @@
     "matrix.h": "c",
     "cmath": "c",
     "parsing.h": "c",
-    "stdio.h": "c"
+    "stdio.h": "c",
+    "structure.h": "c"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }

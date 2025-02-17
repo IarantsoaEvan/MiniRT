@@ -6,13 +6,14 @@
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:09:26 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/10 10:56:32 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/17 10:03:39 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef AMBIENTE_H
 # define AMBIENTE_H
 # include "../src/minirt.h"
+# include "../src/structure.h"
 
 t_color	*apply_amb(t_color *col_obj, float ratio_amb);
 int		create_trgb(int r, int g, int b);
