@@ -3,30 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 09:36:21 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/14 13:15:26 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/17 09:34:43 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-t_camera *init_cam(void)
+t_light	*init_light(void)
 {
-	t_camera *cam;
-
-	cam = malloc(sizeof(t_camera));
-	cam->coord = init_coord();
-	cam->vector = init_coord();
-	cam->fov = 0;
-	cam->rad_fov = 0;
-	return (cam);
-}
-
-t_light *init_light(void)
-{
-	t_light *light;
+	t_light	*light;
 
 	light = malloc(sizeof(t_light));
 	light->color = init_color();
@@ -34,9 +22,10 @@ t_light *init_light(void)
 	light->ratio = 0;
 	return (light);
 }
-t_plane *init_plane(void)
+
+t_plane	*init_plane(void)
 {
-	t_plane *plane;
+	t_plane	*plane;
 
 	plane = malloc(sizeof(t_plane));
 	plane->coord = init_coord();
@@ -46,9 +35,10 @@ t_plane *init_plane(void)
 	plane->next = NULL;
 	return (plane);
 }
-t_sphere *init_sphere(void)
+
+t_sphere	*init_sphere(void)
 {
-	t_sphere *sphere;
+	t_sphere	*sphere;
 
 	sphere = malloc(sizeof(t_sphere));
 	sphere->coord = init_coord();
@@ -59,9 +49,9 @@ t_sphere *init_sphere(void)
 	return (sphere);
 }
 
-t_cyl *init_cyl(void)
+t_cyl	*init_cyl(void)
 {
-	t_cyl *cyl;
+	t_cyl	*cyl;
 
 	cyl = malloc(sizeof(t_cyl));
 	cyl->color = init_color();
@@ -81,25 +71,14 @@ t_cyl *init_cyl(void)
 	return (cyl);
 }
 
-t_nearest *init_nearest(void)
+t_data	*init_data(void)
 {
-	t_nearest *near;
-
-	near = malloc(sizeof(t_nearest));
-	near->near_obj = NULL;
-	near->t_near = 0;
-	near->type = -1;
-	return (near);
-}
-
-t_data *init_data(void)
-{
-	t_data *data;
+	t_data	*data;
 
 	data = malloc(sizeof(t_data));
 	data->ambiante = NULL;
 	data->cam = NULL;
-	data->light =  NULL;
+	data->light = NULL;
 	data->plane = NULL;
 	data->sphere = NULL;
 	data->cyl = NULL;
@@ -116,12 +95,6 @@ t_data *init_data(void)
 	data->flag_radius = 0;
 	data->flag_rdisk = 0;
 	data->flag_hcyl = 0;
-	data->alpha = 0.0;
-	data->beta = 0.0;
-	data->flag_spec = 0;
-	data->teta = 0.0;
-	data->alpha_cam = 0.0;
-	data->beta_cam = 0.0;
-	data->teta_cam = 0.0;
+	init_flt_data(data);
 	return (data);
 }

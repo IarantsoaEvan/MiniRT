@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shadow.h                                           :+:      :+:    :+:   */
+/*   intersection_utils2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/27 08:00:24 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/12 10:06:24 by mrambelo         ###   ########.fr       */
+/*   Created: 2025/02/17 09:04:38 by irabesan          #+#    #+#             */
+/*   Updated: 2025/02/17 09:05:50 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHADOW_H
-# define SHADOW_H
-# include "../src/minirt.h"
+#include "intersection.h"
 
-int	ray_shadowing(t_data *rt, t_coord *impact, t_nearest *current);
-int	check_self(t_nearest *current, t_fct *fct);
-#endif
+void	init_current_sp(t_nearest *sp_current, t_sphere *sphere)
+{
+	sp_current->near_obj = sphere;
+	sp_current->type = SPHERE;
+	sp_current->id = sphere->id;
+}

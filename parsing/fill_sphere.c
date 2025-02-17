@@ -3,21 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   fill_sphere.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:20:19 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/04 11:50:25 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/17 09:28:45 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-int fill_elem_sphere(t_sphere **sphere,char *element,int *flag)
+int	fill_elem_sphere(t_sphere **sphere, char *element, int *flag)
 {
-
 	if (*flag == 0)
 	{
-		if (!fill_coord(element,(*sphere)->coord))
+		if (!fill_coord(element, (*sphere)->coord))
 			return (0);
 		*flag = 1;
 	}
@@ -27,32 +26,32 @@ int fill_elem_sphere(t_sphere **sphere,char *element,int *flag)
 		if (!check_positive((*sphere)->diam))
 			return (0);
 		*flag = 2;
-	}	
+	}
 	else
 	{
-		if (!check_and_fill_color(element,(*sphere)->color))
+		if (!check_and_fill_color(element, (*sphere)->color))
 			return (0);
 	}
 	return (1);
 }
 
-int fill_sphere(t_sphere **sphere,char **elem)
+int	fill_sphere(t_sphere **sphere, char **elem)
 {
-	t_sphere *temp;
-	int flag;
-	int i;
-	static int id;
+	static int	id;
+	t_sphere	*temp;
+	int			flag;
+	int			i;
 
 	i = 0;
 	flag = 0;
 	temp = init_sphere();
-	temp->id = temp->id  + id;
+	temp->id = temp->id + id;
 	while (elem[++i])
 	{
-		if (!fill_elem_sphere(&temp,elem[i],&flag))
+		if (!fill_elem_sphere(&temp, elem[i], &flag))
 			return (0);
 	}
-	ft_add_back_sphere(sphere,temp);
+	ft_add_back_sphere(sphere, temp);
 	id++;
 	return (1);
 }

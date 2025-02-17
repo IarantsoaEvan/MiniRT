@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:57:09 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/06 22:01:20 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/17 09:40:49 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	free_sphere(t_sphere *sphere)
 {
-	t_sphere *tmp_sp;
+	t_sphere	*tmp_sp;
 
 	while (sphere)
 	{
@@ -22,15 +22,13 @@ void	free_sphere(t_sphere *sphere)
 		sphere = sphere->next;
 		free(tmp_sp->coord);
 		free(tmp_sp->color);
-		// free(tmp_sp->normal);
 		free(tmp_sp);
 	}
-
 }
 
-void free_plane(t_plane *plane)
+void	free_plane(t_plane *plane)
 {
-	t_plane *tmp_pl;
+	t_plane	*tmp_pl;
 
 	while (plane)
 	{
@@ -46,19 +44,9 @@ void free_plane(t_plane *plane)
 	}
 }
 
-void free_disk(t_plane *disk)
+void	free_cyl(t_cyl *cyl)
 {
-	if (disk->coord)
-		free(disk->coord);
-	if (disk->vector)
-		free(disk->vector);
-	if (disk)
-		free(disk);
-}
-
-void free_cyl(t_cyl *cyl)
-{
-	t_cyl *tmp_cyl;
+	t_cyl	*tmp_cyl;
 
 	while (cyl)
 	{
@@ -75,22 +63,19 @@ void free_cyl(t_cyl *cyl)
 	}
 }
 
-void free_light_cam_amb(t_data *data)
+void	free_light_cam_amb(t_data *data)
 {
 	free(data->light->coord);
 	free(data->light->color);
-	// free(data->light->normal);
 	free(data->light);
-	// free(data->cam->cam_right);
-	// free(data->cam->cam_up);
 	free(data->cam->coord);
 	free(data->cam->vector);
 	free(data->cam);
 	free(data->ambiante->color);
 	free(data->ambiante);
-
 }
-void free_all(t_data *data)
+
+void	free_all(t_data *data)
 {
 	if (data->sphere)
 		free_sphere(data->sphere);
@@ -99,9 +84,6 @@ void free_all(t_data *data)
 	if (data->cyl)
 		free_cyl(data->cyl);
 	free_light_cam_amb(data);
-	// free(data->near);
 	free(data->mlx_ptr);
-	// free(data->win_ptr);
-	// free(data->img_ptr);
 	free(data);
 }

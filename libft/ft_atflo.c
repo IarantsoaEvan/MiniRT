@@ -10,26 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libft.h"
+#include "libft.h"
 
-static float get_decimal(const char *str, float sign)
+static float	get_decimal(const char *str, float sign)
 {
-    float prec;
-    float div;
+	float	prec;
+	float	div;
+
 	div = 1.0;
 	prec = 0.0;
 	while (*str && *str != '.')
 		str++;
-    if (*str == '.')
+	if (*str == '.')
 	{
-        str++; 
-        while (*str >= '0' && *str <= '9') {
-            div *= 10.0;
-            prec += (*str - '0') / div;
-            str++;
-        }
-    }
-    return prec * sign; 
+		str++;
+		while (*str >= '0' && *str <= '9')
+		{
+			div *= 10.0;
+			prec += (*str - '0') / div;
+			str++;
+		}
+	}
+	return (prec * sign);
 }
 
 float	ft_atflo(char *str)

@@ -3,25 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 08:11:45 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/14 13:28:17 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/17 09:11:00 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "matrix.h"
 
 void	rot_cam(int keycode, t_data *rt, t_camera *cam)
 {
-	
-	// if (keycode == 51)
-	// {
-	// 	rt->alpha_cam += 0.4;
-	// 	rot_foll_x(cam->vector, rt->alpha_cam);
-	// 	// printf("keycode == %d\n",keycode);
-	// }
 	change_flag_rot(keycode, rt);
 	if (rt->flag_camx == 1)
 		select_sign(keycode, rt->alpha_cam, cam->vector, rt);
@@ -30,6 +22,7 @@ void	rot_cam(int keycode, t_data *rt, t_camera *cam)
 	if (rt->flag_camz == 1)
 		select_sign(keycode, rt->teta_cam, cam->vector, rt);
 }
+
 void	trs_cam(int keycode, t_data *rt)
 {
 	if (keycode == 99)
@@ -46,10 +39,9 @@ void	trs_cam(int keycode, t_data *rt)
 		rt->cam->coord->z -= 0.1;
 	if (keycode == 65508)
 		rt->cam->coord->z += 0.1;
-	// printf("keycode = %d\n", keycode);
 }
 
-void ratio_light(int keycode, t_light *light)
+void	ratio_light(int keycode, t_light *light)
 {
 	if (keycode == 49)
 	{
@@ -84,16 +76,16 @@ void	trs_light(int keycode, t_light *light)
 	if (keycode == 113)
 		light->coord->z -= 0.9;
 }
+
 int	keyboard_handler(int keycode, t_data *rt)
 {
-	// printf("keycode == %d\n",keycode);
 	if (keycode == 32 && rt->flag_spec == 0)
 		rt->flag_spec = 1;
 	else if (keycode == 32 && rt->flag_spec == 1)
 		rt->flag_spec = 0;
 	trs_light(keycode, rt->light);
-	trs_x(rt->near_moove, keycode,rt);
-	trs_y(rt->near_moove, keycode,rt);
+	trs_x(rt->near_moove, keycode, rt);
+	trs_y(rt->near_moove, keycode, rt);
 	trs_cam(keycode, rt);
 	rot_x(keycode, rt, rt->near_moove);
 	rot_y(keycode, rt, rt->near_moove);

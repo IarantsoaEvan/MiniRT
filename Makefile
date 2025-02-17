@@ -7,6 +7,7 @@ NAME = miniRT
 SRC = 	parsing/init_data_utils.c\
 		parsing/init_data.c\
 		parsing/fill_data_utils.c\
+		parsing/fill_data_utils2.c\
 		parsing/add_back_lst.c\
 		parsing/check_map.c\
 		src/utils.c\
@@ -18,8 +19,11 @@ SRC = 	parsing/init_data_utils.c\
 		parsing/fill_cam.c\
 		parsing/fill_data.c\
 		intersection/vect_operant.c\
+		intersection/vect_operant2.c\
 		intersection/intersection.c\
 		intersection/intersection_utils.c\
+		intersection/intersection_utils2.c\
+		intersection/disk.c\
 		intersection/sphere.c\
 		intersection/plane.c\
 		intersection/cyl.c\
@@ -35,6 +39,7 @@ SRC = 	parsing/init_data_utils.c\
 		matrix/trs_x.c\
 		matrix/trs_y.c\
 		matrix/mlx_rotation.c\
+		matrix/mlx_rot_utils.c\
 		matrix/matrix_rot.c\
 		src/free_all.c\
 		src/main.c

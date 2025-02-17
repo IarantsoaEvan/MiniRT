@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_count_world.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 09:52:20 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/15 09:53:24 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/17 09:44:13 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	ft_count_world(char **str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
 		i++;
 	return (i);
-} 
+}

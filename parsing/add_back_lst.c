@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_back_lst.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 10:57:48 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/01/16 12:47:12 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/17 09:23:12 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
