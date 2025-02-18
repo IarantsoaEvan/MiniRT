@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   disk.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 08:09:06 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/17 08:43:23 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:52:04 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

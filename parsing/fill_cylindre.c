@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_cylindre.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 12:06:43 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/17 09:26:30 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/18 13:25:34 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	fill_elem_cyl(t_cyl **cyl, char *element, int *flag)
 	return (1);
 }
 
-int	fill_cyl(t_cyl **cyl, char **elem)
+int	fill_cyl(t_cyl **cyl, char **elem,t_data *data)
 {
 	static int	id;
 	t_cyl		*temp;
@@ -85,7 +85,10 @@ int	fill_cyl(t_cyl **cyl, char **elem)
 	while (elem[++i])
 	{
 		if (!fill_elem_cyl(&temp, elem[i], &flag))
-			return (0);
+		{
+			(*cyl) = temp;
+			return (free_data(data),0);
+		}
 	}
 	ft_add_back_cyl(cyl, temp);
 	id++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:20:10 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/17 09:40:19 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/18 12:59:45 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	check_valid_object(char **elem)
 		ft_free_str(spl_val);
 	}
 	if (objet == 0)
-		return (printf("No objet deteced!\n"), 0);
+		return (printf("Error:\nNo objet deteced!\n"), 0);
 	return (1);
 }
 
@@ -75,13 +75,13 @@ int	check_valid_a_c_l(char **elem)
 		ft_free_str(spl_val);
 	}
 	if (a != 1 || c != 1 || l != 1)
-		return (printf("Invalid map!\n"), 0);
+		return (printf("Error:\nInvalid map!\n"), 0);
 	return (1);
 }
 
 int	check_comma(char *str)
 {
 	if (ft_count_char_in_str(str, ',') != 2)
-		return (printf("Please check comma in coord or vector!\n"), 0);
+		return (printf("Error:\nPlease check comma in coord or vector!\n"), 0);
 	return (1);
 }

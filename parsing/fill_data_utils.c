@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_data_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:28:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/17 09:26:59 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/18 13:11:45 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	fill_coord(char *val, t_coord *coord)
 		return (0);
 	elem = ft_split(val, ',');
 	if (ft_count_world(elem) != 3)
-		return (printf("Error\nCoord or vector must have 3 values\n"),
+		return (printf("Error\n Coord or vector must have 3 values\n"),
 			ft_free_str(elem), 0);
 	if (elem)
 	{

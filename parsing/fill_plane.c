@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_plane.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 10:20:29 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/17 09:28:11 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/18 13:23:41 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	fill_elem_pl(t_plane **pl, char *element, int *flag)
 	return (1);
 }
 
-int	fill_plane(t_plane **pl, char **elem)
+int	fill_plane(t_plane **pl, char **elem,t_data *data)
 {
 	static int	id;
 	t_plane		*temp;
@@ -61,7 +61,10 @@ int	fill_plane(t_plane **pl, char **elem)
 	while (elem[++i])
 	{
 		if (!fill_elem_pl(&temp, elem[i], &flag))
-			return (0);
+		{
+			(*pl) = temp;
+			return (free_data(data),0);
+		}	
 	}
 	ft_add_back_plane(pl, temp);
 	id++;

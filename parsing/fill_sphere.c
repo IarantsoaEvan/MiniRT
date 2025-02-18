@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_sphere.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:20:19 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/17 09:28:45 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/18 13:24:06 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	fill_elem_sphere(t_sphere **sphere, char *element, int *flag)
 	return (1);
 }
 
-int	fill_sphere(t_sphere **sphere, char **elem)
+int	fill_sphere(t_sphere **sphere, char **elem,t_data *data)
 {
 	static int	id;
 	t_sphere	*temp;
@@ -49,7 +49,10 @@ int	fill_sphere(t_sphere **sphere, char **elem)
 	while (elem[++i])
 	{
 		if (!fill_elem_sphere(&temp, elem[i], &flag))
-			return (0);
+		{
+			(*sphere) = temp;
+			return (free_data(data),0);
+		}	
 	}
 	ft_add_back_sphere(sphere, temp);
 	id++;
