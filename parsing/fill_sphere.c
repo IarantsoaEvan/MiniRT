@@ -35,7 +35,7 @@ int	fill_elem_sphere(t_sphere **sphere, char *element, int *flag)
 	return (1);
 }
 
-int	fill_sphere(t_sphere **sphere, char **elem,t_data *data)
+int	fill_sphere(t_sphere **sphere, char **elem, t_data *data)
 {
 	static int	id;
 	t_sphere	*temp;
@@ -51,8 +51,8 @@ int	fill_sphere(t_sphere **sphere, char **elem,t_data *data)
 		if (!fill_elem_sphere(&temp, elem[i], &flag))
 		{
 			(*sphere) = temp;
-			return (free_data(data),0);
-		}	
+			return (free_data(data), 0);
+		}
 	}
 	ft_add_back_sphere(sphere, temp);
 	id++;

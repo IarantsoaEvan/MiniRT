@@ -71,7 +71,7 @@ int	fill_elem_cyl(t_cyl **cyl, char *element, int *flag)
 	return (1);
 }
 
-int	fill_cyl(t_cyl **cyl, char **elem,t_data *data)
+int	fill_cyl(t_cyl **cyl, char **elem, t_data *data)
 {
 	static int	id;
 	t_cyl		*temp;
@@ -87,7 +87,7 @@ int	fill_cyl(t_cyl **cyl, char **elem,t_data *data)
 		if (!fill_elem_cyl(&temp, elem[i], &flag))
 		{
 			(*cyl) = temp;
-			return (free_data(data),0);
+			return (free_data(data), 0);
 		}
 	}
 	ft_add_back_cyl(cyl, temp);

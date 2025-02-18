@@ -68,7 +68,7 @@ void	zoom_object_pos(t_nearest *near, int type)
 		sphere = (t_sphere *)near->near_obj;
 		sphere->coord->z += 0.2;
 	}
-	if ((type == PLANE )&& near && near->near_obj)
+	if ((type == PLANE) && near && near->near_obj)
 	{
 		plane = near->near_obj;
 		plane->coord->z += 0.2;

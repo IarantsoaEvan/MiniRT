@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:24 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/18 13:31:17 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/18 13:58:22 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-
-void free_data_cyl(t_data *data)
+void	free_data_cyl(t_data *data)
 {
 	if (data->cyl)
 	{
@@ -28,9 +27,9 @@ void free_data_cyl(t_data *data)
 		free(data->cyl);
 	}
 }
-void free_obj(t_data *data)
-{
 
+void	free_obj(t_data *data)
+{
 	if (data->sphere)
 	{
 		if (data->sphere->color)
@@ -52,7 +51,7 @@ void free_obj(t_data *data)
 	free_data_cyl(data);
 }
 
-void free_data(t_data *data)
+void	free_data(t_data *data)
 {
 	if (data->ambiante)
 	{
@@ -84,21 +83,22 @@ int	fill_data(t_data *data, char **element)
 	if (element)
 	{
 		if (!check_valid_element(element))
-			return (free_data(data),0);
+			return (free_data(data), 0);
 		if (!ft_strcmp(element[0], "A"))
-			return (fill_amb(&data->ambiante, element ,data));
+			return (fill_amb(&data->ambiante, element, data));
 		else if (!ft_strcmp(element[0], "C"))
-			return (fill_cam(&data->cam, element ,data));
+			return (fill_cam(&data->cam, element, data));
 		else if (!ft_strcmp(element[0], "L"))
-			return (fill_light(&data->light, element ,data));
+			return (fill_light(&data->light, element, data));
 		else if (!ft_strcmp(element[0], "pl"))
-			return (fill_plane(&data->plane, element ,data));
+			return (fill_plane(&data->plane, element, data));
 		else if (!ft_strcmp(element[0], "sp"))
-			return (fill_sphere(&data->sphere, element,data));
+			return (fill_sphere(&data->sphere, element, data));
 		else if (!ft_strcmp(element[0], "cy"))
-			return (fill_cyl(&data->cyl, element,data));
+			return (fill_cyl(&data->cyl, element, data));
 		else
-			return (free_data(data),printf("Error\n'%s' : Invalid id\n", element[0]), 0);
+			return (free_data(data), printf("Error\n'%s' : Invalid id\n",
+					element[0]), 0);
 		return (1);
 	}
 	return (0);
@@ -111,9 +111,9 @@ int	main(int argc, char **argv)
 	data = init_data();
 	data->near_moove = init_nearest();
 	if (!check_map_name(argv, argc))
-		return (free(data->near_moove),free(data),1);
+		return (free(data->near_moove), free(data), 1);
 	if (!fill_and_check_map_valid(argv[1], data))
-		return (free(data->near_moove),free(data),1);
+		return (free(data->near_moove), free(data), 1);
 	init_graph(data);
 	ray_tracing(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0, 0);

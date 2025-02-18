@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_cam.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 22:04:37 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/18 12:50:27 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/18 13:56:14 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ int	fill_cam_elem(t_camera **cam, char *element, int *flag)
 	}
 	return (1);
 }
-int	fill_cam(t_camera **cam, char **element,t_data *data)
+
+int	fill_cam(t_camera **cam, char **element, t_data *data)
 {
 	int	i;
 	int	flag;
@@ -58,7 +59,7 @@ int	fill_cam(t_camera **cam, char **element,t_data *data)
 	while (element[++i])
 	{
 		if (!fill_cam_elem(cam, element[i], &flag))
-			return (free_data(data),0);
+			return (free_data(data), 0);
 	}
 	return (1);
 }

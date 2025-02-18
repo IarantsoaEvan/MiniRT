@@ -47,7 +47,7 @@ int	fill_elem_pl(t_plane **pl, char *element, int *flag)
 	return (1);
 }
 
-int	fill_plane(t_plane **pl, char **elem,t_data *data)
+int	fill_plane(t_plane **pl, char **elem, t_data *data)
 {
 	static int	id;
 	t_plane		*temp;
@@ -63,8 +63,8 @@ int	fill_plane(t_plane **pl, char **elem,t_data *data)
 		if (!fill_elem_pl(&temp, elem[i], &flag))
 		{
 			(*pl) = temp;
-			return (free_data(data),0);
-		}	
+			return (free_data(data), 0);
+		}
 	}
 	ft_add_back_plane(pl, temp);
 	id++;

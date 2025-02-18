@@ -35,7 +35,7 @@ int	fill_elem_light(char *elem, t_light **light, int *flag)
 	return (1);
 }
 
-int	fill_light(t_light **light, char **elem,t_data *data)
+int	fill_light(t_light **light, char **elem, t_data *data)
 {
 	int	flag;
 	int	i;
@@ -46,7 +46,7 @@ int	fill_light(t_light **light, char **elem,t_data *data)
 	while (elem[++i])
 	{
 		if (!fill_elem_light(elem[i], light, &flag))
-			return (free_data(data),0);
+			return (free_data(data), 0);
 	}
 	return (1);
 }
@@ -67,7 +67,7 @@ int	fill_amb_elem(char *element, t_ambiante **ambiante)
 	return (1);
 }
 
-int	fill_amb(t_ambiante **ambiante, char **element,t_data *data)
+int	fill_amb(t_ambiante **ambiante, char **element, t_data *data)
 {
 	int	i;
 
@@ -76,7 +76,7 @@ int	fill_amb(t_ambiante **ambiante, char **element,t_data *data)
 	while (element[++i])
 	{
 		if (!fill_amb_elem(element[i], ambiante))
-			return (free_data(data),0);
+			return (free_data(data), 0);
 	}
 	return (1);
 }

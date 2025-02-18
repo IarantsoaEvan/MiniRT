@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 08:11:45 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/17 12:18:52 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/18 13:52:35 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ void	trs_light(int keycode, t_light *light)
 
 int	keyboard_handler(int keycode, t_data *rt)
 {
-	
 	if (keycode == 32 && rt->flag_spec == 0)
 		rt->flag_spec = 1;
 	else if (keycode == 32 && rt->flag_spec == 1)

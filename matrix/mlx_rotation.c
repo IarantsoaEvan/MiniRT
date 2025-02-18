@@ -27,7 +27,7 @@ void	rot_x(int keycode, t_data *rt, t_nearest *near)
 			cyl = (t_cyl *)near->near_obj;
 		select_sign(keycode, rt->alpha, cyl->vector, rt);
 	}
-	if (near->type == PLANE && rt->flag_rot_x == 1 &&  near->near_obj)
+	if (near->type == PLANE && rt->flag_rot_x == 1 && near->near_obj)
 	{
 		plane = (t_plane *)near->near_obj;
 		select_sign(keycode, rt->alpha, plane->vector, rt);
