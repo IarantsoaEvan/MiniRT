@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                      :+:      :+:    :+:    */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antanana      +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 13:20:09 by mrambelo          #+#    #+#             */
-/*   Updated: 2024/02/19 15:46:16 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/20 19:39:52 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,3 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	}
 	return (i + j);
 }
-/*int main()
-{
-	const char src[] = "Helo";
-	char dest [20]= "World";
-	size_t a = ft_strlcat(dest,src, 8);
-	//size_t b = strlcat(dest,src, 7);
-	
-	printf(" %ld ,\n dest = %s",a,dest);
-	return 0;
-}*/
