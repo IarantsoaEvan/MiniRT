@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_unsigned_dec.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mariosteven <mariosteven@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 08:22:10 by mrambelo          #+#    #+#             */
-/*   Updated: 2024/04/30 19:19:55 by mariosteven      ###   ########.fr       */
+/*   Updated: 2025/02/20 14:01:27 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
