@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 12:06:43 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/18 13:25:34 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/20 21:20:00 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int	fill_cyl(t_cyl **cyl, char **elem, t_data *data)
 	t_cyl		*temp;
 	int			flag;
 	int			i;
+	int			len;
 
 	i = 0;
 	flag = 0;
@@ -84,6 +85,9 @@ int	fill_cyl(t_cyl **cyl, char **elem, t_data *data)
 	temp->id = temp->id + id;
 	while (elem[++i])
 	{
+		len = ft_strlen(elem[i]);
+		if (!ft_isdigit(elem[i][len - 1]) || !ft_isdigit(elem[i][0]))
+			return ((*cyl) = temp,printf("Error\nInvalid cyl element\n"),free_data(data), 0);
 		if (!fill_elem_cyl(&temp, elem[i], &flag))
 		{
 			(*cyl) = temp;

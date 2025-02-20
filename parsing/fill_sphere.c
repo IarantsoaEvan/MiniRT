@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:20:19 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/18 13:24:06 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/20 21:19:22 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	fill_sphere(t_sphere **sphere, char **elem, t_data *data)
 	t_sphere	*temp;
 	int			flag;
 	int			i;
+	int			len;
 
 	i = 0;
 	flag = 0;
@@ -48,6 +49,9 @@ int	fill_sphere(t_sphere **sphere, char **elem, t_data *data)
 	temp->id = temp->id + id;
 	while (elem[++i])
 	{
+		len = ft_strlen(elem[i]);
+		if (!ft_isdigit(elem[i][len - 1]) || !ft_isdigit(elem[i][0]))
+			return ((*sphere) = temp,printf("Error\nInvalid sphere element\n"), free_data(data), 0);
 		if (!fill_elem_sphere(&temp, elem[i], &flag))
 		{
 			(*sphere) = temp;

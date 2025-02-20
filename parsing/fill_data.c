@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 08:56:30 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/18 12:53:11 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/20 21:10:51 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,16 @@ int	fill_light(t_light **light, char **elem, t_data *data)
 {
 	int	flag;
 	int	i;
+	int	len;
 
 	flag = 0;
 	i = 0;
 	*light = init_light();
 	while (elem[++i])
 	{
+		len = ft_strlen(elem[i]);
+		if (!ft_isdigit(elem[i][len - 1]) || !ft_isdigit(elem[i][0]))
+			return (printf("Error\nInvalid light element\n"), free_data(data), 0);
 		if (!fill_elem_light(elem[i], light, &flag))
 			return (free_data(data), 0);
 	}
@@ -70,11 +74,15 @@ int	fill_amb_elem(char *element, t_ambiante **ambiante)
 int	fill_amb(t_ambiante **ambiante, char **element, t_data *data)
 {
 	int	i;
+	int len;
 
 	i = 0;
 	*ambiante = init_amb();
 	while (element[++i])
 	{
+		len = ft_strlen(element[i]);
+		if (!ft_isdigit(element[i][len - 1]) || !ft_isdigit(element[i][0]))
+			return (printf("Error\nInvalid ambiante element\n"), free_data(data), 0);
 		if (!fill_amb_elem(element[i], ambiante))
 			return (free_data(data), 0);
 	}

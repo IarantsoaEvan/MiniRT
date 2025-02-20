@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:28:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/18 13:11:45 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/20 20:58:55 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,28 @@ int	check_vec_or_rat(float vector, int type)
 	return (0);
 }
 
+
+
+
 int	check_and_fill_color(char *val, t_color *color)
 {
 	char	**elem;
-
+	
 	elem = NULL;
 	if (!check_comma(val))
 		return (0);
 	elem = ft_split(val, ',');
+	if (!check_excat_val(elem))
+		return (printf("Error\nInvalid color element\n"),ft_free_str(elem), 0);
 	if (ft_count_world(elem) != 3)
 		return (printf("Error\nColor must have 3 values\n"), ft_free_str(elem),
 			0);
 	if (elem)
 	{
-		color->r = ft_atflo(elem[0]);
-		color->g = ft_atflo(elem[1]);
-		color->b = ft_atflo(elem[2]);
+		fill_rgb_color(color, elem);
+		// color->r = ft_atflo(elem[0]);
+		// color->g = ft_atflo(elem[1]);
+		// color->b = ft_atflo(elem[2]);
 		if (!check_color(color->r) || !check_color(color->g)
 			|| !check_color(color->b))
 		{
@@ -70,8 +76,10 @@ int	fill_coord(char *val, t_coord *coord)
 
 	elem = NULL;
 	if (!check_comma(val))
-		return (0);
+	return (0);
 	elem = ft_split(val, ',');
+	if (!check_excat_val(elem))
+		return (printf("Error\nInvalid coord or vector element\n"),ft_free_str(elem), 0);
 	if (ft_count_world(elem) != 3)
 		return (printf("Error\n Coord or vector must have 3 values\n"),
 			ft_free_str(elem), 0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:39:30 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/17 09:23:34 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/20 20:19:40 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ int	check_map_name(char **argv, int argc)
 	}
 	len = ft_strlen(argv[1]);
 	len--;
-	if (argv && argv[1] && (argv[1][len] == 't' && argv[1][len - 1] == 'r'
-			&& argv[1][len - 2] == '.'))
+	if ((argv && argv[1] && (argv[1][len] == 't' && argv[1][len - 1] == 'r'
+			&& argv[1][len - 2] == '.') && argv[1][0] != '.' ))
 		return (1);
-	printf("Error\nThe map name must be a .rt file\n");
+	printf("Error\nThe map name must be a file with .rt extention\n");
 	return (0);
 }
 

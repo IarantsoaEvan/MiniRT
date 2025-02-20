@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 21:34:36 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/18 12:52:04 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/20 20:57:14 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int			fill_plane(t_plane **pl, char **elem, t_data *data);
 t_nearest	*init_nearest(void);
 t_ambiante	*init_amb(void);
 t_color		*init_color(void);
+void fill_rgb_color(t_color *color, char **elem);
 t_coord		*init_coord(void);
 t_cyl		*init_cyl(void);
 t_plane		*init_plane(void);
@@ -43,6 +44,7 @@ int			check_map_name(char **argv, int argc);
 void		free_data(t_data *data);
 char		*get_map(int fd);
 t_sphere	*init_sphere(void);
+int check_excat_val(char **elem);
 int			fill_and_check_map_valid(char *map, t_data *data);
 int			get_element(char **v_map, t_data *data);
 void		ft_add_back_cyl(t_cyl **cyl, t_cyl *new);

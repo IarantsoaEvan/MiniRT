@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_cam.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 22:04:37 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/18 13:56:14 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/20 21:10:42 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,16 @@ int	fill_cam(t_camera **cam, char **element, t_data *data)
 {
 	int	i;
 	int	flag;
-
-	i = 0;
+	int len;
+	
 	flag = 0;
+	i = 0;
 	(*cam) = init_cam();
 	while (element[++i])
 	{
+		len = ft_strlen(element[i]);
+		if (!ft_isdigit(element[i][len - 1]) || !ft_isdigit(element[i][0]))
+			return (printf("Error\nInvalid cam element\n"),free_data(data), 0);
 		if (!fill_cam_elem(cam, element[i], &flag))
 			return (free_data(data), 0);
 	}
