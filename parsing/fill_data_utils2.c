@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 20:55:09 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/20 21:07:14 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/20 22:08:10 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int check_excat_val(char **elem)
 	while (elem[++i])
 	{
 		len = ft_strlen(elem[i]);
-		if (!ft_isdigit(elem[i][len - 1]) || !ft_isdigit(elem[i][0]))
+		if (!ft_isdigit(elem[i][len - 1]) || (elem[i][0] == '.' || elem[i][0] == ','))
 			return (0);
 	}
 	return (1);

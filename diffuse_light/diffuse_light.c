@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   diffuse_light.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 11:26:39 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/14 14:13:29 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/20 22:37:40 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

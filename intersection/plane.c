@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 19:04:58 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/17 11:11:46 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/20 22:37:48 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,12 @@ int	create_plane_rgb_finale(float t, t_fct *fct, t_data *rt, t_plane *plane)
 	rgb.flag = NO_SHADOW;
 	rgb.color = apply_amb(plane->color, rt->ambiante->ratio);
 	rgb.flag = ray_shadowing(rt, rgb.point, &pl_current);
+	
 	rt->light->normal = get_normal_light(rt, rgb.point);
+	
 	rgb.rgb_diff = get_rgb_diff(plane->vector, rt->light->normal,
 			rt->light->ratio, plane->color);
+	
 	aply_color_pl(fct, &rgb, rt, plane);
 	rgb.rgb = create_trgb(rgb.rgb_finale->r, rgb.rgb_finale->g,
 			rgb.rgb_finale->b);

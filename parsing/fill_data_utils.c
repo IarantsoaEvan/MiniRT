@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:28:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/20 20:58:55 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/20 21:55:05 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,6 @@ int	check_and_fill_color(char *val, t_color *color)
 	if (elem)
 	{
 		fill_rgb_color(color, elem);
-		// color->r = ft_atflo(elem[0]);
-		// color->g = ft_atflo(elem[1]);
-		// color->b = ft_atflo(elem[2]);
 		if (!check_color(color->r) || !check_color(color->g)
 			|| !check_color(color->b))
 		{
