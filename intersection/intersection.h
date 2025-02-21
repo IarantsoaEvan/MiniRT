@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:41:38 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/17 09:06:01 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/21 08:44:31 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ float	get_delta(t_pol *pol);
 void	get_nearest_obj(t_data *rt, t_fct *fct, float x, float y);
 t_coord	*ft_addition(t_coord *coord1, t_coord *coord2);
 int		create_sphere_rgb_finale(float t, t_fct *fct, t_data *rt,
-			t_sphere *sphere);
+t_sphere *sphere);t_coord *change_plane_vect(t_coord *plane_vect,t_coord *dir);
 int		create_plane_rgb_finale(float t, t_fct *fct, t_data *rt,
 			t_plane *plane);
 float	get_m_scal(t_coord *dir, t_coord *origin, float t, t_cyl *cyl);

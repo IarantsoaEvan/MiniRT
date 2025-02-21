@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 19:04:58 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/20 22:37:48 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/21 12:42:27 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,28 @@ void	init_current_pl(t_nearest *pl_current, t_plane *plane)
 	pl_current->id = plane->id;
 }
 
+t_coord *change_plane_vect(t_coord *plane_vect,t_coord *dir)
+{
+	t_coord *tmp;
+	
+	if (ft_scal(dir,plane_vect) < 0)
+		tmp = ft_scal_one(plane_vect,1);
+	else
+		tmp = ft_scal_one(plane_vect,-1);
+	return (tmp);
+}
+
 void	aply_color_pl(t_fct *fct, t_rgb *rgb, t_data *rt, t_plane *plane)
 {
 	float		scal_nl;
 	t_color		*spec;
-	t_nearest	pl_current;
+	t_coord *tmp;
 
+	t_nearest	pl_current;
 	init_current_pl(&pl_current, plane);
 	spec = init_color();
-	scal_nl = ft_scal(plane->vector, rt->light->normal);
+	tmp = change_plane_vect(plane->vector,fct->dir);
+	scal_nl = ft_scal(tmp, rt->light->normal);
 	if (rt->flag_spec)
 	{
 		if (spec)
@@ -58,25 +71,27 @@ void	aply_color_pl(t_fct *fct, t_rgb *rgb, t_data *rt, t_plane *plane)
 			free(rgb->rgb_finale);
 		rgb->rgb_finale = apply_shadow_color(rgb->color);
 	}
+	free(tmp);
 	free(spec);
 }
+
 
 int	create_plane_rgb_finale(float t, t_fct *fct, t_data *rt, t_plane *plane)
 {
 	t_rgb		rgb;
 	t_nearest	pl_current;
+	t_coord *tmp;
 
 	init_current_pl(&pl_current, plane);
 	rgb.point = ft_addition(rt->cam->coord, ft_scal_one(fct->dir, t));
 	rgb.flag = NO_SHADOW;
 	rgb.color = apply_amb(plane->color, rt->ambiante->ratio);
 	rgb.flag = ray_shadowing(rt, rgb.point, &pl_current);
-	
 	rt->light->normal = get_normal_light(rt, rgb.point);
-	
-	rgb.rgb_diff = get_rgb_diff(plane->vector, rt->light->normal,
+	tmp = change_plane_vect(plane->vector,fct->dir);
+	rgb.rgb_diff = get_rgb_diff(tmp, rt->light->normal,
 			rt->light->ratio, plane->color);
-	
+	free(tmp);
 	aply_color_pl(fct, &rgb, rt, plane);
 	rgb.rgb = create_trgb(rgb.rgb_finale->r, rgb.rgb_finale->g,
 			rgb.rgb_finale->b);
