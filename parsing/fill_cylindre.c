@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_cylindre.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 12:06:43 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/20 22:09:13 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/24 09:00:59 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,10 @@ int	fill_cyl(t_cyl **cyl, char **elem, t_data *data)
 	while (elem[++i])
 	{
 		len = ft_strlen(elem[i]);
-		if (!ft_isdigit(elem[i][len - 1]) || (elem[i][0] == '.' || elem[i][0] == ','))
-			return ((*cyl) = temp,printf("Error\nInvalid cyl element\n"),free_data(data), 0);
+		if (!ft_isdigit(elem[i][len - 1]) || (elem[i][0] == '.'
+				|| elem[i][0] == ','))
+			return ((*cyl) = temp, printf("Error\nInvalid cyl element\n"),
+				free_data(data), 0);
 		if (!fill_elem_cyl(&temp, elem[i], &flag))
 		{
 			(*cyl) = temp;
@@ -95,6 +97,5 @@ int	fill_cyl(t_cyl **cyl, char **elem, t_data *data)
 		}
 	}
 	ft_add_back_cyl(cyl, temp);
-	id++;
-	return (1);
+	return (id++, 1);
 }

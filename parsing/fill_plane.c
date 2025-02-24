@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_plane.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 10:20:29 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/20 22:09:05 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/24 09:03:51 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,10 @@ int	fill_plane(t_plane **pl, char **elem, t_data *data)
 	while (elem[++i])
 	{
 		len = ft_strlen(elem[i]);
-		if (!ft_isdigit(elem[i][len - 1]) || (elem[i][0] == '.' || elem[i][0] == ','))
-			return ((*pl) = temp,printf("Error\nInvalid plane element\n"), free_data(data), 0);
+		if (!ft_isdigit(elem[i][len - 1]) || (elem[i][0] == '.'
+				|| elem[i][0] == ','))
+			return ((*pl) = temp, printf("Error\nInvalid plane element\n"),
+				free_data(data), 0);
 		if (!fill_elem_pl(&temp, elem[i], &flag))
 		{
 			(*pl) = temp;
@@ -71,6 +73,5 @@ int	fill_plane(t_plane **pl, char **elem, t_data *data)
 		}
 	}
 	ft_add_back_plane(pl, temp);
-	id++;
-	return (1);
+	return (id++, 1);
 }

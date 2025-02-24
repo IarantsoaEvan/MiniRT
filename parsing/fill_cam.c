@@ -52,16 +52,17 @@ int	fill_cam(t_camera **cam, char **element, t_data *data)
 {
 	int	i;
 	int	flag;
-	int len;
-	
+	int	len;
+
 	flag = 0;
 	i = 0;
 	(*cam) = init_cam();
 	while (element[++i])
 	{
 		len = ft_strlen(element[i]);
-		if (!ft_isdigit(element[i][len - 1]) || (element[i][0] == '.' || element[i][0] == ','))
-			return (printf("Error\nInvalid cam element\n"),free_data(data), 0);
+		if (!ft_isdigit(element[i][len - 1]) || (element[i][0] == '.'
+				|| element[i][0] == ','))
+			return (printf("Error\nInvalid cam element\n"), free_data(data), 0);
 		if (!fill_cam_elem(cam, element[i], &flag))
 			return (free_data(data), 0);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 19:04:58 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/21 12:42:27 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/24 09:10:11 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,14 @@ float	get_t_plane(t_coord *direction, t_coord *origin, t_plane *plane)
 	return (t);
 }
 
-void	init_current_pl(t_nearest *pl_current, t_plane *plane)
+t_coord	*change_plane_vect(t_coord *plane_vect, t_coord *dir)
 {
-	pl_current->near_obj = plane;
-	pl_current->type = PLANE;
-	pl_current->id = plane->id;
-}
+	t_coord	*tmp;
 
-t_coord *change_plane_vect(t_coord *plane_vect,t_coord *dir)
-{
-	t_coord *tmp;
-	
-	if (ft_scal(dir,plane_vect) < 0)
-		tmp = ft_scal_one(plane_vect,1);
+	if (ft_scal(dir, plane_vect) < 0)
+		tmp = ft_scal_one(plane_vect, 1);
 	else
-		tmp = ft_scal_one(plane_vect,-1);
+		tmp = ft_scal_one(plane_vect, -1);
 	return (tmp);
 }
 
@@ -48,12 +41,12 @@ void	aply_color_pl(t_fct *fct, t_rgb *rgb, t_data *rt, t_plane *plane)
 {
 	float		scal_nl;
 	t_color		*spec;
-	t_coord *tmp;
-
+	t_coord		*tmp;
 	t_nearest	pl_current;
+
 	init_current_pl(&pl_current, plane);
 	spec = init_color();
-	tmp = change_plane_vect(plane->vector,fct->dir);
+	tmp = change_plane_vect(plane->vector, fct->dir);
 	scal_nl = ft_scal(tmp, rt->light->normal);
 	if (rt->flag_spec)
 	{
@@ -61,10 +54,7 @@ void	aply_color_pl(t_fct *fct, t_rgb *rgb, t_data *rt, t_plane *plane)
 			free(spec);
 		spec = get_specular(rt, &pl_current, rgb->point, fct);
 	}
-	if (scal_nl < 0)
-		rgb->rgb_finale = apply_shadow_color(rgb->color);
-	else
-		rgb->rgb_finale = add_amb_and_diff(rgb->color, rgb->rgb_diff, spec);
+	check_scal_nl(scal_nl, rgb, spec);
 	if (rgb->flag == SHADOW)
 	{
 		if (rgb->rgb_finale)
@@ -75,12 +65,11 @@ void	aply_color_pl(t_fct *fct, t_rgb *rgb, t_data *rt, t_plane *plane)
 	free(spec);
 }
 
-
 int	create_plane_rgb_finale(float t, t_fct *fct, t_data *rt, t_plane *plane)
 {
 	t_rgb		rgb;
 	t_nearest	pl_current;
-	t_coord *tmp;
+	t_coord		*tmp;
 
 	init_current_pl(&pl_current, plane);
 	rgb.point = ft_addition(rt->cam->coord, ft_scal_one(fct->dir, t));
@@ -88,9 +77,9 @@ int	create_plane_rgb_finale(float t, t_fct *fct, t_data *rt, t_plane *plane)
 	rgb.color = apply_amb(plane->color, rt->ambiante->ratio);
 	rgb.flag = ray_shadowing(rt, rgb.point, &pl_current);
 	rt->light->normal = get_normal_light(rt, rgb.point);
-	tmp = change_plane_vect(plane->vector,fct->dir);
-	rgb.rgb_diff = get_rgb_diff(tmp, rt->light->normal,
-			rt->light->ratio, plane->color);
+	tmp = change_plane_vect(plane->vector, fct->dir);
+	rgb.rgb_diff = get_rgb_diff(tmp, rt->light->normal, rt->light->ratio,
+			plane->color);
 	free(tmp);
 	aply_color_pl(fct, &rgb, rt, plane);
 	rgb.rgb = create_trgb(rgb.rgb_finale->r, rgb.rgb_finale->g,
