@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_sphere.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:20:19 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/24 09:04:49 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/24 20:13:34 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ int	fill_sphere(t_sphere **sphere, char **elem, t_data *data)
 	i = 0;
 	flag = 0;
 	temp = init_sphere();
+	if (ft_count_world(elem) != 4)
+		return ((*sphere) = temp,printf("Error\nInvalid sphere element\n"), free_data(data), 0);
 	temp->id = temp->id + id;
 	while (elem[++i])
 	{
 		len = ft_strlen(elem[i]);
-		if (!ft_isdigit(elem[i][len - 1]) || (elem[i][0] == '.'
-				|| elem[i][0] == ','))
-			return ((*sphere) = temp, printf("Error\nInvalid sphere element\n"),
-				free_data(data), 0);
+		if (!ft_isdigit(elem[i][len - 1]) || (elem[i][0] == '.' || elem[i][0] == ','))
+			return ((*sphere) = temp,printf("Error\nInvalid sphere element\n"), free_data(data), 0);
 		if (!fill_elem_sphere(&temp, elem[i], &flag))
 		{
 			(*sphere) = temp;
@@ -61,5 +61,5 @@ int	fill_sphere(t_sphere **sphere, char **elem, t_data *data)
 		}
 	}
 	ft_add_back_sphere(sphere, temp);
-	return (id++, 1);
+	return (id++,1);
 }

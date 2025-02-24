@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 22:04:37 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/20 22:09:22 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/24 20:05:26 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,9 @@ int	fill_cam(t_camera **cam, char **element, t_data *data)
 	flag = 0;
 	i = 0;
 	(*cam) = init_cam();
+	if (ft_count_world(element) != 4)
+		return (printf("Error\nInvalid cam element\n"), free_data(data),
+			0);
 	while (element[++i])
 	{
 		len = ft_strlen(element[i]);

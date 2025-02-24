@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 08:56:30 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/20 22:19:48 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/24 20:02:32 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@ int	fill_light(t_light **light, char **elem, t_data *data)
 	flag = 0;
 	i = 0;
 	*light = init_light();
+	if (ft_count_world(elem) != 4)
+		return (printf("Error\nInvalid light element\n"), free_data(data),
+			0);
 	while (elem[++i])
 	{
 		len = ft_strlen(elem[i]);
@@ -80,6 +83,9 @@ int	fill_amb(t_ambiante **ambiante, char **element, t_data *data)
 
 	i = 0;
 	*ambiante = init_amb();
+	if (ft_count_world(element) != 3)
+		return (printf("Error\nInvalid ambiante element\n"), free_data(data),
+			0);
 	while (element[++i])
 	{
 		len = ft_strlen(element[i]);

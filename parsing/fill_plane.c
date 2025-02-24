@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_plane.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 10:20:29 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/24 09:03:51 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/24 20:32:10 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,11 @@ int	fill_plane(t_plane **pl, char **elem, t_data *data)
 	i = 0;
 	flag = 0;
 	temp = init_plane();
+	if ((*pl) == NULL)
+		(*pl) = temp;
+	if (ft_count_world(elem) != 4)
+		return (printf("Error\nInvalid plane element\n"),
+			free_data(data), 0);
 	temp->id = temp->id + id;
 	while (elem[++i])
 	{
