@@ -10,6 +10,7 @@ CFILES =	ft_isalnum.c \
 		ft_count_char_in_str.c\
 		ft_strlen.c \
 		ft_atoi.c \
+		ft_isspace.c\
 		ft_toupper.c \
 		ft_tolower.c \
 		ft_memset.c \

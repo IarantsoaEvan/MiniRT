@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_cylindre.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 12:06:43 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/24 09:00:59 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/25 11:00:05 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	fill_diam_and_height(int *flag, t_cyl **cyl, char *element)
 	}
 	else if (*flag == 2)
 	{
+		if (check_float(element) == 0)
+			return (printf("Error\nInvalid cyl diameter\n"),0);
 		(*cyl)->diam = ft_atflo(element);
 		if (!check_positive((*cyl)->diam))
 			return (0);
@@ -42,6 +44,8 @@ int	fill_diam_and_height(int *flag, t_cyl **cyl, char *element)
 	}
 	else if (*flag == 3)
 	{
+		if (check_float(element) == 0)
+			return (printf("Error\nInvalid cyl heigth\n"),0);
 		(*cyl)->height = ft_atflo(element);
 		if (!check_positive((*cyl)->height))
 			return (0);
@@ -82,19 +86,19 @@ int	fill_cyl(t_cyl **cyl, char **elem, t_data *data)
 	i = 0;
 	flag = 0;
 	temp = init_cyl();
+	if (ft_count_world(elem) != 6)
+		return (printf("Error\nInvalid cyl element\n"),
+			free_data(data),free_cyl(temp), 0);
 	temp->id = temp->id + id;
 	while (elem[++i])
 	{
 		len = ft_strlen(elem[i]);
 		if (!ft_isdigit(elem[i][len - 1]) || (elem[i][0] == '.'
 				|| elem[i][0] == ','))
-			return ((*cyl) = temp, printf("Error\nInvalid cyl element\n"),
-				free_data(data), 0);
+			return (printf("Error\nInvalid cyl element\n"),
+				free_data(data),free_cyl(temp), 0);
 		if (!fill_elem_cyl(&temp, elem[i], &flag))
-		{
-			(*cyl) = temp;
-			return (free_data(data), 0);
-		}
+			return (free_data(data),free_cyl(temp), 0);
 	}
 	ft_add_back_cyl(cyl, temp);
 	return (id++, 1);

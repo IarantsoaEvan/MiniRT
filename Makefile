@@ -7,6 +7,7 @@ NAME = miniRT
 SRC = 	parsing/init_data_utils.c\
 		parsing/init_data_utils2.c\
 		parsing/init_data.c\
+		parsing/check_float.c \
 		parsing/fill_data_utils2.c\
 		parsing/fill_data_utils.c\
 		parsing/add_back_lst.c\

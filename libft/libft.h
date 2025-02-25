@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 10:31:40 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/15 09:53:59 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/25 09:18:57 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int		ft_printf(const char *format, ...);
 int		ft_count_world(char **str);
 int		ft_print_char(char c);
 int		print_str(char *str);
+int     ft_isspace(char *str);
 int		print_int(int nbr);
 int		print_unsigned_dec(unsigned int nbr);
 int		print_hex(int nbr, char c);

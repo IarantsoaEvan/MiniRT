@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 22:04:37 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/24 20:05:26 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/25 09:45:54 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int	fill_cam_elem(t_camera **cam, char *element, int *flag)
 	}
 	else
 	{
+		if (check_float(element) == 0)
+			return (printf("Error \n Invalid FOV\n"),0);
 		(*cam)->fov = ft_atflo(element);
 		(*cam)->rad_fov = (*cam)->fov * (M_PI / 180);
 		return (check_angle((*cam)->fov));

@@ -6,15 +6,15 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:28:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/20 21:55:05 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/25 11:08:05 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-int	check_color(int color)
+int	check_color(float color)
 {
-	if (color >= 0 && color <= 255)
+	if (color >= 0.000f && color <= 255.000f)
 		return (1);
 	return (0);
 }
@@ -23,7 +23,7 @@ int	check_vec_or_rat(float vector, int type)
 {
 	if (type == RATIO)
 	{
-		if (vector >= 0.0 && vector <= 1.0)
+		if (vector >= 0.000f && vector <= 1.000f)
 			return (1);
 		printf("Error\nRatio must be between 0.0 - 1.0\n");
 	}
@@ -51,6 +51,10 @@ int	check_and_fill_color(char *val, t_color *color)
 			0);
 	if (elem)
 	{
+		if (check_float(elem[0]) == 0 || check_float(elem[1]) == 0
+			|| check_float(elem[2]) == 0)
+			return (printf("Error\nPlease check the colors values\n"), ft_free_str(elem),
+			0);
 		fill_rgb_color(color, elem);
 		if (!check_color(color->r) || !check_color(color->g)
 			|| !check_color(color->b))
@@ -80,6 +84,10 @@ int	fill_coord(char *val, t_coord *coord)
 			ft_free_str(elem), 0);
 	if (elem)
 	{
+		if (check_float(elem[0]) == 0 || check_float(elem[1]) == 0
+			|| check_float(elem[2]) == 0)
+			return (printf("Error\n Please check the coord or vector values\n"),
+			ft_free_str(elem), 0);
 		coord->x = ft_atflo(elem[0]);
 		coord->y = ft_atflo(elem[1]);
 		coord->z = ft_atflo(elem[2]);

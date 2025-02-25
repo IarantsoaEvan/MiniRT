@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 21:34:36 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/20 20:57:14 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/25 09:42:59 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 int			fill_amb(t_ambiante **ambiante, char **element, t_data *data);
 t_data		*init_data(void);
-int			check_color(int color);
+int			check_color(float color);
 int			check_positive(float nb);
 int			check_valid_element(char **element);
 int			check_vec_or_rat(float vector, int type);
@@ -42,6 +42,7 @@ t_camera	*init_cam(void);
 t_light		*init_light(void);
 int			check_map_name(char **argv, int argc);
 void		free_data(t_data *data);
+int         check_float(char *str);
 char		*get_map(int fd);
 t_sphere	*init_sphere(void);
 int			check_excat_val(char **elem);

@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 08:56:30 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/24 20:02:32 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/25 10:56:48 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	fill_elem_light(char *elem, t_light **light, int *flag)
 	}
 	else if (*flag == 1)
 	{
+		if (check_float(elem) == 0)
+			return (printf("Error\nInvalid light ratio\n"),0);
 		(*light)->ratio = ft_atflo(elem);
 		if (!check_vec_or_rat((*light)->ratio, RATIO))
 			return (0);
@@ -69,6 +71,8 @@ int	fill_amb_elem(char *element, t_ambiante **ambiante)
 	}
 	else
 	{
+		if (check_float(element) == 0)
+			return (printf("Error\nInvalid ambiante ratio\n"),0);
 		(*ambiante)->ratio = ft_atflo(element);
 		if (!check_vec_or_rat((*ambiante)->ratio, RATIO))
 			return (0);
