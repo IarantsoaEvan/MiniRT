@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:28:07 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/25 11:08:05 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/27 09:40:17 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	check_color(float color)
 {
-	if (color >= 0.000f && color <= 255.000f)
+	if (color >= 0.000f && color <= 255.0000f)
 		return (1);
 	return (0);
 }
@@ -51,17 +51,14 @@ int	check_and_fill_color(char *val, t_color *color)
 			0);
 	if (elem)
 	{
-		if (check_float(elem[0]) == 0 || check_float(elem[1]) == 0
-			|| check_float(elem[2]) == 0)
+		if (check_int_color(elem[0]) == 0 || check_int_color(elem[1]) == 0
+			|| check_int_color(elem[2]) == 0)
 			return (printf("Error\nPlease check the colors values\n"), ft_free_str(elem),
 			0);
 		fill_rgb_color(color, elem);
 		if (!check_color(color->r) || !check_color(color->g)
 			|| !check_color(color->b))
-		{
-			printf("Error\nColor must be between 0 - 255\n");
-			return (ft_free_str(elem), 0);
-		}
+			return (printf("Error\nColor must be between 0 - 255\n"),ft_free_str(elem), 0);
 	}
 	if (elem)
 		ft_free_str(elem);

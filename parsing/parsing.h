@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 21:34:36 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/25 09:42:59 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/27 09:39:48 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void		fill_rgb_color(t_color *color, char **elem);
 t_coord		*init_coord(void);
 t_cyl		*init_cyl(void);
 t_plane		*init_plane(void);
+int         check_int_color(char *str);
 int			fill_cyl(t_cyl **cyl, char **elem, t_data *data);
 t_camera	*init_cam(void);
 t_light		*init_light(void);
