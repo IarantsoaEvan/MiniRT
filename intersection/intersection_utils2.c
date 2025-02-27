@@ -6,7 +6,7 @@
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 09:04:38 by irabesan          #+#    #+#             */
-/*   Updated: 2025/02/24 09:09:43 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/27 10:44:44 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,16 @@ void	init_current_pl(t_nearest *pl_current, t_plane *plane)
 	pl_current->near_obj = plane;
 	pl_current->type = PLANE;
 	pl_current->id = plane->id;
+}
+
+void	check_free_element(char **element)
+{
+	if (element)
+		ft_free_str(element);
+}
+
+void	free_n_close(int fd, char *g_map)
+{
+	free(g_map);
+	close(fd);
 }

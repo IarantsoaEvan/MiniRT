@@ -35,7 +35,7 @@ int		ft_printf(const char *format, ...);
 int		ft_count_world(char **str);
 int		ft_print_char(char c);
 int		print_str(char *str);
-int     ft_isspace(char *str);
+int		ft_isspace(char *str);
 int		print_int(int nbr);
 int		print_unsigned_dec(unsigned int nbr);
 int		print_hex(int nbr, char c);

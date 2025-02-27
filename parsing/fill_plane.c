@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_plane.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 10:20:29 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/25 08:17:12 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/27 10:29:22 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,18 @@ int	fill_plane(t_plane **pl, char **elem, t_data *data)
 	flag = 0;
 	temp = init_plane();
 	if (ft_count_world(elem) != 4)
-		return (printf("Error\nInvalid plane element\n"),
-			free_data(data),free_plane(temp), 0);
+		return (printf("Error\nInvalid plane element\n"), free_data(data),
+			free_plane(temp), 0);
 	temp->id = temp->id + id;
 	while (elem[++i])
 	{
 		len = ft_strlen(elem[i]);
 		if (!ft_isdigit(elem[i][len - 1]) || (elem[i][0] == '.'
 				|| elem[i][0] == ','))
-			return (printf("Error\nInvalid plane element\n")
-				,free_data(data),free_plane(temp), 0);
+			return (printf("Error\nInvalid plane element\n"), free_data(data),
+				free_plane(temp), 0);
 		if (!fill_elem_pl(&temp, elem[i], &flag))
-			return (free_data(data) ,free_plane(temp), 0);
+			return (free_data(data), free_plane(temp), 0);
 	}
-	// ft_add_back_plane(pl, temp);
-	return (ft_add_back_plane(pl, temp),id++, 1);
+	return (ft_add_back_plane(pl, temp), id++, 1);
 }

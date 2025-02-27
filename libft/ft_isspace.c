@@ -3,26 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 09:16:27 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/25 09:20:51 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/27 10:23:07 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_isspace(char *str)
+int	ft_isspace(char *str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (str && str[i])
-    {
-        if (str[i] == ' ' || str[i] == '\n' || str[i] == '\t')
-            i++;
-        else
-            return (0);
-    }
-    return (1);
+	i = 0;
+	while (str && str[i])
+	{
+		if (str[i] == ' ' || str[i] == '\n' || str[i] == '\t')
+			i++;
+		else
+			return (0);
+	}
+	return (1);
 }

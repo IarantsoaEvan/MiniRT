@@ -23,7 +23,7 @@ int	fill_elem_light(char *elem, t_light **light, int *flag)
 	else if (*flag == 1)
 	{
 		if (check_float(elem) == 0)
-			return (printf("Error\nInvalid light ratio\n"),0);
+			return (printf("Error\nInvalid light ratio\n"), 0);
 		(*light)->ratio = ft_atflo(elem);
 		if (!check_vec_or_rat((*light)->ratio, RATIO))
 			return (0);
@@ -47,8 +47,7 @@ int	fill_light(t_light **light, char **elem, t_data *data)
 	i = 0;
 	*light = init_light();
 	if (ft_count_world(elem) != 4)
-		return (printf("Error\nInvalid light element\n"), free_data(data),
-			0);
+		return (printf("Error\nInvalid light element\n"), free_data(data), 0);
 	while (elem[++i])
 	{
 		len = ft_strlen(elem[i]);
@@ -72,7 +71,7 @@ int	fill_amb_elem(char *element, t_ambiante **ambiante)
 	else
 	{
 		if (check_float(element) == 0)
-			return (printf("Error\nInvalid ambiante ratio\n"),0);
+			return (printf("Error\nInvalid ambiante ratio\n"), 0);
 		(*ambiante)->ratio = ft_atflo(element);
 		if (!check_vec_or_rat((*ambiante)->ratio, RATIO))
 			return (0);

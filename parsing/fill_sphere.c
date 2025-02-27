@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_sphere.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:20:19 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/25 11:02:24 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/27 10:30:08 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	fill_elem_sphere(t_sphere **sphere, char *element, int *flag)
 	else if (*flag == 1)
 	{
 		if (check_float(element) == 0)
-			return (printf("Error\nInvalid sphere diam\n"),0);
+			return (printf("Error\nInvalid sphere diam\n"), 0);
 		(*sphere)->diam = ft_atflo(element);
 		if (!check_positive((*sphere)->diam))
 			return (0);
@@ -49,18 +49,18 @@ int	fill_sphere(t_sphere **sphere, char **elem, t_data *data)
 	flag = 0;
 	temp = init_sphere();
 	if (ft_count_world(elem) != 4)
-		return (printf("Error\nInvalid sphere element\n"),
-			free_data(data),free_sphere(temp), 0);
+		return (printf("Error\nInvalid sphere element\n"), free_data(data),
+			free_sphere(temp), 0);
 	temp->id = temp->id + id;
 	while (elem[++i])
 	{
 		len = ft_strlen(elem[i]);
-		if (!ft_isdigit(elem[i][len - 1]) || (elem[i][0] == '.' || elem[i][0] == ','))
-			return (printf("Error\nInvalid sphere element\n")
-				,free_data(data),free_sphere(temp), 0);
+		if (!ft_isdigit(elem[i][len - 1]) || (elem[i][0] == '.'
+				|| elem[i][0] == ','))
+			return (printf("Error\nInvalid sphere element\n"), free_data(data),
+				free_sphere(temp), 0);
 		if (!fill_elem_sphere(&temp, elem[i], &flag))
-			return (free_data(data),free_sphere(temp), 0);
+			return (free_data(data), free_sphere(temp), 0);
 	}
-	// ft_add_back_sphere(sphere, temp);
-	return (ft_add_back_sphere(sphere, temp),id++,1);
+	return (ft_add_back_sphere(sphere, temp), id++, 1);
 }

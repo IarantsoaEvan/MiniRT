@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:24 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/25 09:20:38 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/27 10:27:50 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,42 +15,15 @@
 void	free_data_cyl(t_data *data)
 {
 	if (data->cyl)
-	{
-		// if (data->cyl->coord)
-		// 	free(data->cyl->coord);
-		// if (data->cyl->color)
-		// 	free(data->cyl->color);
-		// if (data->cyl->vector)
-		// 	free(data->cyl->vector);
-		// free(data->cyl->disk_top);
-		// free(data->cyl->disk_bot);
-		// free(data->cyl);
 		free_cyl(data->cyl);
-	}
 }
 
 void	free_obj(t_data *data)
 {
 	if (data->sphere)
-	{
 		free_sphere(data->sphere);
-		// if (data->sphere->color)
-		// 	free(data->sphere->color);
-		// if (data->sphere->coord)
-		// 	free(data->sphere->coord);
-		// free(data->sphere);
-	}
 	if (data->plane)
-	{
 		free_plane(data->plane);
-		// if (data->plane->color)
-		// 	free(data->plane->color);
-		// if (data->plane->coord)
-		// 	free(data->plane->coord);
-		// if (data->plane->vector)
-		// 	free(data->plane->vector);
-		// free(data->plane);
-	}
 	free_data_cyl(data);
 }
 
@@ -83,9 +56,6 @@ void	free_data(t_data *data)
 
 int	fill_data(t_data *data, char **element)
 {
-	// int i = 0;
-	// while (element[i])
-	// 	printf("elem = %s\n",element[i++]);
 	if (element)
 	{
 		if (!check_valid_element(element))

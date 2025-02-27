@@ -6,7 +6,7 @@
 /*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:41:38 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/24 09:09:58 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/02/27 10:44:15 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ float	get_base_cyl(t_coord *dir, t_coord *origin, t_cyl *cyl, int check_pos);
 t_pol	*init_pol(void);
 void	free_rgb(t_rgb *rgb);
 void	free_fct(t_fct *fct);
-
 t_coord	*normalize_vector_with_free(t_coord *coord);
 void	intersec_sphere(t_fct *fct, t_data *rt, t_nearest *near);
 t_coord	*ft_cross_product(t_coord *v1, t_coord *v2);
@@ -60,5 +59,7 @@ void	free_cam_ur(t_camera *cam, t_coord *cam_ort);
 void	init_current_sp(t_nearest *sp_current, t_sphere *sphere);
 void	check_scal_nl(float scal_nl, t_rgb *rgb, t_color *spec);
 void	init_current_pl(t_nearest *pl_current, t_plane *plane);
+void	check_free_element(char **element);
+void	free_n_close(int fd, char *g_map);
 
 #endif

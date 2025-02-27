@@ -42,7 +42,7 @@ int	fill_cam_elem(t_camera **cam, char *element, int *flag)
 	else
 	{
 		if (check_float(element) == 0)
-			return (printf("Error \n Invalid FOV\n"),0);
+			return (printf("Error \n Invalid FOV\n"), 0);
 		(*cam)->fov = ft_atflo(element);
 		(*cam)->rad_fov = (*cam)->fov * (M_PI / 180);
 		return (check_angle((*cam)->fov));
@@ -60,8 +60,7 @@ int	fill_cam(t_camera **cam, char **element, t_data *data)
 	i = 0;
 	(*cam) = init_cam();
 	if (ft_count_world(element) != 4)
-		return (printf("Error\nInvalid cam element\n"), free_data(data),
-			0);
+		return (printf("Error\nInvalid cam element\n"), free_data(data), 0);
 	while (element[++i])
 	{
 		len = ft_strlen(element[i]);

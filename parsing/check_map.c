@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
+/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:39:30 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/25 09:20:33 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/02/27 10:42:23 by irabesan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	check_map_name(char **argv, int argc)
 	len = ft_strlen(argv[1]);
 	len--;
 	if ((argv && argv[1] && (argv[1][len] == 't' && argv[1][len - 1] == 'r'
-		&& argv[1][len - 2] == '.') && argv[1][0] != '.' ))
+		&& argv[1][len - 2] == '.') && argv[1][0] != '.'))
 		return (1);
 	printf("Error\nThe map name must be a file with .rt extention\n");
 	return (0);
@@ -60,9 +60,8 @@ int	fill_and_check_map_valid(char *map, t_data *data)
 	if (fd >= 3)
 	{
 		g_map = get_map(fd);
-		trim_gmap = ft_strtrim(g_map," \n\t");
-		free(g_map);
-		close(fd);
+		trim_gmap = ft_strtrim(g_map, " \n\t");
+		free_n_close(fd, g_map);
 		v_map = ft_split(trim_gmap, '\n');
 		if (trim_gmap)
 			free(trim_gmap);
@@ -71,12 +70,10 @@ int	fill_and_check_map_valid(char *map, t_data *data)
 			if (v_map)
 				return (ft_free_str(v_map), 0);
 		}
-		if (v_map)
-			ft_free_str(v_map);
+		check_free_element(v_map);
 		return (1);
 	}
-	// printf("Error\nMap does not exist\n");
-	return (printf("Error\nMap does not exist\n"),0);
+	return (printf("Error\nMap does not exist\n"), 0);
 }
 
 int	get_element(char **v_map, t_data *data)
@@ -86,22 +83,20 @@ int	get_element(char **v_map, t_data *data)
 	int		i;
 
 	i = -1;
-	(void)data;
 	if (!check_valid_object(v_map) || !check_valid_a_c_l(v_map))
 		return (0);
 	while (v_map[++i])
 	{
 		if (ft_isspace(v_map[i]))
-			continue;
-		trim_vmap = ft_strtrim(v_map[i]," \n\t");
+			continue ;
+		trim_vmap = ft_strtrim(v_map[i], " \n\t");
 		element = NULL;
 		element = ft_split(trim_vmap, ' ');
 		if (trim_vmap)
 			free(trim_vmap);
 		if (!fill_data(data, element))
 		{
-			if (element)
-				ft_free_str(element);
+			check_free_element(element);
 			return (0);
 		}
 		if (element)
