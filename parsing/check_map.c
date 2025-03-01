@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:39:30 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/27 10:42:23 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/03/01 09:07:38 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int	fill_and_check_map_valid(char *map, t_data *data)
 	if (fd >= 3)
 	{
 		g_map = get_map(fd);
+		if (!g_map || ft_strlen(g_map) == 0)
+			return (free(g_map),printf("Error\nMap is empty\n"), 0);
 		trim_gmap = ft_strtrim(g_map, " \n\t");
 		free_n_close(fd, g_map);
 		v_map = ft_split(trim_gmap, '\n');

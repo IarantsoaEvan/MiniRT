@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irabesan <irabesan@student.42antananari    +#+  +:+       +#+        */
+/*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:23:24 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/02/27 10:27:50 by irabesan         ###   ########.fr       */
+/*   Updated: 2025/03/01 09:05:04 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
