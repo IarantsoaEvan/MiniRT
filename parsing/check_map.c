@@ -6,7 +6,7 @@
 /*   By: mrambelo <mrambelo@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:39:30 by mrambelo          #+#    #+#             */
-/*   Updated: 2025/03/01 09:07:38 by mrambelo         ###   ########.fr       */
+/*   Updated: 2025/03/01 10:07:28 by mrambelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,8 @@ int	fill_and_check_map_valid(char *map, t_data *data)
 		if (trim_gmap)
 			free(trim_gmap);
 		if (!get_element(v_map, data))
-		{
-			if (v_map)
 				return (ft_free_str(v_map), 0);
-		}
-		check_free_element(v_map);
-		return (1);
+		return (check_free_element(v_map),1);
 	}
 	return (printf("Error\nMap does not exist\n"), 0);
 }
